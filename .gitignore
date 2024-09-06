@@ -1,0 +1,4 @@
+*.o
+*.exe
+
+Assignment1/.vscode/*
