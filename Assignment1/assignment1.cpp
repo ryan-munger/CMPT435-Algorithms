@@ -6,16 +6,16 @@ using namespace std;
 
 class Node {
     public:
-        string value;
+        char value;
         Node* next;
 
         // Default constructor
         Node() {
-            value = "";  // default to empty value
+            value = '\0';  // default to empty value
             next = nullptr;  
         }
 
-        Node(string value) {
+        Node(char value) {
             value = value;
             next = nullptr; // next is not ready when making current
         }
@@ -43,7 +43,7 @@ class Stack {
             return top == nullptr;
         }
     
-        void push(const string& value) {
+        void push(const char& value) {
             // create new node, make it the top & point to the old top
             Node* newItem = new Node();
             newItem->value = value;
@@ -52,20 +52,21 @@ class Stack {
             size++;
         }
 
-        string pop() {
-            if(!isEmpty()) {
-                string value = top->value;
-                Node* newTop = top->next;
-                delete top;
-                top = newTop;
-                size--;
-
-                return value;
+        char pop() {
+            if(isEmpty()) {
+                return '\0';
             }
-            return nullptr;
+
+            char value = top->value;
+            Node* newTop = top->next;
+            delete top;
+            top = newTop;
+            size--;
+
+            return value;
         }
 
-        string peek() {
+        char peek() {
             return top->value;
         }    
 
@@ -98,7 +99,7 @@ class Queue {
             return (head == nullptr) && (tail == nullptr);
         }
 
-        void enqueue(const string& value) {
+        void enqueue(const char& value) {
             // make a new node
             Node* newItem = new Node();
             newItem->value= value;
@@ -114,27 +115,28 @@ class Queue {
             size++;
         }
 
-        string dequeue() {
-            if(!isEmpty()) {
-                string value = head->value;
-                Node* oldHead = head;
-                head = oldHead->next;
-                delete oldHead;
-                size--;
-
-                if (head == nullptr) {
-                    tail = nullptr;
-                }
-                return value;
+        char dequeue() {
+            if(isEmpty()) {
+                return '\0';
             }
-            return nullptr;
+
+            char value = head->value;
+            Node* oldHead = head;
+            head = oldHead->next;
+            delete oldHead;
+            size--;
+
+            if (head == nullptr) {
+                tail = nullptr;
+            }
+            return value;
         }
 
-        string front() {
+        char front() {
             return head->value;
         }
 
-        string rear() {
+        char rear() {
             return tail->value;
         }
 
@@ -143,7 +145,7 @@ class Queue {
         }
 };
 
-vector<string> getMagicItems(const string&filename) {
+vector<string> getMagicItems(const string& filename) {
     vector<string> magicItems; 
     ifstream file("magicItems.txt"); //input file stream
     if (!file) {
@@ -155,6 +157,27 @@ vector<string> getMagicItems(const string&filename) {
     }
     file.close();
     return magicItems;
+};
+
+bool isPalindrome(const string& word) {
+    Stack s; Queue q;
+    for (char letter : word) {
+        if (!isspace(letter)) {
+            if (isalpha(letter)) {
+                letter = tolower(letter);
+            }
+            s.push(letter);
+            q.enqueue(letter);
+        }
+    }
+
+    int size = s.getSize();
+    for (int i = 0; i < size; i++) {
+        if (!(s.pop() == q.dequeue())) {
+            return false;
+        }
+    }
+    return true;
 };
 
 int main() {
@@ -190,14 +213,21 @@ int main() {
     //     cout << stack.pop() << endl;
     // }
 
-    Queue q;
-    q.enqueue("Hello");
-    q.enqueue("World");
-    q.enqueue("!");
+    // Queue q;
+    // q.enqueue("Hello");
+    // q.enqueue("World");
+    // q.enqueue("!");
     
-    int size = q.getSize();
-    for (int i = 0; i < size; i++) {
-        cout << q.dequeue() << endl;
+    // int size = q.getSize();
+    // for (int i = 0; i < size; i++) {
+    //     cout << q.dequeue() << endl;
+    // }
+
+    vector<string> magicItems = getMagicItems("magicItems.txt");
+    for (auto & magicItem : magicItems) {
+        if (isPalindrome(magicItem)) {
+            cout << magicItem << endl;
+        }
     }
 
     return 0;
