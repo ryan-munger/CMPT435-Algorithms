@@ -2,6 +2,7 @@
 #include <string>
 #include <fstream>
 #include <vector>
+#include <algorithm>
 using namespace std;
 
 class Node {
@@ -188,6 +189,45 @@ bool isPalindrome(const string& word) {
     return true;
 };
 
+string toLowerCase(const string& str) {
+    string lowerStr = str;
+    // Transforms a string to lowercase, citation: ChatGPT
+    transform(lowerStr.begin(), lowerStr.end(), lowerStr.begin(), ::tolower);
+    return lowerStr;
+};
+
+// Referenced w3 schools
+// Sorts ignoring case
+int selectionSort(vector<string>& arr) {
+    int n = arr.size();
+    int comparisons = 0;
+    for (int i = 0; i < n; i++){
+        int minIdx = i;
+        for (int j = i+1; j < n; j++) {
+            comparisons++;
+            if (toLowerCase(arr[j]) < toLowerCase(arr[minIdx])){
+                minIdx = j;
+            }
+        }
+        if (minIdx != i) {
+            swap(arr[i], arr[minIdx]);
+        }
+    }
+    return comparisons;
+};
+
+void insertionSort() {
+
+};
+
+void mergeSort() {
+
+};
+
+void quickSort() {
+
+};
+
 int main() {
     // // Testing Node class
     // Node* firstNode = new Node("Magic Book");
@@ -239,16 +279,23 @@ int main() {
     // }
 
     // seed the random number generator using the current time 
-    srand(static_cast<unsigned>(time(0)));
+    // srand(static_cast<unsigned>(time(0)));
     
     vector<string> magicItems = getMagicItems("magicItems.txt");
-    for (const auto& ln : magicItems) {
-        cout << ln << " ";
-    }
-    cout << "\n\n---------------------------------------\n\n" << endl;
-    knuthShuffle(magicItems);
+    // for (const auto& ln : magicItems) {
+    //     cout << ln << " ";
+    // }
+    // cout << "\n\n---------------------------------------\n\n" << endl;
+    // knuthShuffle(magicItems);
+    // for (string item : magicItems) {
+    //     cout << item << " ";
+    // }
+
+    int selectionComps = selectionSort(magicItems);
     for (string item : magicItems) {
-        cout << item << " ";
+        cout << item << endl;
     }
+    cout << "Comparisons: " << selectionComps << endl;
+
     return 0;
 };
