@@ -283,7 +283,7 @@ void merge(vector<string>& arr, int left, int mid, int right, int& comparisons) 
         j++;
         k++;
     }
-}
+};
 
 // referenced geeksforgeeks.org
 void mergeSort(vector<string>& arr, int left, int right, int& comparisons) {
@@ -303,8 +303,37 @@ void mergeSort(vector<string>& arr, int left, int right, int& comparisons) {
     merge(arr, left, mid, right, comparisons);
 };
 
-void quickSort() {
+// referenced geeksforgeeks.org
+int partition(vector<string>& arr, int low, int high, int& comparisons) {
+    // choose pivot element
+    string pivot = toLowerCase(arr[high]);
+    // Index of smaller element + right position of pivot found so far
+    int i = low - 1;
 
+    // rearranges array so that elements less than or equal to the pivot are to the left of it
+    // greater than are to the right
+    for (int j = low; j <= high - 1; j++) {
+        comparisons++;
+        if (toLowerCase(arr[j]) < pivot) { 
+            i++;
+            swap(arr[i], arr[j]);
+        }
+    }
+    
+    // move pivot after smaller elements 
+    swap(arr[i + 1], arr[high]);  
+    return i + 1;
+};
+
+// referenced geeksforgeeks.org
+void quickSort(vector<string>& arr, int low, int high, int& comparisons) {
+    // if low < high then we are not done
+    if (low < high) {
+        int pIdx = partition(arr, low, high, comparisons); // Partitioning index
+
+        quickSort(arr, low, pIdx - 1, comparisons);  // recursively sort the elements before partition
+        quickSort(arr, pIdx + 1, high, comparisons); // recursively sort the elements after partition
+    }
 };
 
 int main() {
@@ -384,12 +413,19 @@ int main() {
     // }
     // cout << "Comparisons: " << insertComps << endl;
 
-    int mergeComps = 0;
-    mergeSort(magicItems, 0, magicItems.size() - 1, mergeComps);
+    // int mergeComps = 0;
+    // mergeSort(magicItems, 0, magicItems.size() - 1, mergeComps);
+    // for (string item : magicItems) {
+    //     cout << item << endl;
+    // }
+    // cout << "Comparisons: " << mergeComps << endl;
+
+    int quickComps = 0;
+    quickSort(magicItems, 0, magicItems.size() - 1, quickComps);
     for (string item : magicItems) {
         cout << item << endl;
     }
-    cout << "Comparisons: " << mergeComps << endl;
+    cout << "Comparisons: " << quickComps << endl;
 
     return 0;
 };
