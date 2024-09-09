@@ -75,13 +75,73 @@ class Stack {
         }
 };
 
-// class Queue {
-//     private:
+class Queue {
+    private:
+        Node* head;
+        Node* tail;
+        int size;
 
+    public:
+        Queue() {
+            head = nullptr;
+            tail = nullptr;
+            size = 0;
+        }
 
-//     public:
+        ~Queue() {
+            while (!isEmpty()) {
+                dequeue();
+            }
+        }
 
-// }
+        bool isEmpty() {
+            return (head == nullptr) && (tail == nullptr);
+        }
+
+        void enqueue(const string& value) {
+            // make a new node
+            Node* newItem = new Node();
+            newItem->value= value;
+            newItem->next = nullptr;
+
+            // add the node to the back of the queue
+            if (isEmpty()) {
+                head = tail = newItem;
+            } else {
+                tail->next = newItem;
+                tail = newItem;
+            }
+            size++;
+        }
+
+        string dequeue() {
+            if(!isEmpty()) {
+                string value = head->value;
+                Node* oldHead = head;
+                head = oldHead->next;
+                delete oldHead;
+                size--;
+
+                if (head == nullptr) {
+                    tail = nullptr;
+                }
+                return value;
+            }
+            return nullptr;
+        }
+
+        string front() {
+            return head->value;
+        }
+
+        string rear() {
+            return tail->value;
+        }
+
+        int getSize() {
+            return size;
+        }
+};
 
 vector<string> getMagicItems(const string&filename) {
     vector<string> magicItems; 
@@ -120,14 +180,24 @@ int main() {
     //     std::cout << ln << std::endl;
     // }
 
-    Stack stack;
-    stack.push("Hello");
-    stack.push("World");
-    stack.push("!");
+    // Stack stack;
+    // stack.push("Hello");
+    // stack.push("World");
+    // stack.push("!");
 
-    int size = stack.getSize();
+    // int size = stack.getSize();
+    // for (int i = 0; i < size; i++) {
+    //     cout << stack.pop() << endl;
+    // }
+
+    Queue q;
+    q.enqueue("Hello");
+    q.enqueue("World");
+    q.enqueue("!");
+    
+    int size = q.getSize();
     for (int i = 0; i < size; i++) {
-        cout << stack.pop() << endl;
+        cout << q.dequeue() << endl;
     }
 
     return 0;
