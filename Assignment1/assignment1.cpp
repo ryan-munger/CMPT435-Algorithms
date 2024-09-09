@@ -145,6 +145,14 @@ class Queue {
         }
 };
 
+void knuthShuffle(vector<string>& arr) {
+    int n = arr.size();
+    for (int i = n-1; i > 0; i--) {
+        int random = rand() % (i + 1); // inclusive to swap in place
+        swap(arr[i], arr[random]);
+    }
+};
+
 vector<string> getMagicItems(const string& filename) {
     vector<string> magicItems; 
     ifstream file("magicItems.txt"); //input file stream
@@ -223,12 +231,24 @@ int main() {
     //     cout << q.dequeue() << endl;
     // }
 
-    vector<string> magicItems = getMagicItems("magicItems.txt");
-    for (auto & magicItem : magicItems) {
-        if (isPalindrome(magicItem)) {
-            cout << magicItem << endl;
-        }
-    }
+    // vector<string> magicItems = getMagicItems("magicItems.txt");
+    // for (auto & magicItem : magicItems) {
+    //     if (isPalindrome(magicItem)) {
+    //         cout << magicItem << endl;
+    //     }
+    // }
 
+    // seed the random number generator using the current time 
+    srand(static_cast<unsigned>(time(0)));
+    
+    vector<string> magicItems = getMagicItems("magicItems.txt");
+    for (const auto& ln : magicItems) {
+        cout << ln << " ";
+    }
+    cout << "\n\n---------------------------------------\n\n" << endl;
+    knuthShuffle(magicItems);
+    for (string item : magicItems) {
+        cout << item << " ";
+    }
     return 0;
 };
