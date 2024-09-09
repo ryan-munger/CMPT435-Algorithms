@@ -239,8 +239,68 @@ int insertionSort(vector<string>& arr) {
     return comparisons;
 };
 
-void mergeSort() {
+// referenced geeksforgeeks.org
+void merge(vector<string>& arr, int left, int mid, int right, int& comparisons) {
+    int nLeft = mid - left + 1; // size of left array
+    int nRight = right - mid; // size of right array
 
+    // dec temp arrays
+    vector<string> leftArr(nLeft), rightArr(nRight);
+
+    // populate temp vectors 
+    for (int i = 0; i < nLeft; i++)
+        leftArr[i] = arr[left + i];
+    for (int j = 0; j < nRight; j++)
+        rightArr[j] = arr[mid + 1 + j];
+
+    int i = 0, j = 0;
+    int k = left;
+
+    // merge temp vectors back into arr[left..right]
+    while (i < nLeft && j < nRight) {
+        comparisons++;
+        if (toLowerCase(leftArr[i]) <= toLowerCase(rightArr[j])) {
+            arr[k] = leftArr[i];
+            i++;
+        }
+        else {
+            arr[k] = rightArr[j];
+            j++;
+        }
+        k++;
+    }
+
+    // copy the remaining elements of leftArr after merging 
+    while (i < nLeft) {
+        arr[k] = leftArr[i];
+        i++;
+        k++;
+    }
+
+    // copy the remaining elements of right after merging
+    while (j < nRight) {
+        arr[k] = rightArr[j];
+        j++;
+        k++;
+    }
+}
+
+// referenced geeksforgeeks.org
+void mergeSort(vector<string>& arr, int left, int right, int& comparisons) {
+    // base case
+    if (left >= right) 
+        return;
+         
+    // left < right, array can be divided further
+    // calculate mid of subarray/array to split array
+    int mid = left + (right - left) / 2; 
+
+    // recursively sort the halves, update comparisons
+    mergeSort(arr, left, mid, comparisons);
+    mergeSort(arr, mid + 1, right, comparisons);
+
+    // merge sorted halves, update comparisons
+    merge(arr, left, mid, right, comparisons);
 };
 
 void quickSort() {
@@ -317,14 +377,19 @@ int main() {
     // }
     // cout << "Comparisons: " << selectionComps << endl;
     knuthShuffle(magicItems);
+
+    // int insertComps = insertionSort(magicItems);
+    // for (string item : magicItems) {
+    //     cout << item << endl;
+    // }
+    // cout << "Comparisons: " << insertComps << endl;
+
+    int mergeComps = 0;
+    mergeSort(magicItems, 0, magicItems.size() - 1, mergeComps);
     for (string item : magicItems) {
         cout << item << endl;
     }
-    int insertComps = insertionSort(magicItems);
-    for (string item : magicItems) {
-        cout << item << endl;
-    }
-    cout << "Comparisons: " << insertComps << endl;
+    cout << "Comparisons: " << mergeComps << endl;
 
     return 0;
 };
