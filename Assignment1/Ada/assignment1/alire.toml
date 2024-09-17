@@ -1,0 +1,12 @@
+name = "assignment1"
+description = "assignment1"
+version = "0.1.0-dev"
+
+authors = ["Test"]
+maintainers = ["Test <Test@test.com>"]
+maintainers-logins = ["Test"]
+licenses = "MIT OR Apache-2.0 WITH LLVM-exception"
+website = ""
+tags = []
+
+executables = ["assignment1"]
