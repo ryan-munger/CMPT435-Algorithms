@@ -136,6 +136,8 @@ procedure assignment1 is
 
 begin
   
-   Check_Magicitems("../magicitems.txt");
+   Check_Magicitems("../../magicitems.txt");
 
 end assignment1;
+
+-- In sum: walrus operator is pretty cool. Prodedures and functions are different. Ada is not easy (yet).
