@@ -5,26 +5,16 @@
 #include <algorithm>
 using namespace std;
 
-class Node {
-    public:
-        char value;
-        Node* next;
-
-        // Default constructor
-        Node() {
-            value = '\0';  // default to empty value
-            next = nullptr;  
-        }
-
-        Node(char value) {
-            value = value;
-            next = nullptr; // next is not ready when making current
-        }
+template <typename T>
+struct Node {
+    T value;
+    Node<T>* next;
 };
 
+template <typename T>
 class Stack { 
     private:
-        Node* top;
+        Node<T>* top;
         int size;
 
     public: 
@@ -44,22 +34,22 @@ class Stack {
             return top == nullptr;
         }
     
-        void push(const char& value) {
+        void push(const T value) {
             // create new node, make it the top & point to the old top
-            Node* newItem = new Node();
+            Node<T>* newItem = new Node<T>;
             newItem->value = value;
             newItem->next = top;
             top = newItem;
             size++;
         }
 
-        char pop() {
+        T pop() {
             if(isEmpty()) {
-                return '\0';
+                throw std::runtime_error("Stack is empty, cannot pop.");
             }
 
-            char value = top->value;
-            Node* newTop = top->next;
+            T value = top->value;
+            Node<T>* newTop = top->next;
             delete top;
             top = newTop;
             size--;
@@ -67,7 +57,7 @@ class Stack {
             return value;
         }
 
-        char peek() {
+        T peek() {
             return top->value;
         }    
 
@@ -77,10 +67,11 @@ class Stack {
         }
 };
 
+template <typename T>
 class Queue {
     private:
-        Node* head;
-        Node* tail;
+        Node<T>* head;
+        Node<T>* tail;
         int size;
 
     public:
@@ -100,10 +91,10 @@ class Queue {
             return (head == nullptr) && (tail == nullptr);
         }
 
-        void enqueue(const char& value) {
+        void enqueue(const T value) {
             // make a new node
-            Node* newItem = new Node();
-            newItem->value= value;
+            Node<T>* newItem = new Node<T>;
+            newItem->value = value;
             newItem->next = nullptr;
 
             // add the node to the back of the queue
@@ -116,13 +107,13 @@ class Queue {
             size++;
         }
 
-        char dequeue() {
+        T dequeue() {
             if(isEmpty()) {
-                return '\0';
+                throw std::runtime_error("Queue is empty, cannot dequeue.");
             }
 
-            char value = head->value;
-            Node* oldHead = head;
+            T value = head->value;
+            Node<T>* oldHead = head;
             head = oldHead->next;
             delete oldHead;
             size--;
@@ -133,11 +124,11 @@ class Queue {
             return value;
         }
 
-        char front() {
+        T front() {
             return head->value;
         }
 
-        char rear() {
+        T rear() {
             return tail->value;
         }
 
@@ -156,7 +147,7 @@ void knuthShuffle(vector<string>& arr) {
 
 vector<string> getMagicItems(const string& filename) {
     vector<string> magicItems; 
-    ifstream file("magicItems.txt"); //input file stream
+    ifstream file(filename); //input file stream
     if (!file) {
         cerr << "File opening failed." << endl;
     }
@@ -169,8 +160,8 @@ vector<string> getMagicItems(const string& filename) {
 };
 
 bool isPalindrome(const string& word) {
-    Stack s; Queue q;
-    for (char letter : word) {
+    Stack<char> s; Queue<char> q;
+    for (char letter: word) {
         if (!isspace(letter)) {
             if (isalpha(letter)) {
                 letter = tolower(letter);
@@ -182,7 +173,7 @@ bool isPalindrome(const string& word) {
 
     int size = s.getSize();
     for (int i = 0; i < size; i++) {
-        if (!(s.pop() == q.dequeue())) {
+        if (s.pop() != q.dequeue()) {
             return false;
         }
     }
@@ -337,95 +328,81 @@ void quickSort(vector<string>& arr, int low, int high, int& comparisons) {
 };
 
 int main() {
-    // // Testing Node class
-    // Node* firstNode = new Node("Magic Book");
-    // Node* secondNode = new Node("Dior Droid");
+    // Testing Node class
+    Node<string>* firstNode = new Node<string>;
+    firstNode->value = "Magic Item1";
+    Node<string>* secondNode = new Node<string>;
+    secondNode->value = "Nogard Dragon"; 
+    firstNode->next = secondNode;
+    cout << "First Node Value: " << firstNode->value << endl;
+    cout << "Second Node Value: " << secondNode->value << endl;
+    if (firstNode->next == secondNode) {
+        cout << "First node points to the second node." << endl;
+    } else {
+        cout << "First node does not point to the second node." << endl;
+    }
+    // garbage collect them
+    delete firstNode;
+    delete secondNode;
 
-    // firstNode->next = secondNode;
+    Stack<string> stack;
+    stack.push("Hello");
+    stack.push("World");
+    stack.push("!");
+    int size = stack.getSize();
+    for (int i = 0; i < size; i++) {
+        cout << stack.pop() << endl;
+    }
 
-    // cout << "First Node Value" << firstNode->value << endl;
-    // cout << "Second Node Value" << secondNode->value << endl;
+    Queue<string> q;
+    q.enqueue("Hello");
+    q.enqueue("World");
+    q.enqueue("!");
+    size = q.getSize();
+    for (int i = 0; i < size; i++) {
+        cout << q.dequeue() << endl;
+    }
 
-    // if (firstNode->next == secondNode) {
-    //     cout << "First node points to the second node." << endl;
-    // }
-
-    // // garbage collect them
-    // delete firstNode;
-    // delete secondNode;
-
-    // vector<string> magicItems = getMagicItems("magicItems.txt");
-    // for (const auto& ln : magicItems) {
-    //     std::cout << ln << std::endl;
-    // }
-
-    // Stack stack;
-    // stack.push("Hello");
-    // stack.push("World");
-    // stack.push("!");
-
-    // int size = stack.getSize();
-    // for (int i = 0; i < size; i++) {
-    //     cout << stack.pop() << endl;
-    // }
-
-    // Queue q;
-    // q.enqueue("Hello");
-    // q.enqueue("World");
-    // q.enqueue("!");
-    
-    // int size = q.getSize();
-    // for (int i = 0; i < size; i++) {
-    //     cout << q.dequeue() << endl;
-    // }
-
-    // vector<string> magicItems = getMagicItems("magicItems.txt");
-    // for (auto & magicItem : magicItems) {
-    //     if (isPalindrome(magicItem)) {
-    //         cout << magicItem << endl;
-    //     }
-    // }
+    vector<string> magicItems = getMagicItems("../magicItems.txt");
+    for (auto & magicItem : magicItems) {
+        if (isPalindrome(magicItem)) {
+            cout << magicItem << " Is a palindrome!" << endl;
+        }
+    }
 
     // seed the random number generator using the current time 
     // citation: Generated by ChatGPT
     srand(static_cast<unsigned>(time(0)));
-    
-    vector<string> magicItems = getMagicItems("magicItems.txt");
-    // for (const auto& ln : magicItems) {
-    //     cout << ln << " ";
-    // }
-    // cout << "\n\n---------------------------------------\n\n" << endl;
-    // knuthShuffle(magicItems);
-    // for (string item : magicItems) {
-    //     cout << item << " ";
-    // }
 
-    // int selectionComps = selectionSort(magicItems);
+    // no need to sort before selection as it always checks every element
+    int selectionComps = selectionSort(magicItems);
     // for (string item : magicItems) {
     //     cout << item << endl;
     // }
-    // cout << "Comparisons: " << selectionComps << endl;
+    cout << "Selection Sort Comparisons: " << selectionComps << endl;
     knuthShuffle(magicItems);
 
-    // int insertComps = insertionSort(magicItems);
+    int insertComps = insertionSort(magicItems);
     // for (string item : magicItems) {
     //     cout << item << endl;
     // }
-    // cout << "Comparisons: " << insertComps << endl;
+    cout << "Insertion Sort Comparisons: " << insertComps << endl;
+    knuthShuffle(magicItems);
 
-    // int mergeComps = 0;
-    // mergeSort(magicItems, 0, magicItems.size() - 1, mergeComps);
+    int mergeComps = 0;
+    mergeSort(magicItems, 0, magicItems.size() - 1, mergeComps);
     // for (string item : magicItems) {
     //     cout << item << endl;
     // }
-    // cout << "Comparisons: " << mergeComps << endl;
+    cout << "Merge Sort Comparisons: " << mergeComps << endl;
+    knuthShuffle(magicItems);
 
     int quickComps = 0;
     quickSort(magicItems, 0, magicItems.size() - 1, quickComps);
-    for (string item : magicItems) {
-        cout << item << endl;
-    }
-    cout << "Comparisons: " << quickComps << endl;
+    // for (string item : magicItems) {
+    //     cout << item << endl;
+    // }
+    cout << "Quick Sort Comparisons: " << quickComps << endl;
 
     return 0;
 };

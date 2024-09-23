@@ -134,8 +134,22 @@ procedure assignment1 is
       Close (File);
    end Check_Magicitems;
 
+   N1: Node_Ptr := new Node;
+   N2: Node_Ptr := new Node;
 begin
-  
+   N1.Data := 'a';
+   N2.Data := 'b';
+   N1.Next := N2;
+   Put_Line("Node1 Value: " & N1.Data);
+   Put_Line("Node2 Value: " & N2.Data);
+   if N1.Next = N2 then
+      Put_Line("Node1 Points to Node2!");
+   else
+      Put_Line("Node1 Does not Point to Node2!");
+   end if;
+
+   Put_Line("");
+
    Check_Magicitems("../../magicitems.txt");
 
 end assignment1;
