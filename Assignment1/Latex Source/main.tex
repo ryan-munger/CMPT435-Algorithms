@@ -27,6 +27,7 @@
 \usepackage{graphicx}
 \usepackage[lined,linesnumbered,commentsnumbered]{algorithm2e}
 \usepackage{listings}
+\usepackage{float}
 \usepackage{fancyhdr} % Custom headers and footers
 \pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
 \usepackage{lastpage}
@@ -101,7 +102,7 @@
 \subsection{Goals}
 Assignment 1 instructed us to create the elementary data structures \textit{Stack} and \textit{Queue} using a node implementation. We then checked a list of items for palindromes using these data structures and also sorted the list using selection, insertion, merge, and quick sorts.
 \subsection{Write-up Format}
-    In this report I will describe the logic being presented. Below the text explanation, relevant code will follow. I implemented the foundational parts of this assignment in both C++ and Ada. I was originally planning to use Pascal, but became frustrated with the nuances of different versions and compilers. As I was writing Pascal, I found it incredibly similar to a language I have seen before - Ada (Not like its based on Pascal or anything...). Before you ask, I work in the defense industry. I used this as an opportunity to actually learn Ada so that I can be better at my job with Lockheed Martin. I used Alire to build and run my Ada code. Alire is extremely similar to Cargo for Rust. Under the hood, it uses GNAT to build the Ada program. Long story short, walrus assignment is pretty cool. I will attempt to sprinkle in some jokes for you!
+    In this report I will describe the logic being presented. Below the text explanation, relevant code will follow. I implemented the foundational parts of this assignment in both C++ and Ada. I was originally planning to use Pascal, but became frustrated with the nuances of different versions and compilers. As I was writing Pascal, I found it incredibly similar to a language I have seen before -- Ada (Not like its based on Pascal or anything...). Before you ask, yes Lockheed Martin and the defense industry is why I know Ada. I used this as an opportunity to actually learn Ada so that I can be better at my job (especially when working with simulation). I used Alire to build and run my Ada code. Alire is extremely similar to Cargo for Rust. Under the hood, it uses GNAT to build the Ada program. To compile my code (check your email), simply download GNAT studio from the AdaCore website and use GNATmake. Long story short, walrus assignment is pretty cool. I will attempt to sprinkle in some jokes for you!
 \subsection{Limerick of Luck}
 Limerick of Luck would make a good magic item... \\
 I suggest adding Nogard Dragon as a new palindrome! \\
@@ -121,11 +122,11 @@ Code:
 
 \lstinputlisting[linerange={332-344}, firstnumber=332]{assignment1.cpp}
 Output:
-\lstinputlisting[linerange={1-4}, firstnumber=1]{output.txt}
+\lstinputlisting[linerange={1-4}, firstnumber=1]{cppout_for_writeup.txt}
 Code:
-\lstinputlisting[language=Ada, linerange={137-149}, firstnumber=137]{assignment1.adb}
+\lstinputlisting[language=Ada, linerange={138-152}, firstnumber=138]{assignment1.adb}
 Output:
-\lstinputlisting[linerange={3-6}, firstnumber=3]{ada_output.txt}
+\lstinputlisting[linerange={1-3}, firstnumber=1]{adaout_for_writeup.txt}
 \subsection{Stacks \& Queues}
 Nodes can link together to form linked lists. Stacks and queues are linked lists with special rules. Stacks can only be managed from the top, similar to a stack of dining hall plates. You can add or remove from the top of the stack but nothing more (this is called LIFO - Last In First Out). Queues are like a line to enter a dining hall; you can only add things to the end of the line and take from the front (FIFO - First In First Out).
 \newline
@@ -171,20 +172,24 @@ The stack needs a pointer to the top of the stack just as a queue keeps track of
 \end{enumerate}
 \hrule
 \vspace{.25cm}
-Why did the stack go to therapy? - \textit{It keeps pushing things down...}\\
+Why did the stack go to therapy? - \textit{It kept pushing things down...}\\
 \hrule
 \vspace{.25cm}
 \textbf{Testing Stack: } \\
 Code:
 \lstinputlisting[linerange={349-357}, firstnumber=349]{assignment1.cpp}
 Output:
-\lstinputlisting[linerange={6-9}, firstnumber=6]{output.txt}
+\lstinputlisting[linerange={6-9}, firstnumber=6]{cppout_for_writeup.txt}
+Code:
+\lstinputlisting[language=Ada, linerange={156-162}, firstnumber=156]{assignment1.adb}
+Output:
+\lstinputlisting[linerange={5-8}, firstnumber=5]{adaout_for_writeup.txt}
 \noindent
 As previously mentioned, the queue class will need to have a pointer to the first and the last node to work in constant time. It is possible traverse the queue to obtain the final node, but the trade off between memory and time is worth it in this case to store an additional pointer. \\
 \textbf{Queue Implementation:}
 \lstinputlisting[linerange={70-88}, firstnumber=70]{assignment1.cpp}
 \lstinputlisting[language=Ada, linerange={26-30}, firstnumber=26]{assignment1.adb}
-\newpage
+
 \textbf{Queue Enqueue:}
 \begin{enumerate}
     \item Create a new node with the new value.
@@ -230,11 +235,16 @@ As previously mentioned, the queue class will need to have a pointer to the firs
 Why did the stack break up with the queue? - \textit{It found a priority queue to put it first...}\\
 \hrule
 \vspace{.25cm}
+
 \textbf{Testing Queue: } \\ 
 Code:
 \lstinputlisting[linerange={359-367}, firstnumber=359]{assignment1.cpp}
 Output:
-\lstinputlisting[linerange={11-14}, firstnumber=11]{output.txt}
+\lstinputlisting[linerange={11-14}, firstnumber=11]{cppout_for_writeup.txt}
+Code: 
+\lstinputlisting[language=Ada, linerange={166-172}, firstnumber=166]{assignment1.adb}
+Output:
+\lstinputlisting[linerange={10-13}, firstnumber=10]{adaout_for_writeup.txt}
 
 \subsection{Palindrome Checking: A Stack \& Queue Use Case}
 A palindrome is word/phrase that reads the same forward and backwards. For our implementation, we will ignore spaces and case. "Racecar" is a palindrome because the letters read the same front to back and back to front. "Nogard Dragon" should be in the ones we are checking because I think its cool (is that not reason enough?). We read in the list of words/phrases to check from magicitems.txt and determine if it is a palindrome by: \\
@@ -246,14 +256,15 @@ A palindrome is word/phrase that reads the same forward and backwards. For our i
 
 \textbf{Read in magic items:}
 \lstinputlisting[linerange={148-160}, firstnumber=148]{assignment1.cpp}
-\lstinputlisting[language=Ada, linerange={120-135}, firstnumber=120]{assignment1.adb}
+\lstinputlisting[language=Ada, linerange={120-136}, firstnumber=120]{assignment1.adb}
 
+\newpage
 \textbf{Check for palindromes:}
 \lstinputlisting[linerange={162-181}, firstnumber=162]{assignment1.cpp}
 \lstinputlisting[language=Ada, linerange={93-117}, firstnumber=93]{assignment1.adb}
 \textbf{Results:}
 % just chose a lang that doesnt have keywords in the output %
-\lstinputlisting[language=Ant, linerange={8-22}, firstnumber=8]{ada_output.txt}
+\lstinputlisting[language=Ant, linerange={16-32}, firstnumber=16]{cppout_for_writeup.txt}
 \hrule
 \vspace{.25cm}
 Why is 'palindrome' not a palindrome? Dr. Labouseur and other detail oriented people surely don't get annoyed by this...\\
@@ -275,7 +286,7 @@ I implemented this section in c++ only.
 A truly unsorted array is one in which the elements are randomly positioned. This array can technically be sorted (the basis for the monkey/bogo sort), but we won't actually know until we check. Since we are implementing several sorting algorithms, we will need to unsort/shuffle the array between sorts. A good algorithm to do this randomly \& in place is the Knuth/Fisher Yates Shuffle. It iterates through each data point in an array, picking a random index between current index and all remaining indices and swaps the values between the two.
 \lstinputlisting[linerange={140-146}, firstnumber=140]{assignment1.cpp}
 \subsection{Selection Sort}
-Selection sort is an in place sort that organizes an array using a nested loop. Selection sort iterates through the array except for the portion is has already sorted and finds the minimum value (when doing $\leq$). Once we find the minimal element, we swap it with the current index. This way, if we are on array index 2 (starting at 0) we would swap in the 3rd smallest value. This algorithm works in $O(n^2)$ time because the outer loop runs $n$ times and the inner loop has to iterate over the entire array it hasn't yet sorted. Despite the fact that the inner loop decreases in iterations as the sort progresses, this is still quadratic time because the number of the inner iterations depends on the size of the input; therefore $n*n$ comparisons (where $n$ is size of the array). A more precise characterization of this algorithm is as follows: \\
+Selection sort is an in place sort that organizes an array using a nested loop. Selection sort iterates through the array except for the portion it has already sorted and finds the minimum value (when doing $\leq$). Once we find the minimal element, we swap it with the current index. This way, if we are on array index 2 (starting at 0) we would swap in the 3rd smallest value. This algorithm works in $O(n^2)$ time because the outer loop runs $n$ times and the inner loop has to iterate over the entire array it hasn't yet sorted. Despite the fact that the inner loop decreases in iterations as the sort progresses, this is still quadratic time because the number of the inner iterations depends on the size of the input; therefore $n*n$ comparisons (where $n$ is size of the array). A more precise characterization of this algorithm is as follows: \\
 Total comparisons: $(n - 1) + (n - 2) + \cdots + 1 = \sum_{i=1}^{n-1} i$ \\
 $\sum_{i=1}^{n-1} i = \frac{(n-1)+1}{2}(n-1) = \frac{1}{2}n(n-1) = \frac{1}{2}(n^2-n)$ \\
 As we can see, in this case $n^2$ dominates therefore the algorithm is $O(n^2)$. Using this formula on our array of 666 elements, we can expect $\frac{1}{2}(666^2-666)$ or 221,445 comparisons to be made. It will always take this exact number of comparisons, even if the array is presorted or totally unsorted. 
@@ -308,16 +319,15 @@ The helper function first builds the two subarrays we are to work with (the only
 A mad scientest has created a self sorting array! He pulls back the curtain and to the crowd's dismay yells: \textit{"BEHOLD! A array of size one!!"}
 \vspace{.25cm}
 \hrule
-\newpage
+
 \subsection{Quick Sort}
 Quick sort also utilizes a divide and conquer methodology. Similar to merge sort, it recursively divides the array using a pivot value. It partitions the array by splitting the array at the pivot value by grouping items less than the pivot into one partition and the rest into another. There are many different versions of the partition algorithm, but I chose the Lomuto partition as it is easy to understand. Lomuto partition keeps track of the indices of smaller elements and keep swapping, always using the last element as the pivot. The image below from GeeksforGeeks.org does a great job of visualizing the process. \\
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
-    \includegraphics[width=1\linewidth]{quickSort.png}
+    \includegraphics[width=.8\linewidth]{quickSort.png}
     \caption{Lomuto Quick Sort}
     \label{fig:enter-label}
 \end{figure}
-\newline
 The time complexity for quick sort is $O(nlog_2n)$ as there are rarely more than \(log_2n \) partitions (given we are choosing good pivots) and $n$ comparisons required for each partition to correctly order the elements around the pivot. The absolute worst case is that the pivot is always the largest or smallest element, which leaves us at $O(n^2)$, or 221,445 comparisons. On average however, we can expect $O(nlog_2n)$, or $666*log_2666$ which is 6,244 comparisons.\\
 \newline
 First, we have the recursive function: 
@@ -326,7 +336,7 @@ First, we have the recursive function:
     \item Call a helper function to partition the array.
     \item Makes a recursive call to sort the partitions.
 \end{enumerate}
-\newpage
+
 \lstinputlisting[linerange={320-328}, firstnumber=320]{assignment1.cpp} 
 The helper function is a bit more complex (we are using Lomuto).
 \begin{enumerate}
@@ -335,9 +345,9 @@ The helper function is a bit more complex (we are using Lomuto).
     \item Traverse partition and move all smaller elements to the left side of the pivot. This generally leaves the pivot toward the middle of the array. We can then again partition further.
 \end{enumerate}
 Once again, GeeksforGeeks.org has an excellent graphic: 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
-    \includegraphics[width=1\linewidth]{pivoting.png}
+    \includegraphics[width=.7\linewidth]{pivoting.png}
     \caption{Pivoting}
     \label{fig:enter-label}
 \end{figure}
@@ -369,9 +379,9 @@ In terms of time complexity, quick sort and merge sort easily pull ahead of sele
 
 \end{center}
 Selection sort is exactly as expected since it always checks every element. Insertion sort did vary a bit, but is right on par with the expected. Merge sort performed well, as it is usually a bit faster than its Big-Oh. Quick sort lagged behind, but this is likely due to my suboptimal choice of the Lomuto partitioning algorithm.
-\newpage
+
 \section{Miscellaneous Lessons Learned}
-If I learned anything, it is that the walrus operator is sick. I guess I learned a lot about Big Oh and sorting algorithms, but that pales in comparison. One thing I wished I knew is that you need to seed the random number generator in C++ or it will always give you the same numbers (seeding with current time is best). Aside from general Ada knowledge, I am satisfied with my newfound understanding of fundamental data structures and sorting algorithms. 
+If I learned anything, it is that the walrus operator is sick. I guess I learned a lot about Big Oh and sorting algorithms, but that pales in comparison. One thing I wished I knew is that you need to seed the random number generator in C++ or it will always give you the same numbers (seeding with current time is best). Aside from general Ada knowledge (why are we not using \textbackslash{} to escape things??), I am satisfied with my newfound understanding of fundamental data structures and sorting algorithms. 
 \newline
 \hrule
 \vspace{.25cm}

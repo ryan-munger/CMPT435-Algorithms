@@ -1,0 +1,31 @@
+Node1 Value: a
+Node2 Value: b
+Node1 Points to Node2!
+
+Stack Test: [A, B, C]
+Pop: C
+Pop: B
+Pop: A
+
+Queue Test: [A, B, C]
+Dequeue: A
+Dequeue: B
+Dequeue: C
+
+Palindrome CHecking:
+"Boccob" is a palindrome.
+"Seuss Igniting Issues" is a palindrome.
+"UFO tofu" is a palindrome.
+"Ebuc Cube" is a palindrome.
+"Aibohphobia" is a palindrome.
+"Taco cat" is a palindrome.
+"Was It A Rat I Saw" is a palindrome.
+"Olah Halo" is a palindrome.
+"CD case divides ACDC" is a palindrome.
+"Dacad" is a palindrome.
+"Dior Droid" is a palindrome.
+"Robot Tobor" is a palindrome.
+"Narc in a panic ran" is a palindrome.
+"radar" is a palindrome.
+"Golf flog" is a palindrome.
+Total Palindromes Found:  15

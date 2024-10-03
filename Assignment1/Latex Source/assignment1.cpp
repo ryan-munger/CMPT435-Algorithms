@@ -368,11 +368,14 @@ int main() {
 
     cout << "\nPalindrome Checking:" << endl;
     vector<string> magicItems = getMagicItems("../magicItems.txt");
+    int count = 0;
     for (auto & magicItem : magicItems) {
         if (isPalindrome(magicItem)) {
-            cout << magicItem << " Is a palindrome!" << endl;
+            count++;
+            cout << "\"" << magicItem << "\" is a palindrome!" << endl;
         }
     }
+    cout << "Total Palindromes Found: " << count << endl; 
 
     cout << "\nSorting Algorithms: " << endl;
     // seed the random number generator using the current time 
@@ -408,6 +411,25 @@ int main() {
     //     cout << item << endl;
     // }
     cout << "Quick Sort Comparisons: " << quickComps << endl;
+
+    cout << "\nAverages (20 Trials): " << endl;
+    int scomp = 0;
+    int icomp = 0;
+    int mcomp = 0;
+    int qcomp = 0;
+    for (int i = 0; i < 20; i++) {
+        scomp += selectionSort(magicItems);
+        knuthShuffle(magicItems);
+        icomp += insertionSort(magicItems);
+        knuthShuffle(magicItems);
+        mergeSort(magicItems, 0, magicItems.size() - 1, mcomp);
+        knuthShuffle(magicItems);
+        quickSort(magicItems, 0, magicItems.size() - 1, qcomp);
+    }
+    cout << "Selection Sort Average: " << scomp / 20 << endl;
+    cout << "Insertion Sort Average: " << icomp / 20 << endl;
+    cout << "Merge Sort Average: " << mcomp / 20 << endl;
+    cout << "Quick Sort Average: " << qcomp / 20 << endl;
 
     return 0;
 };

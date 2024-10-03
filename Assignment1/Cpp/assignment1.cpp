@@ -368,11 +368,14 @@ int main() {
 
     cout << "\nPalindrome Checking:" << endl;
     vector<string> magicItems = getMagicItems("../magicItems.txt");
+    int count = 0;
     for (auto & magicItem : magicItems) {
         if (isPalindrome(magicItem)) {
-            cout << magicItem << " Is a palindrome!" << endl;
+            count++;
+            cout << "\"" << magicItem << "\" is a palindrome!" << endl;
         }
     }
+    cout << "Total Palindromes Found: " << count << endl; 
 
     cout << "\nSorting Algorithms: " << endl;
     // seed the random number generator using the current time 

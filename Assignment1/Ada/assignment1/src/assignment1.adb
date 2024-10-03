@@ -121,21 +121,24 @@ procedure assignment1 is
       File : File_Type;
       Line : String (1 .. 100);  -- assuming max line length is 100 characters
       Length : Natural;
+      Count : Integer := 0;
    begin
       Open (File, In_File, File_Name);
       while not End_Of_File (File) loop
          Get_Line (File, Line, Length);
-         
          if Is_Palindrome(Line (1 .. Length)) then
-            Put_Line(Line (1 .. Length) & " is a palindrome.");
+            Put_Line("""" & Line (1 .. Length) & """ is a palindrome."); -- double "" is the escape sequence...
+            Count := Count + 1;
          end if;
-         
       end loop;
       Close (File);
+      Put_Line("Total Palindromes Found: " & Integer'Image(Count)); -- interesting type cast here
    end Check_Magicitems;
 
    N1: Node_Ptr := new Node;
    N2: Node_Ptr := new Node;
+   S: Stack;
+   Q: Queue;
 begin
    N1.Data := 'a';
    N2.Data := 'b';
@@ -150,6 +153,27 @@ begin
 
    Put_Line("");
 
+   Put_Line("Stack Test: [A, B, C]");
+   Push(S, 'A');
+   Push(S, 'B');
+   Push(S, 'C');
+   for I in 1 .. 3 loop
+      Put_Line("Pop: " & Pop(S));
+   end loop;
+
+   Put_Line("");
+
+   Put_Line("Queue Test: [A, B, C]");
+   Enqueue(Q, 'A');
+   Enqueue(Q, 'B');
+   Enqueue(Q, 'C');
+   for I in 1 .. 3 loop
+      Put_Line("Dequeue: " & Dequeue(Q));
+   end loop;
+
+   Put_Line("");
+
+   Put_Line("Palindrome CHecking:");
    Check_Magicitems("../../magicitems.txt");
 
 end assignment1;

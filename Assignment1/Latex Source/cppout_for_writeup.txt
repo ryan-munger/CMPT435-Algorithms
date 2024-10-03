@@ -1,0 +1,44 @@
+Node Testing:
+First Node Value: Magic Item1
+Second Node Value: Nogard Dragon
+First node points to the second node.
+
+Stack Test: [Hello, World, !]
+Pop: !
+Pop: World
+Pop: Hello
+
+Queue Test: [Hello, World, !]
+Dequeue: Hello
+Dequeue: World
+Dequeue: !
+
+Palindrome Checking:
+"Boccob" is a palindrome!
+"Seuss Igniting Issues" is a palindrome!
+"UFO tofu" is a palindrome!
+"Ebuc Cube" is a palindrome!
+"Aibohphobia" is a palindrome!
+"Taco cat" is a palindrome!
+"Was It A Rat I Saw" is a palindrome!
+"Olah Halo" is a palindrome!
+"CD case divides ACDC" is a palindrome!
+"Dacad" is a palindrome!
+"Dior Droid" is a palindrome!
+"Robot Tobor" is a palindrome!
+"Narc in a panic ran" is a palindrome!
+"radar" is a palindrome!
+"Golf flog" is a palindrome!
+Total Palindromes Found: 15
+
+Sorting Algorithms: 
+Selection Sort Comparisons: 221445
+Insertion Sort Comparisons: 112533
+Merge Sort Comparisons: 5442
+Quick Sort Comparisons: 6359
+
+Averages (20 Trials): 
+Selection Sort Average: 221445
+Insertion Sort Average: 111592
+Merge Sort Average: 5422
+Quick Sort Average: 6864
