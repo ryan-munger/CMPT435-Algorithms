@@ -3,6 +3,7 @@
 #include <vector>
 #include <string>
 #include <algorithm>
+#include <random>
 using namespace std;
 
 vector<string> getMagicItems(const string& filename) {
@@ -92,8 +93,18 @@ void mergeSort(vector<string>& arr, int left, int right) {
 int main() {
     vector<string> magicItems = getMagicItems("../magicItems.txt");
     mergeSort(magicItems, 0, magicItems.size() - 1);
-    for (string item : magicItems) {
+
+    /* taken from stack overflow. Used ChatGPT to find out I needed c++ version 17.
+    sample() takes range of elements and number to select, selects randomly without repetition.
+    selected elements are added to the random_sample container with back_inserter(). 
+    Rand generator (mt19937) ensures sample is random. After some ChatGPT and google, I found out that
+    the reason the new selection is sorted is because sample() maintains the relative ordering of the elements it selected. */
+    vector<string> random_sample;
+    const int sample_size = 42;
+    sample(magicItems.begin(), magicItems.end(), back_inserter(random_sample), sample_size, mt19937{random_device{}()});
+    for (string item : random_sample) {
         cout << item << endl;
     }
+
     return 0;
 };

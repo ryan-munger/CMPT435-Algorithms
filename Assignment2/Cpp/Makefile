@@ -2,7 +2,7 @@
 CXX = g++
 
 # Compiler flags to use
-CXXFLAGS = -std=c++11 -Wall
+CXXFLAGS = -std=c++17 -Wall
 
 # Target executable to make
 TARGET = assignment2
