@@ -102,8 +102,26 @@ int sequentialSearch(const vector<T>& arr, const T& key) {
 
 // returns first index of the item if it is in the array
 template <typename T>
-int binarySearch(const vector<T>& arr, const T& key, int& comparisons) {
-    return -1;
+int binarySearch(const std::vector<T>& arr, const T& key, int& comparisons) {
+    int left = 0;
+    int right = arr.size() - 1;
+
+    // if left > right we did not find it
+    while (left <= right) {
+        comparisons++;
+        int mid = left + (right - left) / 2;
+
+        if (arr[mid] == key) {
+            return mid; 
+        } 
+        else if (arr[mid] < key) {
+            left = mid + 1; // search right half
+        } 
+        else {
+            right = mid - 1; // search left half
+        }
+    }
+    return -1; 
 }
 
 int main() {
@@ -122,7 +140,7 @@ int main() {
     // since the random sample is in order (relative to the sorted array), as we progress through the sample, comparisons will always increase!
     int totalComparisons = 0;
     int foundIdx;
-    cout << "\nSequential/Linear Search:" << endl;
+    cout << "\nSequential/Linear Search:\n" << endl;
     for (string item : randomSample) {
         foundIdx = sequentialSearch(magicItems, item);
         if(foundIdx != -1){
@@ -132,11 +150,12 @@ int main() {
         }
         totalComparisons += foundIdx + 1;
     }
-    cout << "\nSequential/Linear search took an average of " << totalComparisons / randomSample.size() << " comparisons to find each element." << endl;
+    // cast double so we don't lose our decimal accuracy
+    cout << "\nSequential/Linear search took an average of " << static_cast<double>(totalComparisons) / randomSample.size() << " comparisons to find each element." << endl;
 
     int comparisons = 0;
     totalComparisons = 0;
-    cout << "\n\nBinary Search:" << endl;
+    cout << "\n\nBinary Search:\n" << endl;
     for (string item : randomSample) {
         foundIdx = binarySearch(magicItems, item, comparisons);
         if(foundIdx != -1){
@@ -147,7 +166,7 @@ int main() {
         totalComparisons += comparisons;
         comparisons = 0;
     }
-    cout << "\nBinary search took an average of " << totalComparisons / randomSample.size() << " comparisons to find each element." << endl;
+    cout << "\nBinary search took an average of " << static_cast<double>(totalComparisons) / randomSample.size() << " comparisons to find each element." << endl;
 
     return 0;
 };
