@@ -90,21 +90,64 @@ void mergeSort(vector<string>& arr, int left, int right) {
     merge(arr, left, mid, right);
 };
 
+// returns first index of the item if it is in the array
+// we don't need a comparison counter as it is 1 more than the index the item is found at (since indexing starts at 0). 
+template <typename T>
+int sequentialSearch(const vector<T>& arr, const T& key) {
+    for(size_t i = 0; i < arr.size(); ++i) {
+        if(arr[i] == key){return static_cast<int>(i);}
+    }
+    return -1;
+}
+
+// returns first index of the item if it is in the array
+template <typename T>
+int binarySearch(const vector<T>& arr, const T& key, int& comparisons) {
+    return -1;
+}
+
 int main() {
     vector<string> magicItems = getMagicItems("../magicItems.txt");
     mergeSort(magicItems, 0, magicItems.size() - 1);
 
     /* taken from stack overflow. Used ChatGPT to find out I needed c++ version 17.
     sample() takes range of elements and number to select, selects randomly without repetition.
-    selected elements are added to the random_sample container with back_inserter(). 
+    selected elements are added to the randomSample container with back_inserter(). 
     Rand generator (mt19937) ensures sample is random. After some ChatGPT and google, I found out that
     the reason the new selection is sorted is because sample() maintains the relative ordering of the elements it selected. */
-    vector<string> random_sample;
+    vector<string> randomSample;
     const int sample_size = 42;
-    sample(magicItems.begin(), magicItems.end(), back_inserter(random_sample), sample_size, mt19937{random_device{}()});
-    for (string item : random_sample) {
-        cout << item << endl;
+    sample(magicItems.begin(), magicItems.end(), back_inserter(randomSample), sample_size, mt19937{random_device{}()});
+   
+    // since the random sample is in order (relative to the sorted array), as we progress through the sample, comparisons will always increase!
+    int totalComparisons = 0;
+    int foundIdx;
+    cout << "\nSequential/Linear Search:" << endl;
+    for (string item : randomSample) {
+        foundIdx = sequentialSearch(magicItems, item);
+        if(foundIdx != -1){
+            cout << "\"" << item << "\" was found in magicItems at index: " << foundIdx << ". It took " << foundIdx + 1 << " Comparisons." << endl;
+        } else {
+            cout << "\"" << item << "\" was not found in magicItems. Comparisons: " << magicItems.size() << endl;
+        }
+        totalComparisons += foundIdx + 1;
     }
+    cout << "\nSequential/Linear search took an average of " << totalComparisons / randomSample.size() << " comparisons to find each element." << endl;
+
+    int comparisons = 0;
+    totalComparisons = 0;
+    cout << "\n\nBinary Search:" << endl;
+    for (string item : randomSample) {
+        foundIdx = binarySearch(magicItems, item, comparisons);
+        if(foundIdx != -1){
+            cout << "\"" << item << "\" was found in magicItems at index: " << foundIdx << ". It took " << comparisons << " Comparisons." << endl;
+        } else {
+            cout << "\"" << item << "\" was not found in magicItems. Comparisons: " << comparisons << endl;
+        }
+        totalComparisons += comparisons;
+        comparisons = 0;
+    }
+    cout << "\nBinary search took an average of " << totalComparisons / randomSample.size() << " comparisons to find each element." << endl;
 
     return 0;
 };
