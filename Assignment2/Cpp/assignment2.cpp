@@ -4,6 +4,7 @@
 #include <string>
 #include <algorithm>
 #include <random>
+#include <iomanip>
 using namespace std;
 
 vector<string> getMagicItems(const string& filename) {
@@ -144,14 +145,17 @@ int main() {
     for (string item : randomSample) {
         foundIdx = sequentialSearch(magicItems, item);
         if(foundIdx != -1){
-            cout << "\"" << item << "\" was found in magicItems at index: " << foundIdx << ". It took " << foundIdx + 1 << " Comparisons." << endl;
+            cout << "\"" << item << "\" was found in magicItems at index: " << foundIdx 
+                << ". It took " << foundIdx + 1 << " Comparisons." << endl;
         } else {
             cout << "\"" << item << "\" was not found in magicItems. Comparisons: " << magicItems.size() << endl;
         }
         totalComparisons += foundIdx + 1;
     }
-    // cast double so we don't lose our decimal accuracy
-    cout << "\nSequential/Linear search took an average of " << static_cast<double>(totalComparisons) / randomSample.size() << " comparisons to find each element." << endl;
+    cout << "\nSequential/Linear search took an average of " 
+        << fixed << setprecision(2) // Set fixed-point notation and precision
+        << static_cast<double>(totalComparisons) / randomSample.size() // cast double so we don't lose our decimal accuracy
+        << " comparisons to find each element." << endl;
 
     int comparisons = 0;
     totalComparisons = 0;
@@ -159,14 +163,17 @@ int main() {
     for (string item : randomSample) {
         foundIdx = binarySearch(magicItems, item, comparisons);
         if(foundIdx != -1){
-            cout << "\"" << item << "\" was found in magicItems at index: " << foundIdx << ". It took " << comparisons << " Comparisons." << endl;
+            cout << "\"" << item << "\" was found in magicItems at index: " << foundIdx 
+                << ". It took " << comparisons << " Comparisons." << endl;
         } else {
             cout << "\"" << item << "\" was not found in magicItems. Comparisons: " << comparisons << endl;
         }
         totalComparisons += comparisons;
         comparisons = 0;
     }
-    cout << "\nBinary search took an average of " << static_cast<double>(totalComparisons) / randomSample.size() << " comparisons to find each element." << endl;
-
+    cout << "\nBinary search took an average of " 
+        << fixed << setprecision(2) 
+        << static_cast<double>(totalComparisons) / randomSample.size() 
+        << " comparisons to find each element." << endl;
     return 0;
 };
