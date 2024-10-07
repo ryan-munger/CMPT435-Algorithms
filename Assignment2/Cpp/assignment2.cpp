@@ -94,28 +94,28 @@ void mergeSort(vector<string>& arr, int left, int right) {
 // returns first index of the item if it is in the array
 // we don't need a comparison counter as it is 1 more than the index the item is found at (since indexing starts at 0). 
 template <typename T>
-int sequentialSearch(const vector<T>& arr, const T& key) {
+int sequentialSearch(const vector<T>& arr, const T& target) {
     for(size_t i = 0; i < arr.size(); ++i) {
-        if(arr[i] == key){return static_cast<int>(i);}
+        if(arr[i] == target){return static_cast<int>(i);}
     }
     return -1;
 }
 
 // returns first index of the item if it is in the array
 template <typename T>
-int binarySearch(const std::vector<T>& arr, const T& key, int& comparisons) {
+int binarySearch(const std::vector<T>& arr, const T& target, int& comparisons) {
     int left = 0;
     int right = arr.size() - 1;
 
     // if left > right we did not find it
     while (left <= right) {
-        comparisons++;
         int mid = left + (right - left) / 2;
 
-        if (arr[mid] == key) {
+        comparisons++;
+        if (arr[mid] == target) {
             return mid; 
         } 
-        else if (arr[mid] < key) {
+        else if (arr[mid] < target) {
             left = mid + 1; // search right half
         } 
         else {
@@ -137,7 +137,7 @@ int main() {
     vector<string> randomSample;
     const int sample_size = 42;
     sample(magicItems.begin(), magicItems.end(), back_inserter(randomSample), sample_size, mt19937{random_device{}()});
-   
+
     // since the random sample is in order (relative to the sorted array), as we progress through the sample, comparisons will always increase!
     int totalComparisons = 0;
     int foundIdx;
@@ -149,6 +149,7 @@ int main() {
                 << ". It took " << foundIdx + 1 << " Comparisons." << endl;
         } else {
             cout << "\"" << item << "\" was not found in magicItems. Comparisons: " << magicItems.size() << endl;
+            foundIdx = magicItems.size() - 1; // since we are adding one later
         }
         totalComparisons += foundIdx + 1;
     }

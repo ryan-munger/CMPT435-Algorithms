@@ -1,95 +1,95 @@
 
 Sequential/Linear Search:
 
-"Amulet of mighty fists +2" was found in magicItems at index: 12. It took 13 Comparisons.
-"Backhand" was found in magicItems at index: 38. It took 39 Comparisons.
-"Battle Axe +3, Earthshaker" was found in magicItems at index: 50. It took 51 Comparisons.
-"Bracers of archery, greater" was found in magicItems at index: 87. It took 88 Comparisons.
+"Amulet of natural armor +5" was found in magicItems at index: 18. It took 19 Comparisons.
+"Athame of Soul Stealing" was found in magicItems at index: 35. It took 36 Comparisons.
+"Bag of tricks, gray" was found in magicItems at index: 44. It took 45 Comparisons.
+"Battle Axe" was found in magicItems at index: 49. It took 50 Comparisons.
+"Borgir's Sugar Cubes" was found in magicItems at index: 80. It took 81 Comparisons.
+"Bottle of air" was found in magicItems at index: 81. It took 82 Comparisons.
+"Bow of Called Shots" was found in magicItems at index: 82. It took 83 Comparisons.
+"Box of Delights" was found in magicItems at index: 86. It took 87 Comparisons.
 "Bracers of armor +6" was found in magicItems at index: 92. It took 93 Comparisons.
-"Bracers of armor +7" was found in magicItems at index: 93. It took 94 Comparisons.
-"Cloak of resistance +5" was found in magicItems at index: 141. It took 142 Comparisons.
-"Diplomat's Brooch" was found in magicItems at index: 176. It took 177 Comparisons.
-"Dust of Darkness" was found in magicItems at index: 189. It took 190 Comparisons.
-"Globe of War" was found in magicItems at index: 254. It took 255 Comparisons.
-"Golem manual, greater stone" was found in magicItems at index: 265. It took 266 Comparisons.
+"Circlet of Demonic Protection" was found in magicItems at index: 124. It took 125 Comparisons.
+"Dior Droid" was found in magicItems at index: 175. It took 176 Comparisons.
+"Elixir of hiding" was found in magicItems at index: 200. It took 201 Comparisons.
+"Gem of seeing" was found in magicItems at index: 250. It took 251 Comparisons.
+"gosherwhip of life essence transferral" was found in magicItems at index: 268. It took 269 Comparisons.
 "Gutbuster's Smelly Mithral Armor" was found in magicItems at index: 276. It took 277 Comparisons.
-"Hectorius's Twin Rings" was found in magicItems at index: 292. It took 293 Comparisons.
-"Horn of goodness/evil" was found in magicItems at index: 306. It took 307 Comparisons.
-"Hwoctul's Masks" was found in magicItems at index: 316. It took 317 Comparisons.
-"Lens of detection" was found in magicItems at index: 340. It took 341 Comparisons.
-"Long War Bow" was found in magicItems at index: 348. It took 349 Comparisons.
-"Manual of quickness of action +3" was found in magicItems at index: 369. It took 370 Comparisons.
-"Nigrals Book of Amassment" was found in magicItems at index: 398. It took 399 Comparisons.
-"Objects of Obsessiveness" was found in magicItems at index: 400. It took 401 Comparisons.
-"Olah Halo" was found in magicItems at index: 403. It took 404 Comparisons.
-"Periapt of health" was found in magicItems at index: 415. It took 416 Comparisons.
-"Portable Portal" was found in magicItems at index: 430. It took 431 Comparisons.
-"Potion of Dreaming" was found in magicItems at index: 432. It took 433 Comparisons.
-"Ring of Annoyance" was found in magicItems at index: 452. It took 453 Comparisons.
-"Ring of Flickering" was found in magicItems at index: 457. It took 458 Comparisons.
+"Hammer of Weylund" was found in magicItems at index: 278. It took 279 Comparisons.
+"Helm of telepathy" was found in magicItems at index: 297. It took 298 Comparisons.
+"Ioun stone, pale green prism" was found in magicItems at index: 326. It took 327 Comparisons.
+"Judecca" was found in magicItems at index: 332. It took 333 Comparisons.
+"Kite Shield" was found in magicItems at index: 335. It took 336 Comparisons.
+"Mace of Divine Wrath" was found in magicItems at index: 350. It took 351 Comparisons.
+"Manual of bodily health +2" was found in magicItems at index: 358. It took 359 Comparisons.
+"Manual of bodily health +4" was found in magicItems at index: 360. It took 361 Comparisons.
+"Morning Star" was found in magicItems at index: 387. It took 388 Comparisons.
+"Mortis Ring" was found in magicItems at index: 388. It took 389 Comparisons.
+"Nanath's Ring-Statue" was found in magicItems at index: 390. It took 391 Comparisons.
+"Necklace of fireballs type III" was found in magicItems at index: 395. It took 396 Comparisons.
+"Plate Mail" was found in magicItems at index: 426. It took 427 Comparisons.
+"Potion of testing" was found in magicItems at index: 436. It took 437 Comparisons.
+"Robe" was found in magicItems at index: 473. It took 474 Comparisons.
 "Robe of Darkness" was found in magicItems at index: 476. It took 477 Comparisons.
-"Robe of stars" was found in magicItems at index: 479. It took 480 Comparisons.
-"Rope of Elemental Binding" was found in magicItems at index: 491. It took 492 Comparisons.
-"ropper" was found in magicItems at index: 493. It took 494 Comparisons.
-"Sheldon's Ring of the Fishes" was found in magicItems at index: 515. It took 516 Comparisons.
-"Splint Mail" was found in magicItems at index: 550. It took 551 Comparisons.
-"Staff of Divine Winds" was found in magicItems at index: 551. It took 552 Comparisons.
-"Studded Leather Armor" was found in magicItems at index: 564. It took 565 Comparisons.
-"Sword of Kings" was found in magicItems at index: 571. It took 572 Comparisons.
-"The Eye of Iaxolok" was found in magicItems at index: 590. It took 591 Comparisons.
-"Throwing Stone" was found in magicItems at index: 598. It took 599 Comparisons.
+"Shield of Tenser" was found in magicItems at index: 519. It took 520 Comparisons.
+"Skin of Fresh Water" was found in magicItems at index: 530. It took 531 Comparisons.
+"Sleepytime Bear" was found in magicItems at index: 532. It took 533 Comparisons.
+"Sorcerer's robe" was found in magicItems at index: 543. It took 544 Comparisons.
+"Stone of alarm" was found in magicItems at index: 559. It took 560 Comparisons.
+"Strand of prayer beads, greater" was found in magicItems at index: 563. It took 564 Comparisons.
+"Sword Of Fear" was found in magicItems at index: 569. It took 570 Comparisons.
 "Tome of clear thought +1" was found in magicItems at index: 600. It took 601 Comparisons.
-"Tome of leadership and influence +4" was found in magicItems at index: 608. It took 609 Comparisons.
-"Troll Jar" was found in magicItems at index: 625. It took 626 Comparisons.
-"Vambraces of Unarmed Prowess" was found in magicItems at index: 633. It took 634 Comparisons.
-"Vestments of Holy Might" was found in magicItems at index: 638. It took 639 Comparisons.
+"Towgar's Armor of the Heavens" was found in magicItems at index: 621. It took 622 Comparisons.
+"Walking Stick +3" was found in magicItems at index: 641. It took 642 Comparisons.
+"Whisper Blade" was found in magicItems at index: 654. It took 655 Comparisons.
 
-Sequential/Linear search took an average of 382.262 comparisons to find each element.
+Sequential/Linear search took an average of 339.05 comparisons to find each element.
 
 
 Binary Search:
 
-"Amulet of mighty fists +2" was found in magicItems at index: 12. It took 9 Comparisons.
-"Backhand" was found in magicItems at index: 38. It took 9 Comparisons.
-"Battle Axe +3, Earthshaker" was found in magicItems at index: 50. It took 6 Comparisons.
-"Bracers of archery, greater" was found in magicItems at index: 87. It took 7 Comparisons.
+"Amulet of natural armor +5" was found in magicItems at index: 18. It took 10 Comparisons.
+"Athame of Soul Stealing" was found in magicItems at index: 35. It took 9 Comparisons.
+"Bag of tricks, gray" was found in magicItems at index: 44. It took 10 Comparisons.
+"Battle Axe" was found in magicItems at index: 49. It took 10 Comparisons.
+"Borgir's Sugar Cubes" was found in magicItems at index: 80. It took 9 Comparisons.
+"Bottle of air" was found in magicItems at index: 81. It took 10 Comparisons.
+"Bow of Called Shots" was found in magicItems at index: 82. It took 3 Comparisons.
+"Box of Delights" was found in magicItems at index: 86. It took 10 Comparisons.
 "Bracers of armor +6" was found in magicItems at index: 92. It took 6 Comparisons.
-"Bracers of armor +7" was found in magicItems at index: 93. It took 9 Comparisons.
-"Cloak of resistance +5" was found in magicItems at index: 141. It took 8 Comparisons.
-"Diplomat's Brooch" was found in magicItems at index: 176. It took 9 Comparisons.
-"Dust of Darkness" was not found in magicItems. Comparisons: 9
-"Globe of War" was found in magicItems at index: 254. It took 9 Comparisons.
-"Golem manual, greater stone" was found in magicItems at index: 265. It took 10 Comparisons.
+"Circlet of Demonic Protection" was not found in magicItems. Comparisons: 10
+"Dior Droid" was found in magicItems at index: 175. It took 6 Comparisons.
+"Elixir of hiding" was found in magicItems at index: 200. It took 7 Comparisons.
+"Gem of seeing" was found in magicItems at index: 250. It took 8 Comparisons.
+"gosherwhip of life essence transferral" was not found in magicItems. Comparisons: 10
 "Gutbuster's Smelly Mithral Armor" was found in magicItems at index: 276. It took 8 Comparisons.
-"Hectorius's Twin Rings" was found in magicItems at index: 292. It took 8 Comparisons.
-"Horn of goodness/evil" was not found in magicItems. Comparisons: 9
-"Hwoctul's Masks" was found in magicItems at index: 316. It took 7 Comparisons.
-"Lens of detection" was found in magicItems at index: 340. It took 9 Comparisons.
-"Long War Bow" was found in magicItems at index: 348. It took 9 Comparisons.
-"Manual of quickness of action +3" was found in magicItems at index: 369. It took 10 Comparisons.
-"Nigrals Book of Amassment" was found in magicItems at index: 398. It took 10 Comparisons.
-"Objects of Obsessiveness" was found in magicItems at index: 400. It took 9 Comparisons.
-"Olah Halo" was found in magicItems at index: 403. It took 10 Comparisons.
-"Periapt of health" was found in magicItems at index: 415. It took 3 Comparisons.
-"Portable Portal" was found in magicItems at index: 430. It took 7 Comparisons.
-"Potion of Dreaming" was found in magicItems at index: 432. It took 10 Comparisons.
-"Ring of Annoyance" was found in magicItems at index: 452. It took 9 Comparisons.
-"Ring of Flickering" was found in magicItems at index: 457. It took 4 Comparisons.
+"Hammer of Weylund" was found in magicItems at index: 278. It took 10 Comparisons.
+"Helm of telepathy" was found in magicItems at index: 297. It took 8 Comparisons.
+"Ioun stone, pale green prism" was found in magicItems at index: 326. It took 7 Comparisons.
+"Judecca" was found in magicItems at index: 332. It took 1 Comparisons.
+"Kite Shield" was found in magicItems at index: 335. It took 9 Comparisons.
+"Mace of Divine Wrath" was found in magicItems at index: 350. It took 9 Comparisons.
+"Manual of bodily health +2" was found in magicItems at index: 358. It took 9 Comparisons.
+"Manual of bodily health +4" was found in magicItems at index: 360. It took 9 Comparisons.
+"Morning Star" was found in magicItems at index: 387. It took 10 Comparisons.
+"Mortis Ring" was found in magicItems at index: 388. It took 7 Comparisons.
+"Nanath's Ring-Statue" was found in magicItems at index: 390. It took 10 Comparisons.
+"Necklace of fireballs type III" was found in magicItems at index: 395. It took 9 Comparisons.
+"Plate Mail" was found in magicItems at index: 426. It took 9 Comparisons.
+"Potion of testing" was found in magicItems at index: 436. It took 5 Comparisons.
+"Robe" was found in magicItems at index: 473. It took 9 Comparisons.
 "Robe of Darkness" was not found in magicItems. Comparisons: 10
-"Robe of stars" was found in magicItems at index: 479. It took 9 Comparisons.
-"Rope of Elemental Binding" was not found in magicItems. Comparisons: 9
-"ropper" was not found in magicItems. Comparisons: 10
-"Sheldon's Ring of the Fishes" was found in magicItems at index: 515. It took 9 Comparisons.
-"Splint Mail" was found in magicItems at index: 550. It took 6 Comparisons.
-"Staff of Divine Winds" was found in magicItems at index: 551. It took 9 Comparisons.
-"Studded Leather Armor" was found in magicItems at index: 564. It took 9 Comparisons.
-"Sword of Kings" was found in magicItems at index: 571. It took 6 Comparisons.
-"The Eye of Iaxolok" was found in magicItems at index: 590. It took 9 Comparisons.
-"Throwing Stone" was found in magicItems at index: 598. It took 9 Comparisons.
+"Shield of Tenser" was found in magicItems at index: 519. It took 5 Comparisons.
+"Skin of Fresh Water" was found in magicItems at index: 530. It took 9 Comparisons.
+"Sleepytime Bear" was found in magicItems at index: 532. It took 9 Comparisons.
+"Sorcerer's robe" was found in magicItems at index: 543. It took 9 Comparisons.
+"Stone of alarm" was found in magicItems at index: 559. It took 9 Comparisons.
+"Strand of prayer beads, greater" was found in magicItems at index: 563. It took 8 Comparisons.
+"Sword Of Fear" was not found in magicItems. Comparisons: 10
 "Tome of clear thought +1" was found in magicItems at index: 600. It took 8 Comparisons.
-"Tome of leadership and influence +4" was found in magicItems at index: 608. It took 7 Comparisons.
-"Troll Jar" was found in magicItems at index: 625. It took 9 Comparisons.
-"Vambraces of Unarmed Prowess" was found in magicItems at index: 633. It took 10 Comparisons.
-"Vestments of Holy Might" was found in magicItems at index: 638. It took 10 Comparisons.
+"Towgar's Armor of the Heavens" was found in magicItems at index: 621. It took 8 Comparisons.
+"Walking Stick +3" was found in magicItems at index: 641. It took 10 Comparisons.
+"Whisper Blade" was found in magicItems at index: 654. It took 10 Comparisons.
 
-Binary search took an average of 8.38095 comparisons to find each element.
+Binary search took an average of 8.38 comparisons to find each element.
