@@ -102,8 +102,7 @@ int sequentialSearch(const vector<T>& arr, const T& target) {
 }
 
 // returns first index of the item if it is in the array
-template <typename T>
-int binarySearch(const std::vector<T>& arr, const T& target, int& comparisons) {
+int binarySearch(const std::vector<string>& arr, const string& target, int& comparisons) {
     int left = 0;
     int right = arr.size() - 1;
 
@@ -112,10 +111,10 @@ int binarySearch(const std::vector<T>& arr, const T& target, int& comparisons) {
         int mid = left + (right - left) / 2;
 
         comparisons++;
-        if (arr[mid] == target) {
+        if (toLowerCase(arr[mid]) == toLowerCase(target)) {
             return mid; 
         } 
-        else if (arr[mid] < target) {
+        else if (toLowerCase(arr[mid]) < toLowerCase(target)) {
             left = mid + 1; // search right half
         } 
         else {
