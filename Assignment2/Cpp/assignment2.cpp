@@ -7,6 +7,9 @@
 #include <iomanip>
 using namespace std;
 
+int HASH_TABLE_SIZE = 250;
+string MAGICITEMS_PATH = "../magicitems.txt";
+
 vector<string> getMagicItems(const string& filename) {
     vector<string> magicItems; 
     ifstream file(filename); //input file stream
@@ -124,8 +127,19 @@ int binarySearch(const std::vector<string>& arr, const string& target, int& comp
     return -1; 
 }
 
+int makeHash(string value) {
+    value = toLowerCase(value);
+    int asciiTotal = 0;
+    for(char letter : value) {
+        asciiTotal += int(letter); // sorry Alan
+        // cout << letter << "    .    " << int(letter) << endl;
+    }
+    int hashCode = (asciiTotal * 1031) % HASH_TABLE_SIZE; // using a prime, 1031 in honor of halloween!
+    return hashCode;
+}
+
 int main() {
-    vector<string> magicItems = getMagicItems("../magicItems.txt");
+    vector<string> magicItems = getMagicItems(MAGICITEMS_PATH);
     mergeSort(magicItems, 0, magicItems.size() - 1);
 
     /* taken from stack overflow. Used ChatGPT to find out I needed c++ version 17.
@@ -175,5 +189,6 @@ int main() {
         << fixed << setprecision(2) 
         << static_cast<double>(totalComparisons) / randomSample.size() 
         << " comparisons to find each element." << endl;
+
     return 0;
 };
