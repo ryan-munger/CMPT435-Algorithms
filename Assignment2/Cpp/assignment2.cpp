@@ -138,6 +138,26 @@ class HashTable {
         Node<string>* hashTable[HASH_TABLE_SIZE];
     
     public:
+        // constructor
+        HashTable() {
+            // initialize the start of table chains to null 
+            for (int i = 0; i < HASH_TABLE_SIZE; i++) {
+                hashTable[i] = nullptr;
+            }
+        };
+
+        // destructor 
+        ~HashTable() {
+            for (int i = 0; i < HASH_TABLE_SIZE; i++) {
+                Node<string>* current = hashTable[i];
+                while (current != nullptr) {
+                    Node<string>* temp = current;
+                    current = current->next;
+                    delete temp;  // deallocate
+                }
+            }
+        };
+
         void put(string str) {
             int hashCode = makeHash(str);
             Node<string>* newItem = new Node<string>;
@@ -175,6 +195,21 @@ class HashTable {
             }
             int hashCode = (asciiTotal * 1031) % HASH_TABLE_SIZE; // using a prime, 1031 in honor of halloween!
             return hashCode;
+        };
+
+        void generateHistogram() {
+            int pigeons;
+            int pigeonHoles = HASH_TABLE_SIZE; // i just wanted to say it
+           
+            for (int i = 0; i < pigeonHoles; i++) {
+                pigeons = 0;
+                Node<string>* currentNode = hashTable[i];
+                while (currentNode != nullptr) {
+                    pigeons++;
+                    currentNode = currentNode->next;
+                }
+                cout << setw(15) << "Pigeonhole " << i << ": " << string(pigeons, '*') << endl;
+            }
         };
 };
 
@@ -229,6 +264,18 @@ int main() {
         << fixed << setprecision(2) 
         << static_cast<double>(totalComparisons) / randomSample.size() 
         << " comparisons to find each element." << endl;
+
+    HashTable* hashy = new HashTable;
+    hashy->put("Hello!");
+    // it will add again, not worth traversing chain just for it
+    // a classic space vs time 
+    hashy->put("Hello!"); 
+    hashy->put("test!");
+    hashy->put("Something with a different hash");
+    cout << hashy->get("Hello!") << endl;
+    cout << hashy->get("Not in table...") << endl;
+    hashy->generateHistogram();
+
 
     return 0;
 };
