@@ -7,8 +7,8 @@
 #include <iomanip>
 using namespace std;
 
-int HASH_TABLE_SIZE = 250;
-string MAGICITEMS_PATH = "../magicitems.txt";
+const int HASH_TABLE_SIZE = 250;
+const string MAGICITEMS_PATH = "../magicitems.txt";
 
 vector<string> getMagicItems(const string& filename) {
     vector<string> magicItems; 
@@ -102,7 +102,7 @@ int sequentialSearch(const vector<T>& arr, const T& target) {
         if(arr[i] == target){return static_cast<int>(i);}
     }
     return -1;
-}
+};
 
 // returns first index of the item if it is in the array
 int binarySearch(const std::vector<string>& arr, const string& target, int& comparisons) {
@@ -125,18 +125,58 @@ int binarySearch(const std::vector<string>& arr, const string& target, int& comp
         }
     }
     return -1; 
-}
+};
 
-int makeHash(string value) {
-    value = toLowerCase(value);
-    int asciiTotal = 0;
-    for(char letter : value) {
-        asciiTotal += int(letter); // sorry Alan
-        // cout << letter << "    .    " << int(letter) << endl;
-    }
-    int hashCode = (asciiTotal * 1031) % HASH_TABLE_SIZE; // using a prime, 1031 in honor of halloween!
-    return hashCode;
-}
+template <typename T>
+struct Node {
+    T value;
+    Node<T>* next;
+};
+
+class HashTable {
+    private:
+        Node<string>* hashTable[HASH_TABLE_SIZE];
+    
+    public:
+        void put(string str) {
+            int hashCode = makeHash(str);
+            Node<string>* newItem = new Node<string>;
+            newItem->value = str;
+            if (hashTable[hashCode] == nullptr) {
+                newItem->next = nullptr;
+                hashTable[hashCode] = newItem;
+            } else {
+                Node<string>* oldFront = hashTable[hashCode];
+                newItem->next = oldFront;
+                hashTable[hashCode] = newItem;
+            };
+        };
+
+        bool get(string str) {
+            int hashCode = makeHash(str);
+            if (hashTable[hashCode] == nullptr) {
+                return false;
+            } else {
+                Node<string>* currentNode = hashTable[hashCode];
+                while (currentNode != nullptr) {
+                    if (currentNode->value == str) { return true; }
+                    currentNode = currentNode->next;
+                }
+                return false;
+            };
+        };
+
+        int makeHash(string value) {
+            value = toLowerCase(value);
+            int asciiTotal = 0;
+            for(char letter : value) {
+                asciiTotal += int(letter); // sorry Alan
+                // cout << letter << "    .    " << int(letter) << endl;
+            }
+            int hashCode = (asciiTotal * 1031) % HASH_TABLE_SIZE; // using a prime, 1031 in honor of halloween!
+            return hashCode;
+        };
+};
 
 int main() {
     vector<string> magicItems = getMagicItems(MAGICITEMS_PATH);
