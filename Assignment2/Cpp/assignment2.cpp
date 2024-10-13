@@ -172,17 +172,19 @@ class HashTable {
             };
         };
 
-        bool get(string str) {
+        int get(string str) {
             int hashCode = makeHash(str);
             if (hashTable[hashCode] == nullptr) {
-                return false;
+                return -1;
             } else {
+                int getComps = 1; // get is one compare plus chain
                 Node<string>* currentNode = hashTable[hashCode];
                 while (currentNode != nullptr) {
-                    if (currentNode->value == str) { return true; }
+                    getComps++;
+                    if (currentNode->value == str) { return getComps; }
                     currentNode = currentNode->next;
                 }
-                return false;
+                return -1;
             };
         };
 
@@ -214,6 +216,17 @@ class HashTable {
 };
 
 int main() {
+    HashTable* hashy = new HashTable;
+    hashy->put("Hello!");
+    // it will add again, not worth traversing chain just to avoid duplicate
+    // a classic space vs time 
+    hashy->put("Hello!"); 
+    hashy->put("test!");
+    hashy->put("Something with a different hash");
+    cout << "\"Hello!\" Found in table with " << hashy->get("Hello!") << " comparisons." << endl;
+    cout << "\"Not in table...\" not found in table with " << hashy->get("Not in table...") << " copmarisons." << endl;
+    // hashy->generateHistogram();
+
     vector<string> magicItems = getMagicItems(MAGICITEMS_PATH);
     mergeSort(magicItems, 0, magicItems.size() - 1);
 
@@ -226,56 +239,61 @@ int main() {
     const int sample_size = 42;
     sample(magicItems.begin(), magicItems.end(), back_inserter(randomSample), sample_size, mt19937{random_device{}()});
 
+    // load hash table
+    HashTable* magicTable = new HashTable;
+    for (string item : magicItems) {
+        magicTable->put(item);
+    }
+    magicTable->generateHistogram();
+    
     // since the random sample is in order (relative to the sorted array), as we progress through the sample, comparisons will always increase!
-    int totalComparisons = 0;
+    int totalSeqComps = 0, totalBinComps = 0, totalHashGet = 0;
+    int binaryComps = 0, hashGet = 0;
     int foundIdx;
     cout << "\nSequential/Linear Search:\n" << endl;
     for (string item : randomSample) {
         foundIdx = sequentialSearch(magicItems, item);
         if(foundIdx != -1){
-            cout << "\"" << item << "\" was found in magicItems at index: " << foundIdx 
+            cout << "\"" << item << "\" found with Sequential Search at idx: " << foundIdx 
                 << ". It took " << foundIdx + 1 << " Comparisons." << endl;
         } else {
             cout << "\"" << item << "\" was not found in magicItems. Comparisons: " << magicItems.size() << endl;
             foundIdx = magicItems.size() - 1; // since we are adding one later
         }
-        totalComparisons += foundIdx + 1;
+        totalSeqComps += foundIdx + 1;
+
+        foundIdx = binarySearch(magicItems, item, binaryComps);
+        if(foundIdx != -1){
+            cout << "\"" << item << "\" found with Binary search at idx: " << foundIdx 
+                << ". It took " << binaryComps << " Comparisons." << endl;
+        } else {
+            cout << "\"" << item << "\" was not found in magicItems. Comparisons: " << binaryComps << endl;
+        }
+        totalBinComps += binaryComps;
+        binaryComps = 0;
+
+        hashGet = magicTable->get(item);
+        if(hashGet != -1){
+            cout << "\"" << item << "\" found with Hash Table with " << hashGet 
+                << " get+ comparisons." << endl;
+        } else {
+            cout << "\"" << item << "\" was not found in magicItems w/ hash table." << endl;
+        }
+        totalHashGet += hashGet;
     }
     cout << "\nSequential/Linear search took an average of " 
         << fixed << setprecision(2) // Set fixed-point notation and precision
-        << static_cast<double>(totalComparisons) / randomSample.size() // cast double so we don't lose our decimal accuracy
+        << static_cast<double>(totalSeqComps) / randomSample.size() // cast double so we don't lose our decimal accuracy
         << " comparisons to find each element." << endl;
 
-    int comparisons = 0;
-    totalComparisons = 0;
-    cout << "\n\nBinary Search:\n" << endl;
-    for (string item : randomSample) {
-        foundIdx = binarySearch(magicItems, item, comparisons);
-        if(foundIdx != -1){
-            cout << "\"" << item << "\" was found in magicItems at index: " << foundIdx 
-                << ". It took " << comparisons << " Comparisons." << endl;
-        } else {
-            cout << "\"" << item << "\" was not found in magicItems. Comparisons: " << comparisons << endl;
-        }
-        totalComparisons += comparisons;
-        comparisons = 0;
-    }
     cout << "\nBinary search took an average of " 
         << fixed << setprecision(2) 
-        << static_cast<double>(totalComparisons) / randomSample.size() 
+        << static_cast<double>(totalBinComps) / randomSample.size() 
         << " comparisons to find each element." << endl;
 
-    HashTable* hashy = new HashTable;
-    hashy->put("Hello!");
-    // it will add again, not worth traversing chain just for it
-    // a classic space vs time 
-    hashy->put("Hello!"); 
-    hashy->put("test!");
-    hashy->put("Something with a different hash");
-    cout << hashy->get("Hello!") << endl;
-    cout << hashy->get("Not in table...") << endl;
-    hashy->generateHistogram();
-
-
+    cout << "\nHash Table took an average of " 
+        << fixed << setprecision(2) 
+        << static_cast<double>(totalHashGet) / randomSample.size() 
+        << " comparisons to find each element." << endl;
     return 0;
 };
