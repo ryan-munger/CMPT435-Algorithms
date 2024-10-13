@@ -1,95 +1,391 @@
 
-Sequential/Linear Search:
+Hash Table Testing: 
+"Hello!" was found in the table with 2 comparisons.
+"Not in table..." was not found in the table.
 
-"Amulet of mighty fists +3" was found in magicItems at index: 13. It took 14 Comparisons.
-"Amulet of mighty fists +4" was found in magicItems at index: 14. It took 15 Comparisons.
-"Amulet of Proof Against Turning" was found in magicItems at index: 20. It took 21 Comparisons.
-"Apparatus of the crab" was found in magicItems at index: 26. It took 27 Comparisons.
-"Broad Sword" was found in magicItems at index: 102. It took 103 Comparisons.
-"Cloak of Charisma +2" was found in magicItems at index: 132. It took 133 Comparisons.
-"Crystal ball" was found in magicItems at index: 153. It took 154 Comparisons.
-"Cursed Sword of Ratha-Zim" was found in magicItems at index: 161. It took 162 Comparisons.
-"Draught of Lycanthropy" was found in magicItems at index: 184. It took 185 Comparisons.
-"Dream Weaver" was found in magicItems at index: 185. It took 186 Comparisons.
-"Drums of panic" was found in magicItems at index: 187. It took 188 Comparisons.
-"Dust of disappearance" was found in magicItems at index: 190. It took 191 Comparisons.
-"Eversol's Innebriator" was found in magicItems at index: 210. It took 211 Comparisons.
-"Frictionless Shield" was found in magicItems at index: 241. It took 242 Comparisons.
-"Horn of Confusion" was found in magicItems at index: 304. It took 305 Comparisons.
-"Hwoctul's Masks" was found in magicItems at index: 316. It took 317 Comparisons.
-"Ioun stone, dusty rose prism" was found in magicItems at index: 323. It took 324 Comparisons.
-"Ioun stone, lavender and green ellipsoid" was found in magicItems at index: 324. It took 325 Comparisons.
-"Iron bands of binding" was found in magicItems at index: 328. It took 329 Comparisons.
-"Long Sword" was found in magicItems at index: 346. It took 347 Comparisons.
-"Mace of Divine Wrath" was found in magicItems at index: 350. It took 351 Comparisons.
-"Mantle of spell resistance" was found in magicItems at index: 356. It took 357 Comparisons.
-"Manual of quickness of action +2" was found in magicItems at index: 368. It took 369 Comparisons.
-"Mirror of opposition" was found in magicItems at index: 383. It took 384 Comparisons.
-"Pearl of power, 6th-level spell" was found in magicItems at index: 410. It took 411 Comparisons.
-"Portable Home" was found in magicItems at index: 429. It took 430 Comparisons.
-"Ring of Treasure Location" was found in magicItems at index: 470. It took 471 Comparisons.
-"ropper" was found in magicItems at index: 493. It took 494 Comparisons.
-"Seuss Igniting Issues" was found in magicItems at index: 511. It took 512 Comparisons.
-"Slippers of spider climbing" was found in magicItems at index: 534. It took 535 Comparisons.
-"Small Axe" was found in magicItems at index: 535. It took 536 Comparisons.
-"Sorcerer's robe" was found in magicItems at index: 543. It took 544 Comparisons.
-"Studded Leather Armor" was found in magicItems at index: 564. It took 565 Comparisons.
-"Sword of the Kauhns" was found in magicItems at index: 577. It took 578 Comparisons.
-"Sword Pin" was found in magicItems at index: 579. It took 580 Comparisons.
-"The Nose of Venco" was found in magicItems at index: 593. It took 594 Comparisons.
-"Tome of leadership and influence" was found in magicItems at index: 605. It took 606 Comparisons.
-"Tome of understanding +1" was found in magicItems at index: 610. It took 611 Comparisons.
-"Tordour's Reusable Writing Tablet" was found in magicItems at index: 617. It took 618 Comparisons.
-"Tower Shield" was found in magicItems at index: 620. It took 621 Comparisons.
-"Universal solvent" was found in magicItems at index: 632. It took 633 Comparisons.
-"Whisper Blade" was found in magicItems at index: 654. It took 655 Comparisons.
+Magic Items Table Visualization: 
+    Pigeonhole 0: ****
+    Pigeonhole 1: **
+    Pigeonhole 2: *****
+    Pigeonhole 3: 
+    Pigeonhole 4: *
+    Pigeonhole 5: ***
+    Pigeonhole 6: *****
+    Pigeonhole 7: *****
+    Pigeonhole 8: **
+    Pigeonhole 9: ***
+    Pigeonhole 10: **
+    Pigeonhole 11: 
+    Pigeonhole 12: **
+    Pigeonhole 13: 
+    Pigeonhole 14: 
+    Pigeonhole 15: **
+    Pigeonhole 16: ****
+    Pigeonhole 17: ****
+    Pigeonhole 18: 
+    Pigeonhole 19: *
+    Pigeonhole 20: ******
+    Pigeonhole 21: **
+    Pigeonhole 22: *****
+    Pigeonhole 23: **
+    Pigeonhole 24: ****
+    Pigeonhole 25: ****
+    Pigeonhole 26: *
+    Pigeonhole 27: **
+    Pigeonhole 28: **
+    Pigeonhole 29: ***
+    Pigeonhole 30: ****
+    Pigeonhole 31: *
+    Pigeonhole 32: ****
+    Pigeonhole 33: *****
+    Pigeonhole 34: **
+    Pigeonhole 35: **
+    Pigeonhole 36: **
+    Pigeonhole 37: **
+    Pigeonhole 38: **
+    Pigeonhole 39: ***
+    Pigeonhole 40: *
+    Pigeonhole 41: *
+    Pigeonhole 42: ****
+    Pigeonhole 43: ***
+    Pigeonhole 44: 
+    Pigeonhole 45: **
+    Pigeonhole 46: 
+    Pigeonhole 47: ***
+    Pigeonhole 48: **
+    Pigeonhole 49: ******
+    Pigeonhole 50: 
+    Pigeonhole 51: ****
+    Pigeonhole 52: ****
+    Pigeonhole 53: ****
+    Pigeonhole 54: **
+    Pigeonhole 55: 
+    Pigeonhole 56: *
+    Pigeonhole 57: **
+    Pigeonhole 58: ****
+    Pigeonhole 59: *****
+    Pigeonhole 60: 
+    Pigeonhole 61: ******
+    Pigeonhole 62: **
+    Pigeonhole 63: **
+    Pigeonhole 64: ******
+    Pigeonhole 65: **
+    Pigeonhole 66: ****
+    Pigeonhole 67: 
+    Pigeonhole 68: ****
+    Pigeonhole 69: ***
+    Pigeonhole 70: ***
+    Pigeonhole 71: *
+    Pigeonhole 72: *
+    Pigeonhole 73: *
+    Pigeonhole 74: **
+    Pigeonhole 75: ***
+    Pigeonhole 76: *
+    Pigeonhole 77: **
+    Pigeonhole 78: ***
+    Pigeonhole 79: *
+    Pigeonhole 80: **
+    Pigeonhole 81: 
+    Pigeonhole 82: *****
+    Pigeonhole 83: *****
+    Pigeonhole 84: ****
+    Pigeonhole 85: 
+    Pigeonhole 86: ***
+    Pigeonhole 87: ***
+    Pigeonhole 88: **
+    Pigeonhole 89: *
+    Pigeonhole 90: **
+    Pigeonhole 91: **
+    Pigeonhole 92: ****
+    Pigeonhole 93: **
+    Pigeonhole 94: ******
+    Pigeonhole 95: **
+    Pigeonhole 96: **
+    Pigeonhole 97: **
+    Pigeonhole 98: ***
+    Pigeonhole 99: ****
+    Pigeonhole 100: *
+    Pigeonhole 101: ***
+    Pigeonhole 102: **
+    Pigeonhole 103: ***
+    Pigeonhole 104: ***
+    Pigeonhole 105: ****
+    Pigeonhole 106: *
+    Pigeonhole 107: ****
+    Pigeonhole 108: ****
+    Pigeonhole 109: *********
+    Pigeonhole 110: ***
+    Pigeonhole 111: ***
+    Pigeonhole 112: ****
+    Pigeonhole 113: ***
+    Pigeonhole 114: *****
+    Pigeonhole 115: *
+    Pigeonhole 116: *
+    Pigeonhole 117: 
+    Pigeonhole 118: ****
+    Pigeonhole 119: *
+    Pigeonhole 120: ****
+    Pigeonhole 121: **
+    Pigeonhole 122: *
+    Pigeonhole 123: **
+    Pigeonhole 124: **
+    Pigeonhole 125: ****
+    Pigeonhole 126: ********
+    Pigeonhole 127: **
+    Pigeonhole 128: ****
+    Pigeonhole 129: ****
+    Pigeonhole 130: **
+    Pigeonhole 131: 
+    Pigeonhole 132: **
+    Pigeonhole 133: 
+    Pigeonhole 134: **
+    Pigeonhole 135: **
+    Pigeonhole 136: *
+    Pigeonhole 137: **
+    Pigeonhole 138: *
+    Pigeonhole 139: *
+    Pigeonhole 140: **
+    Pigeonhole 141: ****
+    Pigeonhole 142: **
+    Pigeonhole 143: ****
+    Pigeonhole 144: ***
+    Pigeonhole 145: ******
+    Pigeonhole 146: **
+    Pigeonhole 147: **
+    Pigeonhole 148: *
+    Pigeonhole 149: ***
+    Pigeonhole 150: **
+    Pigeonhole 151: **
+    Pigeonhole 152: *
+    Pigeonhole 153: **
+    Pigeonhole 154: ***
+    Pigeonhole 155: *
+    Pigeonhole 156: *****
+    Pigeonhole 157: *****
+    Pigeonhole 158: ****
+    Pigeonhole 159: ******
+    Pigeonhole 160: **
+    Pigeonhole 161: ***
+    Pigeonhole 162: ***
+    Pigeonhole 163: ***
+    Pigeonhole 164: *****
+    Pigeonhole 165: *
+    Pigeonhole 166: *****
+    Pigeonhole 167: *******
+    Pigeonhole 168: *****
+    Pigeonhole 169: ****
+    Pigeonhole 170: ***
+    Pigeonhole 171: *
+    Pigeonhole 172: **
+    Pigeonhole 173: *
+    Pigeonhole 174: **
+    Pigeonhole 175: **
+    Pigeonhole 176: ***
+    Pigeonhole 177: 
+    Pigeonhole 178: ****
+    Pigeonhole 179: **
+    Pigeonhole 180: *
+    Pigeonhole 181: **
+    Pigeonhole 182: ****
+    Pigeonhole 183: *
+    Pigeonhole 184: ****
+    Pigeonhole 185: ***
+    Pigeonhole 186: 
+    Pigeonhole 187: **
+    Pigeonhole 188: ****
+    Pigeonhole 189: 
+    Pigeonhole 190: *****
+    Pigeonhole 191: ***
+    Pigeonhole 192: 
+    Pigeonhole 193: ****
+    Pigeonhole 194: *
+    Pigeonhole 195: **
+    Pigeonhole 196: ***
+    Pigeonhole 197: *****
+    Pigeonhole 198: ***
+    Pigeonhole 199: *
+    Pigeonhole 200: ****
+    Pigeonhole 201: ****
+    Pigeonhole 202: ***
+    Pigeonhole 203: ***
+    Pigeonhole 204: *****
+    Pigeonhole 205: ***
+    Pigeonhole 206: ***
+    Pigeonhole 207: ****
+    Pigeonhole 208: *
+    Pigeonhole 209: **
+    Pigeonhole 210: **
+    Pigeonhole 211: ***
+    Pigeonhole 212: ***
+    Pigeonhole 213: ***
+    Pigeonhole 214: **
+    Pigeonhole 215: ***
+    Pigeonhole 216: *
+    Pigeonhole 217: **
+    Pigeonhole 218: **
+    Pigeonhole 219: 
+    Pigeonhole 220: *
+    Pigeonhole 221: *
+    Pigeonhole 222: ******
+    Pigeonhole 223: **
+    Pigeonhole 224: **
+    Pigeonhole 225: ***
+    Pigeonhole 226: ****
+    Pigeonhole 227: ****
+    Pigeonhole 228: ****
+    Pigeonhole 229: ****
+    Pigeonhole 230: **
+    Pigeonhole 231: ***
+    Pigeonhole 232: ****
+    Pigeonhole 233: ******
+    Pigeonhole 234: ***
+    Pigeonhole 235: ****
+    Pigeonhole 236: ***
+    Pigeonhole 237: 
+    Pigeonhole 238: *
+    Pigeonhole 239: *
+    Pigeonhole 240: ***
+    Pigeonhole 241: ****
+    Pigeonhole 242: **
+    Pigeonhole 243: *
+    Pigeonhole 244: **
+    Pigeonhole 245: ****
+    Pigeonhole 246: ********
+    Pigeonhole 247: **
+    Pigeonhole 248: ***
+    Pigeonhole 249: ***
 
-Sequential/Linear search took an average of 362.71 comparisons to find each element.
+Searching for a random sample:
 
+"Arachnid tome" found with Sequential Search at idx: 28. It took 29 Comparisons.
+"Arachnid tome" found with Binary search at idx: 28. It took 10 Comparisons.
+"Arachnid tome" found with Hash Table with 6 get+ comparisons.
+"Armatha's long sword" found with Sequential Search at idx: 30. It took 31 Comparisons.
+"Armatha's long sword" found with Binary search at idx: 30. It took 9 Comparisons.
+"Armatha's long sword" found with Hash Table with 7 get+ comparisons.
+"Breast plate of the champion" found with Sequential Search at idx: 98. It took 99 Comparisons.
+"Breast plate of the champion" found with Binary search at idx: 98. It took 9 Comparisons.
+"Breast plate of the champion" found with Hash Table with 4 get+ comparisons.
+"Cutter" found with Sequential Search at idx: 162. It took 163 Comparisons.
+"Cutter" found with Binary search at idx: 162. It took 8 Comparisons.
+"Cutter" found with Hash Table with 5 get+ comparisons.
+"Darkskull" found with Sequential Search at idx: 169. It took 170 Comparisons.
+"Darkskull" found with Binary search at idx: 169. It took 10 Comparisons.
+"Darkskull" found with Hash Table with 4 get+ comparisons.
+"Dragoliness" found with Sequential Search at idx: 180. It took 181 Comparisons.
+"Dragoliness" found with Binary search at idx: 180. It took 7 Comparisons.
+"Dragoliness" found with Hash Table with 7 get+ comparisons.
+"Elixir of swimming" found with Sequential Search at idx: 203. It took 204 Comparisons.
+"Elixir of swimming" found with Binary search at idx: 203. It took 8 Comparisons.
+"Elixir of swimming" found with Hash Table with 4 get+ comparisons.
+"Flytrap Liquid" found with Sequential Search at idx: 237. It took 238 Comparisons.
+"Flytrap Liquid" found with Binary search at idx: 237. It took 6 Comparisons.
+"Flytrap Liquid" found with Hash Table with 3 get+ comparisons.
+"Folding Catapult (or Ballista)" found with Sequential Search at idx: 238. It took 239 Comparisons.
+"Folding Catapult (or Ballista)" found with Binary search at idx: 238. It took 9 Comparisons.
+"Folding Catapult (or Ballista)" found with Hash Table with 3 get+ comparisons.
+"Hand of Tyr" found with Sequential Search at idx: 281. It took 282 Comparisons.
+"Hand of Tyr" found with Binary search at idx: 281. It took 8 Comparisons.
+"Hand of Tyr" found with Hash Table with 2 get+ comparisons.
+"Horn of fog" found with Sequential Search at idx: 305. It took 306 Comparisons.
+"Horn of fog" found with Binary search at idx: 305. It took 7 Comparisons.
+"Horn of fog" found with Hash Table with 3 get+ comparisons.
+"Hwoctul's Masks" found with Sequential Search at idx: 316. It took 317 Comparisons.
+"Hwoctul's Masks" found with Binary search at idx: 316. It took 7 Comparisons.
+"Hwoctul's Masks" found with Hash Table with 2 get+ comparisons.
+"Incense of meditation" found with Sequential Search at idx: 318. It took 319 Comparisons.
+"Incense of meditation" found with Binary search at idx: 318. It took 8 Comparisons.
+"Incense of meditation" found with Hash Table with 4 get+ comparisons.
+"Large Axe" found with Sequential Search at idx: 337. It took 338 Comparisons.
+"Large Axe" found with Binary search at idx: 337. It took 7 Comparisons.
+"Large Axe" found with Hash Table with 3 get+ comparisons.
+"Large Shield" found with Sequential Search at idx: 338. It took 339 Comparisons.
+"Large Shield" found with Binary search at idx: 338. It took 9 Comparisons.
+"Large Shield" found with Hash Table with 3 get+ comparisons.
+"Mantle of Fiery Dissolving" found with Sequential Search at idx: 355. It took 356 Comparisons.
+"Mantle of Fiery Dissolving" found with Binary search at idx: 355. It took 9 Comparisons.
+"Mantle of Fiery Dissolving" found with Hash Table with 2 get+ comparisons.
+"Maul" found with Sequential Search at idx: 377. It took 378 Comparisons.
+"Maul" found with Binary search at idx: 377. It took 10 Comparisons.
+"Maul" found with Hash Table with 3 get+ comparisons.
+"Mirror of opposition" found with Sequential Search at idx: 383. It took 384 Comparisons.
+"Mirror of opposition" found with Binary search at idx: 383. It took 6 Comparisons.
+"Mirror of opposition" found with Hash Table with 4 get+ comparisons.
+"Mortis Ring" found with Sequential Search at idx: 388. It took 389 Comparisons.
+"Mortis Ring" found with Binary search at idx: 388. It took 7 Comparisons.
+"Mortis Ring" found with Hash Table with 4 get+ comparisons.
+"Necklace of fireballs type V" found with Sequential Search at idx: 397. It took 398 Comparisons.
+"Necklace of fireballs type V" found with Binary search at idx: 397. It took 9 Comparisons.
+"Necklace of fireballs type V" found with Hash Table with 5 get+ comparisons.
+"Parchment of Plagiarism" found with Sequential Search at idx: 406. It took 407 Comparisons.
+"Parchment of Plagiarism" found with Binary search at idx: 406. It took 8 Comparisons.
+"Parchment of Plagiarism" found with Hash Table with 2 get+ comparisons.
+"Pearl of power, 8th-level spell" found with Sequential Search at idx: 412. It took 413 Comparisons.
+"Pearl of power, 8th-level spell" found with Binary search at idx: 412. It took 8 Comparisons.
+"Pearl of power, 8th-level spell" found with Hash Table with 2 get+ comparisons.
+"Periapt of proof against poison" found with Sequential Search at idx: 416. It took 417 Comparisons.
+"Periapt of proof against poison" found with Binary search at idx: 416. It took 9 Comparisons.
+"Periapt of proof against poison" found with Hash Table with 2 get+ comparisons.
+"Pipes of sounding" found with Sequential Search at idx: 424. It took 425 Comparisons.
+"Pipes of sounding" found with Binary search at idx: 424. It took 10 Comparisons.
+"Pipes of sounding" found with Hash Table with 3 get+ comparisons.
+"Potion of Dreaming" found with Sequential Search at idx: 432. It took 433 Comparisons.
+"Potion of Dreaming" found with Binary search at idx: 432. It took 10 Comparisons.
+"Potion of Dreaming" found with Hash Table with 4 get+ comparisons.
+"Potion of the Hero's Heart" found with Sequential Search at idx: 437. It took 438 Comparisons.
+"Potion of the Hero's Heart" found with Binary search at idx: 437. It took 9 Comparisons.
+"Potion of the Hero's Heart" found with Hash Table with 2 get+ comparisons.
+"Pouch of Spare Parts" found with Sequential Search at idx: 438. It took 439 Comparisons.
+"Pouch of Spare Parts" found with Binary search at idx: 438. It took 8 Comparisons.
+"Pouch of Spare Parts" found with Hash Table with 3 get+ comparisons.
+"Razor of Bluntness" found with Sequential Search at idx: 447. It took 448 Comparisons.
+"Razor of Bluntness" found with Binary search at idx: 447. It took 9 Comparisons.
+"Razor of Bluntness" found with Hash Table with 2 get+ comparisons.
+"Ring of Fiery Assistance" found with Sequential Search at idx: 455. It took 456 Comparisons.
+"Ring of Fiery Assistance" found with Binary search at idx: 455. It took 9 Comparisons.
+"Ring of Fiery Assistance" found with Hash Table with 2 get+ comparisons.
+"Ring of the Eight Skills" found with Sequential Search at idx: 467. It took 468 Comparisons.
+"Ring of the Eight Skills" found with Binary search at idx: 467. It took 6 Comparisons.
+"Ring of the Eight Skills" found with Hash Table with 3 get+ comparisons.
+"Robe of useful items" found with Sequential Search at idx: 481. It took 482 Comparisons.
+"Robe of useful items" found with Binary search at idx: 481. It took 9 Comparisons.
+"Robe of useful items" found with Hash Table with 3 get+ comparisons.
+"Silversheen" found with Sequential Search at idx: 528. It took 529 Comparisons.
+"Silversheen" found with Binary search at idx: 528. It took 10 Comparisons.
+"Silversheen" found with Hash Table with 2 get+ comparisons.
+"Small Shield" found with Sequential Search at idx: 536. It took 537 Comparisons.
+"Small Shield" found with Binary search at idx: 536. It took 10 Comparisons.
+"Small Shield" found with Hash Table with 2 get+ comparisons.
+"Soap of Cleanliness" found with Sequential Search at idx: 541. It took 542 Comparisons.
+"Soap of Cleanliness" found with Binary search at idx: 541. It took 9 Comparisons.
+"Soap of Cleanliness" found with Hash Table with 4 get+ comparisons.
+"Statuette of Tyadria" found with Sequential Search at idx: 555. It took 556 Comparisons.
+"Statuette of Tyadria" found with Binary search at idx: 555. It took 7 Comparisons.
+"Statuette of Tyadria" found with Hash Table with 2 get+ comparisons.
+"Stone Bloodhounds" found with Sequential Search at idx: 557. It took 558 Comparisons.
+"Stone Bloodhounds" found with Binary search at idx: 557. It took 10 Comparisons.
+"Stone Bloodhounds" found with Hash Table with 2 get+ comparisons.
+"Stone of alarm" found with Sequential Search at idx: 559. It took 560 Comparisons.
+"Stone of alarm" found with Binary search at idx: 559. It took 9 Comparisons.
+"Stone of alarm" found with Hash Table with 2 get+ comparisons.
+"Sword of Life Destruction" found with Sequential Search at idx: 573. It took 574 Comparisons.
+"Sword of Life Destruction" found with Binary search at idx: 573. It took 8 Comparisons.
+"Sword of Life Destruction" found with Hash Table with 3 get+ comparisons.
+"The Thain Soul ring" found with Sequential Search at idx: 596. It took 597 Comparisons.
+"The Thain Soul ring" found with Binary search at idx: 596. It took 10 Comparisons.
+"The Thain Soul ring" found with Hash Table with 2 get+ comparisons.
+"Tome of clear thought +5" found with Sequential Search at idx: 604. It took 605 Comparisons.
+"Tome of clear thought +5" found with Binary search at idx: 604. It took 9 Comparisons.
+"Tome of clear thought +5" found with Hash Table with 2 get+ comparisons.
+"Vambraces of Unarmed Prowess" found with Sequential Search at idx: 633. It took 634 Comparisons.
+"Vambraces of Unarmed Prowess" found with Binary search at idx: 633. It took 10 Comparisons.
+"Vambraces of Unarmed Prowess" found with Hash Table with 2 get+ comparisons.
+"Vaporizer" found with Sequential Search at idx: 635. It took 636 Comparisons.
+"Vaporizer" found with Binary search at idx: 635. It took 9 Comparisons.
+"Vaporizer" found with Hash Table with 2 get+ comparisons.
 
-Binary Search:
+Sequential/Linear search took an average of 388.43 comparisons to find each element.
 
-"Amulet of mighty fists +3" was found in magicItems at index: 13. It took 10 Comparisons.
-"Amulet of mighty fists +4" was found in magicItems at index: 14. It took 7 Comparisons.
-"Amulet of Proof Against Turning" was found in magicItems at index: 20. It took 9 Comparisons.
-"Apparatus of the crab" was found in magicItems at index: 26. It took 8 Comparisons.
-"Broad Sword" was found in magicItems at index: 102. It took 5 Comparisons.
-"Cloak of Charisma +2" was found in magicItems at index: 132. It took 10 Comparisons.
-"Crystal ball" was found in magicItems at index: 153. It took 10 Comparisons.
-"Cursed Sword of Ratha-Zim" was found in magicItems at index: 161. It took 10 Comparisons.
-"Draught of Lycanthropy" was found in magicItems at index: 184. It took 10 Comparisons.
-"Dream Weaver" was found in magicItems at index: 185. It took 5 Comparisons.
-"Drums of panic" was found in magicItems at index: 187. It took 8 Comparisons.
-"Dust of disappearance" was found in magicItems at index: 190. It took 7 Comparisons.
-"Eversol's Innebriator" was found in magicItems at index: 210. It took 10 Comparisons.
-"Frictionless Shield" was found in magicItems at index: 241. It took 10 Comparisons.
-"Horn of Confusion" was found in magicItems at index: 304. It took 10 Comparisons.
-"Hwoctul's Masks" was found in magicItems at index: 316. It took 7 Comparisons.
-"Ioun stone, dusty rose prism" was found in magicItems at index: 323. It took 8 Comparisons.
-"Ioun stone, lavender and green ellipsoid" was found in magicItems at index: 324. It took 9 Comparisons.
-"Iron bands of binding" was found in magicItems at index: 328. It took 10 Comparisons.
-"Long Sword" was found in magicItems at index: 346. It took 10 Comparisons.
-"Mace of Divine Wrath" was found in magicItems at index: 350. It took 9 Comparisons.
-"Mantle of spell resistance" was found in magicItems at index: 356. It took 10 Comparisons.
-"Manual of quickness of action +2" was found in magicItems at index: 368. It took 9 Comparisons.
-"Mirror of opposition" was found in magicItems at index: 383. It took 6 Comparisons.
-"Pearl of power, 6th-level spell" was found in magicItems at index: 410. It took 9 Comparisons.
-"Portable Home" was found in magicItems at index: 429. It took 10 Comparisons.
-"Ring of Treasure Location" was found in magicItems at index: 470. It took 9 Comparisons.
-"ropper" was found in magicItems at index: 493. It took 7 Comparisons.
-"Seuss Igniting Issues" was found in magicItems at index: 511. It took 8 Comparisons.
-"Slippers of spider climbing" was found in magicItems at index: 534. It took 7 Comparisons.
-"Small Axe" was found in magicItems at index: 535. It took 9 Comparisons.
-"Sorcerer's robe" was found in magicItems at index: 543. It took 9 Comparisons.
-"Studded Leather Armor" was found in magicItems at index: 564. It took 9 Comparisons.
-"Sword of the Kauhns" was found in magicItems at index: 577. It took 9 Comparisons.
-"Sword Pin" was found in magicItems at index: 579. It took 8 Comparisons.
-"The Nose of Venco" was found in magicItems at index: 593. It took 9 Comparisons.
-"Tome of leadership and influence" was found in magicItems at index: 605. It took 8 Comparisons.
-"Tome of understanding +1" was found in magicItems at index: 610. It took 8 Comparisons.
-"Tordour's Reusable Writing Tablet" was found in magicItems at index: 617. It took 10 Comparisons.
-"Tower Shield" was found in magicItems at index: 620. It took 10 Comparisons.
-"Universal solvent" was found in magicItems at index: 632. It took 9 Comparisons.
-"Whisper Blade" was found in magicItems at index: 654. It took 10 Comparisons.
+Binary search took an average of 8.55 comparisons to find each element.
 
-Binary search took an average of 8.69 comparisons to find each element.
+Hash Table took an average of 3.12 comparisons to find each element.

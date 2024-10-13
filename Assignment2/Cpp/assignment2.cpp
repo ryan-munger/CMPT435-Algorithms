@@ -8,8 +8,9 @@
 using namespace std;
 
 const int HASH_TABLE_SIZE = 250;
-const string MAGICITEMS_PATH = "../magicitems.txt";
+const string MAGICITEMS_PATH = "magicitems.txt";
 
+// from assignment 1
 vector<string> getMagicItems(const string& filename) {
     vector<string> magicItems; 
     ifstream file(filename); //input file stream
@@ -133,6 +134,7 @@ struct Node {
     Node<T>* next;
 };
 
+// utilizing chaining (linked lists) to handle collisions
 class HashTable {
     private:
         Node<string>* hashTable[HASH_TABLE_SIZE];
@@ -162,22 +164,23 @@ class HashTable {
             int hashCode = makeHash(str);
             Node<string>* newItem = new Node<string>;
             newItem->value = str;
-            if (hashTable[hashCode] == nullptr) {
+            if (hashTable[hashCode] == nullptr) { // start a chain if there isn't one
                 newItem->next = nullptr;
                 hashTable[hashCode] = newItem;
-            } else {
+            } else { // add new element to front of respective chain
                 Node<string>* oldFront = hashTable[hashCode];
                 newItem->next = oldFront;
                 hashTable[hashCode] = newItem;
             };
         };
 
+        // return count of comparisons or -1 if not found
         int get(string str) {
             int hashCode = makeHash(str);
-            if (hashTable[hashCode] == nullptr) {
+            if (hashTable[hashCode] == nullptr) { // if the pigeonhole doesn't have anything
                 return -1;
-            } else {
-                int getComps = 1; // get is one compare plus chain
+            } else { // search the pigeonhole's pigeons for value (chain)
+                int getComps = 1; // get is one compare plus chain iterations
                 Node<string>* currentNode = hashTable[hashCode];
                 while (currentNode != nullptr) {
                     getComps++;
@@ -188,6 +191,7 @@ class HashTable {
             };
         };
 
+        // use ascii values and a prime to distribute values across table
         int makeHash(string value) {
             value = toLowerCase(value);
             int asciiTotal = 0;
@@ -199,6 +203,7 @@ class HashTable {
             return hashCode;
         };
 
+        // use asterisks to visualize the table's population 
         void generateHistogram() {
             int pigeons;
             int pigeonHoles = HASH_TABLE_SIZE; // i just wanted to say it
@@ -216,6 +221,7 @@ class HashTable {
 };
 
 int main() {
+    cout << "\nHash Table Testing: " << endl;
     HashTable* hashy = new HashTable;
     hashy->put("Hello!");
     // it will add again, not worth traversing chain just to avoid duplicate
@@ -223,8 +229,10 @@ int main() {
     hashy->put("Hello!"); 
     hashy->put("test!");
     hashy->put("Something with a different hash");
-    cout << "\"Hello!\" Found in table with " << hashy->get("Hello!") << " comparisons." << endl;
-    cout << "\"Not in table...\" not found in table with " << hashy->get("Not in table...") << " copmarisons." << endl;
+    cout << "\"Hello!\" was found in the table with " << hashy->get("Hello!") << " comparisons." << endl;
+    if (hashy->get("Not in table...") == -1) {
+        cout << "\"Not in table...\" was not found in the table." << endl;
+    }
     // hashy->generateHistogram();
 
     vector<string> magicItems = getMagicItems(MAGICITEMS_PATH);
@@ -244,13 +252,15 @@ int main() {
     for (string item : magicItems) {
         magicTable->put(item);
     }
+    cout << "\nMagic Items Table Visualization: " << endl;
     magicTable->generateHistogram();
     
-    // since the random sample is in order (relative to the sorted array), as we progress through the sample, comparisons will always increase!
+    cout << "\nSearching for a random sample:\n" << endl;
+    // since the random sample is in order (relative to the sorted array), 
+    // as we progress through the sample, comparisons will always increase for seq search!
     int totalSeqComps = 0, totalBinComps = 0, totalHashGet = 0;
     int binaryComps = 0, hashGet = 0;
     int foundIdx;
-    cout << "\nSequential/Linear Search:\n" << endl;
     for (string item : randomSample) {
         foundIdx = sequentialSearch(magicItems, item);
         if(foundIdx != -1){
@@ -295,5 +305,6 @@ int main() {
         << fixed << setprecision(2) 
         << static_cast<double>(totalHashGet) / randomSample.size() 
         << " comparisons to find each element." << endl;
+        
     return 0;
 };
