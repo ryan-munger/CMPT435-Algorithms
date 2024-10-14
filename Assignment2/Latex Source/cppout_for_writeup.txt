@@ -1,0 +1,32 @@
+
+Hash Table Testing: 
+"Hello!" was found in the table with 2 comparisons.
+"Not in table..." was not found in the table.
+
+Magic Items Table Visualization: 
+    Pigeonhole 0:   ****
+    Pigeonhole 1:   **
+    Pigeonhole 2:   *****
+    ... 
+    Pigeonhole 248: ***
+    Pigeonhole 249: ***
+
+Searching for a random sample:
+
+"Arachnid tome" found with Sequential Search at idx: 28. It took 29 Comparisons.
+"Arachnid tome" found with Binary search at idx: 28. It took 10 Comparisons.
+"Arachnid tome" found with Hash Table with 6 get+ comparisons.
+"Armatha's long sword" found with Sequential Search at idx: 30. It took 31 Comparisons.
+"Armatha's long sword" found with Binary search at idx: 30. It took 9 Comparisons.
+"Armatha's long sword" found with Hash Table with 7 get+ comparisons.
+...
+"Vambraces of Unarmed Prowess" found with Sequential Search at idx: 633. It took 634 Comparisons.
+"Vambraces of Unarmed Prowess" found with Binary search at idx: 633. It took 10 Comparisons.
+"Vambraces of Unarmed Prowess" found with Hash Table with 2 get+ comparisons.
+"Vaporizer" found with Sequential Search at idx: 635. It took 636 Comparisons.
+"Vaporizer" found with Binary search at idx: 635. It took 9 Comparisons.
+"Vaporizer" found with Hash Table with 2 get+ comparisons.
+
+Sequential/Linear search took an average of 388.43 comparisons to find each element.
+Binary search took an average of 8.55 comparisons to find each element.
+Hash Table took an average of 3.12 comparisons to find each element.

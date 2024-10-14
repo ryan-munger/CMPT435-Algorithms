@@ -1,0 +1,388 @@
+
+Hash Table Testing:
+"Hello!" was found in the table with  1 comparisons.
+"Not in table..." was not found in the table.
+
+Magic Items Table Visualization:
+Pigeonhole  0: ****
+Pigeonhole  1: **
+Pigeonhole  2: *****
+Pigeonhole  3: 
+Pigeonhole  4: *
+Pigeonhole  5: ***
+Pigeonhole  6: *****
+Pigeonhole  7: *****
+Pigeonhole  8: **
+Pigeonhole  9: ***
+Pigeonhole  10:**
+Pigeonhole  11:
+Pigeonhole  12:**
+Pigeonhole  13:
+Pigeonhole  14:
+Pigeonhole  15:****
+Pigeonhole  16:****
+Pigeonhole  17:****
+Pigeonhole  18:
+Pigeonhole  19:*
+Pigeonhole  20:******
+Pigeonhole  21:**
+Pigeonhole  22:*****
+Pigeonhole  23:**
+Pigeonhole  24:****
+Pigeonhole  25:****
+Pigeonhole  26:*
+Pigeonhole  27:**
+Pigeonhole  28:**
+Pigeonhole  29:***
+Pigeonhole  30:****
+Pigeonhole  31:*
+Pigeonhole  32:****
+Pigeonhole  33:*****
+Pigeonhole  34:**
+Pigeonhole  35:**
+Pigeonhole  36:**
+Pigeonhole  37:**
+Pigeonhole  38:**
+Pigeonhole  39:***
+Pigeonhole  40:*
+Pigeonhole  41:*
+Pigeonhole  42:****
+Pigeonhole  43:***
+Pigeonhole  44:
+Pigeonhole  45:**
+Pigeonhole  46:
+Pigeonhole  47:***
+Pigeonhole  48:**
+Pigeonhole  49:******
+Pigeonhole  50:
+Pigeonhole  51:****
+Pigeonhole  52:****
+Pigeonhole  53:****
+Pigeonhole  54:**
+Pigeonhole  55:
+Pigeonhole  56:*
+Pigeonhole  57:**
+Pigeonhole  58:****
+Pigeonhole  59:*****
+Pigeonhole  60:
+Pigeonhole  61:******
+Pigeonhole  62:**
+Pigeonhole  63:**
+Pigeonhole  64:******
+Pigeonhole  65:**
+Pigeonhole  66:****
+Pigeonhole  67:
+Pigeonhole  68:****
+Pigeonhole  69:***
+Pigeonhole  70:***
+Pigeonhole  71:*
+Pigeonhole  72:*
+Pigeonhole  73:*
+Pigeonhole  74:**
+Pigeonhole  75:***
+Pigeonhole  76:*
+Pigeonhole  77:**
+Pigeonhole  78:***
+Pigeonhole  79:*
+Pigeonhole  80:**
+Pigeonhole  81:
+Pigeonhole  82:*****
+Pigeonhole  83:*****
+Pigeonhole  84:****
+Pigeonhole  85:
+Pigeonhole  86:***
+Pigeonhole  87:***
+Pigeonhole  88:**
+Pigeonhole  89:*
+Pigeonhole  90:**
+Pigeonhole  91:**
+Pigeonhole  92:****
+Pigeonhole  93:**
+Pigeonhole  94:******
+Pigeonhole  95:**
+Pigeonhole  96:**
+Pigeonhole  97:**
+Pigeonhole  98:***
+Pigeonhole  99:****
+Pigeonhole  100*
+Pigeonhole  101***
+Pigeonhole  102**
+Pigeonhole  103***
+Pigeonhole  104***
+Pigeonhole  105****
+Pigeonhole  106*
+Pigeonhole  107****
+Pigeonhole  108****
+Pigeonhole  109*********
+Pigeonhole  110***
+Pigeonhole  111***
+Pigeonhole  112****
+Pigeonhole  113***
+Pigeonhole  114*****
+Pigeonhole  115*
+Pigeonhole  116*
+Pigeonhole  117
+Pigeonhole  118****
+Pigeonhole  119*
+Pigeonhole  120****
+Pigeonhole  121**
+Pigeonhole  122*
+Pigeonhole  123**
+Pigeonhole  124**
+Pigeonhole  125****
+Pigeonhole  126********
+Pigeonhole  127**
+Pigeonhole  128****
+Pigeonhole  129****
+Pigeonhole  130**
+Pigeonhole  131
+Pigeonhole  132**
+Pigeonhole  133
+Pigeonhole  134**
+Pigeonhole  135**
+Pigeonhole  136*
+Pigeonhole  137**
+Pigeonhole  138*
+Pigeonhole  139*
+Pigeonhole  140**
+Pigeonhole  141****
+Pigeonhole  142**
+Pigeonhole  143****
+Pigeonhole  144***
+Pigeonhole  145******
+Pigeonhole  146**
+Pigeonhole  147**
+Pigeonhole  148*
+Pigeonhole  149***
+Pigeonhole  150**
+Pigeonhole  151**
+Pigeonhole  152*
+Pigeonhole  153**
+Pigeonhole  154***
+Pigeonhole  155*
+Pigeonhole  156*****
+Pigeonhole  157*****
+Pigeonhole  158****
+Pigeonhole  159******
+Pigeonhole  160**
+Pigeonhole  161****
+Pigeonhole  162***
+Pigeonhole  163***
+Pigeonhole  164*****
+Pigeonhole  165*
+Pigeonhole  166*****
+Pigeonhole  167*******
+Pigeonhole  168*****
+Pigeonhole  169****
+Pigeonhole  170***
+Pigeonhole  171*
+Pigeonhole  172**
+Pigeonhole  173*
+Pigeonhole  174**
+Pigeonhole  175**
+Pigeonhole  176***
+Pigeonhole  177
+Pigeonhole  178****
+Pigeonhole  179**
+Pigeonhole  180*
+Pigeonhole  181**
+Pigeonhole  182****
+Pigeonhole  183*
+Pigeonhole  184*****
+Pigeonhole  185***
+Pigeonhole  186
+Pigeonhole  187**
+Pigeonhole  188****
+Pigeonhole  189
+Pigeonhole  190*****
+Pigeonhole  191***
+Pigeonhole  192
+Pigeonhole  193****
+Pigeonhole  194*
+Pigeonhole  195**
+Pigeonhole  196***
+Pigeonhole  197*****
+Pigeonhole  198***
+Pigeonhole  199*
+Pigeonhole  200****
+Pigeonhole  201****
+Pigeonhole  202***
+Pigeonhole  203***
+Pigeonhole  204*****
+Pigeonhole  205***
+Pigeonhole  206***
+Pigeonhole  207****
+Pigeonhole  208*
+Pigeonhole  209**
+Pigeonhole  210**
+Pigeonhole  211***
+Pigeonhole  212***
+Pigeonhole  213***
+Pigeonhole  214**
+Pigeonhole  215***
+Pigeonhole  216*
+Pigeonhole  217**
+Pigeonhole  218**
+Pigeonhole  219
+Pigeonhole  220*
+Pigeonhole  221*
+Pigeonhole  222******
+Pigeonhole  223**
+Pigeonhole  224**
+Pigeonhole  225***
+Pigeonhole  226****
+Pigeonhole  227****
+Pigeonhole  228****
+Pigeonhole  229****
+Pigeonhole  230**
+Pigeonhole  231***
+Pigeonhole  232****
+Pigeonhole  233******
+Pigeonhole  234***
+Pigeonhole  235****
+Pigeonhole  236***
+Pigeonhole  237
+Pigeonhole  238*
+Pigeonhole  239*
+Pigeonhole  240***
+Pigeonhole  241****
+Pigeonhole  242**
+Pigeonhole  243*
+Pigeonhole  244**
+Pigeonhole  245****
+Pigeonhole  246********
+Pigeonhole  247**
+Pigeonhole  248***
+Pigeonhole  249***
+
+Generating and searching for a random sample:
+"Seed of Understanding" found with Sequential Search at idx:  504. It took  505 Comparisons.
+"Seed of Understanding" found with Binary search at idx:  504. It took  7 Comparisons.
+"Seed of Understanding" found with Hash Table with  1 get+ comparisons.
+"Foolkiller" found with Sequential Search at idx:  239. It took  240 Comparisons.
+"Foolkiller" found with Binary search at idx:  239. It took  8 Comparisons.
+"Foolkiller" found with Hash Table with  3 get+ comparisons.
+"Amulet of proof against detection and location" found with Sequential Search at idx:  21. It took  22 Comparisons.
+"Amulet of proof against detection and location" found with Binary search at idx:  21. It took  8 Comparisons.
+"Amulet of proof against detection and location" found with Hash Table with  3 get+ comparisons.
+"Periapt of Wisdom +2" found with Sequential Search at idx:  414. It took  415 Comparisons.
+"Periapt of Wisdom +2" found with Binary search at idx:  414. It took  10 Comparisons.
+"Periapt of Wisdom +2" found with Hash Table with  2 get+ comparisons.
+"Sword of Critique" found with Sequential Search at idx:  565. It took  566 Comparisons.
+"Sword of Critique" was not found in magicItems. Comparisons:  9
+"Sword of Critique" found with Hash Table with  1 get+ comparisons.
+"Soap of Cleanliness" found with Sequential Search at idx:  537. It took  538 Comparisons.
+"Soap of Cleanliness" found with Binary search at idx:  537. It took  8 Comparisons.
+"Soap of Cleanliness" found with Hash Table with  3 get+ comparisons.
+"Pearl of power, 6th-level spell" found with Sequential Search at idx:  409. It took  410 Comparisons.
+"Pearl of power, 6th-level spell" found with Binary search at idx:  409. It took  7 Comparisons.
+"Pearl of power, 6th-level spell" found with Hash Table with  1 get+ comparisons.
+"Gloves of arrow snaring" found with Sequential Search at idx:  260. It took  261 Comparisons.
+"Gloves of arrow snaring" was not found in magicItems. Comparisons:  9
+"Gloves of arrow snaring" found with Hash Table with  2 get+ comparisons.
+"Eyes of doom" found with Sequential Search at idx:  214. It took  215 Comparisons.
+"Eyes of doom" found with Binary search at idx:  214. It took  9 Comparisons.
+"Eyes of doom" found with Hash Table with  1 get+ comparisons.
+"Circlet of persuasion" found with Sequential Search at idx:  126. It took  127 Comparisons.
+"Circlet of persuasion" found with Binary search at idx:  126. It took  9 Comparisons.
+"Circlet of persuasion" found with Hash Table with  1 get+ comparisons.
+"Ioun Crown" found with Sequential Search at idx:  320. It took  321 Comparisons.
+"Ioun Crown" found with Binary search at idx:  320. It took  10 Comparisons.
+"Ioun Crown" found with Hash Table with  2 get+ comparisons.
+"Narc in a panic ran" found with Sequential Search at idx:  390. It took  391 Comparisons.
+"Narc in a panic ran" found with Binary search at idx:  390. It took  10 Comparisons.
+"Narc in a panic ran" found with Hash Table with  1 get+ comparisons.
+"Hammer of Wonderous Works" found with Sequential Search at idx:  278. It took  279 Comparisons.
+"Hammer of Wonderous Works" found with Binary search at idx:  278. It took  10 Comparisons.
+"Hammer of Wonderous Works" found with Hash Table with  2 get+ comparisons.
+"Pheonix Spellbook" found with Sequential Search at idx:  418. It took  419 Comparisons.
+"Pheonix Spellbook" found with Binary search at idx:  418. It took  9 Comparisons.
+"Pheonix Spellbook" found with Hash Table with  3 get+ comparisons.
+"Angel's Fury" found with Sequential Search at idx:  23. It took  24 Comparisons.
+"Angel's Fury" found with Binary search at idx:  23. It took  10 Comparisons.
+"Angel's Fury" found with Hash Table with  2 get+ comparisons.
+"Grenade of the Healer" found with Sequential Search at idx:  273. It took  274 Comparisons.
+"Grenade of the Healer" found with Binary search at idx:  273. It took  10 Comparisons.
+"Grenade of the Healer" found with Hash Table with  2 get+ comparisons.
+"Gloves of Dexterity +2" found with Sequential Search at idx:  255. It took  256 Comparisons.
+"Gloves of Dexterity +2" found with Binary search at idx:  255. It took  8 Comparisons.
+"Gloves of Dexterity +2" found with Hash Table with  4 get+ comparisons.
+"Mace of Divine Wrath" found with Sequential Search at idx:  349. It took  350 Comparisons.
+"Mace of Divine Wrath" found with Binary search at idx:  349. It took  8 Comparisons.
+"Mace of Divine Wrath" found with Hash Table with  3 get+ comparisons.
+"Box of Delights" found with Sequential Search at idx:  87. It took  88 Comparisons.
+"Box of Delights" found with Binary search at idx:  87. It took  7 Comparisons.
+"Box of Delights" found with Hash Table with  3 get+ comparisons.
+"Crystal ball" found with Sequential Search at idx:  153. It took  154 Comparisons.
+"Crystal ball" found with Binary search at idx:  153. It took  10 Comparisons.
+"Crystal ball" found with Hash Table with  1 get+ comparisons.
+"Healing Totem" found with Sequential Search at idx:  288. It took  289 Comparisons.
+"Healing Totem" found with Binary search at idx:  288. It took  9 Comparisons.
+"Healing Totem" found with Hash Table with  3 get+ comparisons.
+"Morning Star" found with Sequential Search at idx:  386. It took  387 Comparisons.
+"Morning Star" found with Binary search at idx:  386. It took  9 Comparisons.
+"Morning Star" found with Hash Table with  3 get+ comparisons.
+"Long War Bow" found with Sequential Search at idx:  347. It took  348 Comparisons.
+"Long War Bow" found with Binary search at idx:  347. It took  7 Comparisons.
+"Long War Bow" found with Hash Table with  4 get+ comparisons.
+"Crossbow Rod" found with Sequential Search at idx:  150. It took  151 Comparisons.
+"Crossbow Rod" was not found in magicItems. Comparisons:  9
+"Crossbow Rod" found with Hash Table with  5 get+ comparisons.
+"Long Sword of Battle field +2" found with Sequential Search at idx:  346. It took  347 Comparisons.
+"Long Sword of Battle field +2" found with Binary search at idx:  346. It took  10 Comparisons.
+"Long Sword of Battle field +2" found with Hash Table with  3 get+ comparisons.
+"Crown" found with Sequential Search at idx:  152. It took  153 Comparisons.
+"Crown" found with Binary search at idx:  152. It took  9 Comparisons.
+"Crown" found with Hash Table with  4 get+ comparisons.
+"Olah Halo" found with Sequential Search at idx:  402. It took  403 Comparisons.
+"Olah Halo" found with Binary search at idx:  402. It took  9 Comparisons.
+"Olah Halo" found with Hash Table with  2 get+ comparisons.
+"Manual of gainful exercise +3" found with Sequential Search at idx:  363. It took  364 Comparisons.
+"Manual of gainful exercise +3" found with Binary search at idx:  363. It took  9 Comparisons.
+"Manual of gainful exercise +3" found with Hash Table with  2 get+ comparisons.
+"War Staff" found with Sequential Search at idx:  642. It took  643 Comparisons.
+"War Staff" found with Binary search at idx:  642. It took  8 Comparisons.
+"War Staff" found with Hash Table with  1 get+ comparisons.
+"Helm of comprehend languages and read magic" found with Sequential Search at idx:  295. It took  296 Comparisons.
+"Helm of comprehend languages and read magic" found with Binary search at idx:  295. It took  7 Comparisons.
+"Helm of comprehend languages and read magic" found with Hash Table with  3 get+ comparisons.
+"Stone Of Acid Arrow" found with Sequential Search at idx:  554. It took  555 Comparisons.
+"Stone Of Acid Arrow" found with Binary search at idx:  554. It took  10 Comparisons.
+"Stone Of Acid Arrow" found with Hash Table with  1 get+ comparisons.
+"Aerial's Dagger of magic missles" found with Sequential Search at idx:  2. It took  3 Comparisons.
+"Aerial's Dagger of magic missles" found with Binary search at idx:  2. It took  9 Comparisons.
+"Aerial's Dagger of magic missles" found with Hash Table with  8 get+ comparisons.
+"Dust of dryness" found with Sequential Search at idx:  191. It took  192 Comparisons.
+"Dust of dryness" found with Binary search at idx:  191. It took  9 Comparisons.
+"Dust of dryness" found with Hash Table with  1 get+ comparisons.
+"Stone salve" found with Sequential Search at idx:  557. It took  558 Comparisons.
+"Stone salve" found with Binary search at idx:  557. It took  10 Comparisons.
+"Stone salve" found with Hash Table with  3 get+ comparisons.
+"Mood Ring" found with Sequential Search at idx:  384. It took  385 Comparisons.
+"Mood Ring" found with Binary search at idx:  384. It took  9 Comparisons.
+"Mood Ring" found with Hash Table with  2 get+ comparisons.
+"Goggles of minute seeing" found with Sequential Search at idx:  264. It took  265 Comparisons.
+"Goggles of minute seeing" found with Binary search at idx:  264. It took  9 Comparisons.
+"Goggles of minute seeing" found with Hash Table with  3 get+ comparisons.
+"canticle of concealments" found with Sequential Search at idx:  661. It took  662 Comparisons.
+"canticle of concealments" was not found in magicItems. Comparisons:  10
+"canticle of concealments" found with Hash Table with  1 get+ comparisons.
+"Kidnapper's Bag" found with Sequential Search at idx:  332. It took  333 Comparisons.
+"Kidnapper's Bag" found with Binary search at idx:  332. It took  1 Comparisons.
+"Kidnapper's Bag" found with Hash Table with  3 get+ comparisons.
+"Shuriken +1, Returning" found with Sequential Search at idx:  523. It took  524 Comparisons.
+"Shuriken +1, Returning" found with Binary search at idx:  523. It took  10 Comparisons.
+"Shuriken +1, Returning" found with Hash Table with  2 get+ comparisons.
+"Gothic Shield" found with Sequential Search at idx:  269. It took  270 Comparisons.
+"Gothic Shield" found with Binary search at idx:  269. It took  5 Comparisons.
+"Gothic Shield" found with Hash Table with  3 get+ comparisons.
+"Wine Bottle of High Spirits" found with Sequential Search at idx:  653. It took  654 Comparisons.
+"Wine Bottle of High Spirits" found with Binary search at idx:  653. It took  9 Comparisons.
+"Wine Bottle of High Spirits" found with Hash Table with  1 get+ comparisons.
+"Throwing Stone" found with Sequential Search at idx:  593. It took  594 Comparisons.
+"Throwing Stone" found with Binary search at idx:  593. It took  9 Comparisons.
+"Throwing Stone" found with Hash Table with  2 get+ comparisons.
+
+Sequential/Linear search took an average of  3.38833E+02 comparisons to find each element.
+Binary search took an average of  8.61905E+00 comparisons to find each element.
+Hash Table took an average of  2.40476E+00 comparisons to find each element.

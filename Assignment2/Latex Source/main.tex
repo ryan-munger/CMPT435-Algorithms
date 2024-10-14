@@ -1,0 +1,216 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% CMPT 435
+% Lab Two
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Short Sectioned Assignment
+% LaTeX Template
+% Version 1.0 (5/5/12)
+%
+% This template has been downloaded from: http://www.LaTeXTemplates.com
+% Original author: % Frits Wenneker (http://www.howtotex.com)
+% License: CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+% Modified by Alan G. Labouseur  - alan@labouseur.com, and Ryan Munger - ryan.munger1@marist.edu
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[letterpaper, 10pt]{article} 
+
+\usepackage[english]{babel} % English language/hyphenation
+\usepackage{graphicx}
+\usepackage[lined,linesnumbered,commentsnumbered]{algorithm2e}
+\usepackage{listings}
+\usepackage{float}
+\usepackage{fancyhdr} % Custom headers and footers
+\pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
+\usepackage{lastpage}
+\usepackage{url}
+\usepackage{xcolor}
+\usepackage{titlesec}
+
+% Stolen from https://www.overleaf.com/learn/latex/Code_listing 
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+\lstset{style=mystyle, language=c++}
+
+
+\fancyhead{} % No page header - if you want one, create it in the same way as the footers below
+\fancyfoot[L]{} % Empty left footer
+\fancyfoot[C]{page \thepage\ of \pageref{LastPage}} % Page numbering for center footer
+\fancyfoot[R]{}
+
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{13.6pt} % Customize the height of the header
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+\title{	
+   \normalfont \normalsize 
+   \textsc{CMPT 435 - Fall 2024 - Dr. Labouseur} \\[10pt] % Header stuff.
+   \horrule{0.5pt} \\[0.25cm] 	% Top horizontal rule
+   \huge Assignment Two -- Searching \& Hashing\\     	    % Assignment title
+   \horrule{0.5pt} \\[0.25cm] 	% Bottom horizontal rule
+}
+
+\author{Ryan Munger \\ \normalsize Ryan.Munger1@marist.edu}
+
+\date{\normalsize\today} 	% Today's date.
+
+\begin{document}
+
+\maketitle % Print the title
+
+%----------------------------------------------------------------------------------------
+%   CONTENT SECTION
+%----------------------------------------------------------------------------------------
+
+% - -- -  - -- -  - -- -  -
+\section{Introduction}
+\subsection{Goals}
+Assignment 2 instructed us to implement sequential/linear search, binary search, and a hash table. We took a random sample of magic items from the full list to demonstrate searching and hash look-ups.
+\subsection{Write-up Format}
+    In this report I will describe the logic being presented. Below the text explanation, relevant code will follow in both C++ and Ada. I have learned a lot about Ada! I have also found that AI models such as ChatGPT and Gemini are abysmal at writing it, as not even the most rudimentary examples I asked for would even compile. I called upon a grand wizard (my father) to help my with my Ada magic items. I did not use Alire this time, just opting for GNATmake.
+\subsection{Limerick of Luck}
+\noindent
+After years of searching \\
+Interviewees found an idol perching. \\
+    \hspace*{1.5em}The ultimate guess for any question, \\
+    \hspace*{1.5em}Answering "Hash Table" is rarely a transgression, \\
+Bolstering job-seekers with no besmirching. \\
+
+\hrule
+\vspace{.25cm}
+Why did they close Hash Street? - \textit{It had too many collisions...}\\
+\hrule
+\vspace{.25cm}
+
+\newpage
+
+\section{Searching}
+\subsection{Sequential/Linear Search}
+Selection/Linear search is a very simple algorithm. We simply iterate through the array looking for the target. As soon as we find it, we return the index we found it at. If we don't find it, we can return -1 to indicate this. This algorithm is $O(n)$ time as we need to iterate through the length of the array to find our target. On average, it will take us $\frac{n}{2}$ comparisons since sometimes we will find our target early, and sometimes late. So, for 666 magic items, it should take us an average of 333 comparisons.
+\lstinputlisting[linerange={98-106}, firstnumber=98]{assignment2.cpp}
+\lstinputlisting[language=Ada, linerange={116-125}, firstnumber=116]{assignment2.adb}
+Notice I did not count comparisons directly in this function. This is because since we are linearly searching the array item by item, the number of comparisons is exactly the index we found the item at + 1 (Since indexing starts at 0 - we need 1 comparison even if it is element 0). If we did not find it, then the amount of comparisons is the length of the array! 
+\newpage
+\subsection{Binary Search}
+Binary search is much more efficient than sequential search. For this algorithm, the trade-off is that the array must be sorted. Using the fact that the array is sorted to our advantage, we know that a splice of the array after a certain value contains only values greater than it and one before a certain value only contains values less than it. In each iteration of binary search, the search space is halved, resulting in a logarithmic reduction in the number of comparisons. We check half of the half of the half... This leaves binary search at $O(log(n))$. For our array of 666 magic items, we can expect it to take $\log_2(666)$ comparisons, or 9.38. It is base 2 as we are halving.
+\begin{enumerate}
+    \item Find the midpoint of the array.
+    \item If the midpoint is the target, return the midpoint index.
+    \item If the target is greater than the midpoint, search the half after the midpoint.
+    \item If the target is less than the midpoint, search the half before the midpoint.
+    \item Continue calculating midpoints on the smaller halves until we find the element, or our left and right indexes hit each other.
+\end{enumerate}
+\lstinputlisting[linerange={108-129}, firstnumber=108]{assignment2.cpp}
+\lstinputlisting[language=Ada, linerange={127-150}, firstnumber=127]{assignment2.adb}
+\hrule
+\vspace{.25cm}
+I considered implementing \textbf{EVIL} Binary Search like we saw in class - \textit{"Yeah man, its in the array..."}\\
+\hrule
+\vspace{.25cm}
+
+\section{Hash Table}
+\subsection{How it Works}
+Hash tables are a very efficient method of storing and looking up data - no sorting required! To begin, we choose the size of our hash table (this can be less than the amount of data we wish to store). Next, we \textit{hash} the value to be stored. This will turn our value into a hash code that indicates where in the hash table array it should be stored. For my hash function, I simply totaled up the ASCII values of the characters of each string item (lowercase), multiplied it by a prime number (to better distribute the hashes), and then took the modulus of the result and the hash table size (so that the index we get is in the array). \\
+\newline
+What if two values produce the same hash code? This is called a \textit{collision}. There are several ways to remedy this issue such as chaining and probing. I implemented chaining in my hash table. Lets suppose that our value has a hash code of 3. We would place this item at index 3 of our hash table array. If a collision occurred, there is already a value in its spot! We fix this by storing a linked list at each array index. By making each value into a node, we can leave a pointed to the start of the linked list in our hash table array. Now when we need to find a value, we can simply search the (hopefully) small linked list of collided values for a given hash. I will now bombard you with both of my implementations.
+\newpage
+\lstinputlisting[linerange={131-221}, firstnumber=131]{assignment2.cpp}
+\lstinputlisting[language=Ada, linerange={21-93}, firstnumber=21]{assignment2.adb}
+\noindent
+Phew! You made it... To visualize how the data structure is formed, I implemented a histogram function. This function simply displays each bucket/pigeonhole and the amount of pigeons stored in it (represented by asterisks). The time complexity for a hash table that has enough space to hold all of the required data with no collisions is constant time $O(1)$! In reality, we will need to iterate over the chain at the given index of the hash table array. This brings us up to $O(1+\alpha)$ where $\alpha$ is the average chain length. Since we are storing 666 magic items in a hash table of size 250, each chain on average has 2.664 items in it. This leaves our expected comparison count at $1+(\frac{666}{250})$, or 3.66. 
+\subsection{Testing the Hash Table}
+\textbf{Code:}
+\lstinputlisting[linerange={224-235}, firstnumber=224]{assignment2.cpp}
+\textbf{Output:}
+\lstinputlisting[linerange={2-4}, firstnumber=2]{cppout_for_writeup.txt} 
+\textbf{Code:}
+\lstinputlisting[language=Ada, linerange={209-210, 218-237}, firstnumber=209]{assignment2.adb}
+\textbf{Output:}
+\lstinputlisting[linerange={2-4}, firstnumber=2]{adaout_for_writeup.txt} 
+
+\section{Searches in Action}
+\subsection{Random Sample} 
+To test our searching algorithms, we are taking a sample of 42 unique items from the list of Magic Items (length 666). I re-used code from assignment1 to read in the items and sort the array (using my merge sort if you were curious). I then used the c++ sampler to create my 42 item subarray. This was tricky to do, but after seeing how concise this function was (available in c++ 17 or later) on stack overflow, I had to understand and implement it. Interestingly, even though it samples the elements uniquely \& randomly, it places them into the new subarray in the relative order they originally were in! Another good way to take the sample would be to shuffle the array and take the first 42 elements, but shuffling the entire array for just 42 items is not as efficient. \\
+I did not muster up anything quite as elegant in Ada but I still wanted to avoid the shuffle. I instead just kept track of the indices I had already used and employed a random number generator. Classic space for time trade! \\ 
+\newpage
+\lstinputlisting[linerange={238-248}, firstnumber=238]{assignment2.cpp}
+\lstinputlisting[language=Ada, linerange={179-204}, firstnumber=179]{assignment2.adb}
+\newpage
+\subsection{Testing the Searches} 
+Using the sample, we found each of the 42 elements in the original array of 666 items using sequential search, binary search, and our hash table. I then took an average of the trials (to two decimal places). \\ 
+Since the sample is in order - it is fun to watch the number of comparisons needed by sequential sort gradually increase! \\
+To begin, we need to first load our hash table with all of the magic items.
+\lstinputlisting[linerange={251-256}, firstnumber=251]{assignment2.cpp}
+\lstinputlisting[language=Ada, linerange={239-252}, firstnumber=239]{assignment2.adb}
+\lstinputlisting[linerange={6-12}, firstnumber=6]{cppout_for_writeup.txt} 
+
+Now, let's go through each sampled item and find it using each method! Prepare for another code barrage... \\
+
+
+\lstinputlisting[linerange={258-307}, firstnumber=258]{assignment2.cpp}
+\lstinputlisting[language=Ada, linerange={254-301}, firstnumber=254]{assignment2.adb}
+\newpage
+\textbf{Output:}
+\lstinputlisting[linerange={14-32}, firstnumber=14]{cppout_for_writeup.txt}
+\subsection{Comparing the Searches}
+\noindent
+Even though the code gave us the average of the 42 lookups, I went ahead and ran it 20 times, averaging the averages.
+\begin{center}
+\begin{tabular}{||c c c c||} 
+ \hline
+ Search & Time Complexity & Expected & Actual\\ [0.5ex] 
+ \hline\hline
+ Sequential Search & \( O(n)\) & \(333\) & \(338.13\) \\
+ \hline
+ Binary Search & \( O(log(n))\) & \(9.38\) & \(8.77\) \\
+ \hline
+ Hash Table & \( O(1+\alpha)\) & \(3.66\) & \(3.17\) \\
+ \hline
+\end{tabular}
+\\
+\end{center}
+Our searching algorithms are performing just as we expected! There is a tradeoff and use case for each algorithm. Binary search required sorted data but is incredibly fast. Sequential search is fantastic if data is randomly ordered and perhaps we only need to do a lookup or two. Hashing is an all around solution, with the tradeoff being that a hash table must be created and hashes computed. If array index of the item is required, this may not be the best solution. \\
+
+\hrule
+\vspace{.25cm}
+Not exactly a joke - but when I file things I use binary search to find them! 
+\vspace{.25cm}
+\hrule
+
+
+\end{document}
