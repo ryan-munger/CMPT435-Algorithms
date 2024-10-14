@@ -9,6 +9,7 @@ with Ada.Numerics.Discrete_Random;
 procedure Assignment2 is
 
    -- vector definition for dynamically allocated arrays of unbounded (dynamic) strings
+   -- taken from stack overflow, this was not intuitive 
     package Vectors is new Ada.Containers.Vectors (Index_Type => Positive, Element_Type => Unbounded_String);
     type Vector is tagged record
         Elements : Vectors.Vector;
@@ -60,7 +61,7 @@ procedure Assignment2 is
       Current     : Node_Ptr := Hash_Table(Hash_Code);
       Comparisons : Integer := 1;
    begin
-      while Current /= null loop
+      while Current /= null loop -- watch for end of chain
          if Current.Value = Str then
             return Comparisons;
          end if;
@@ -70,6 +71,7 @@ procedure Assignment2 is
       return -1;
    end Get;
 
+   -- visualize the buckets and how full they are
    procedure Generate_Histogram is
         Pigeons : Natural;
         Pigeon_Holes : constant Natural := HASH_TABLE_SIZE;
@@ -111,19 +113,18 @@ procedure Assignment2 is
       end loop;
    end Selection_Sort;
 
-   function Sequential_Search
-     (Arr : Vector; Target : Unbounded_String) return Integer
-   is
+   function Sequential_Search -- loop through each item and see if we found it
+      (Arr : Vector; Target : Unbounded_String) return Integer is
    begin
-      for I in 0 .. Natural(Arr.Elements.Length) - 1 loop
-         if Arr.Elements(I) = Target then
-            return I;
-         end if;
+      for I in 1 .. Integer(Arr.Elements.Length) loop  -- INDEXING STARTS AT 1!?!?!!
+          if Arr.Elements(I) = Target then
+              return I;  
+          end if;
       end loop;
       return -1;
    end Sequential_Search;
 
-   function Binary_Search
+   function Binary_Search -- use sorting to break search area in half
      (Arr : Vector; Target : Unbounded_String; 
       Comparisons : out Integer) return Integer
    is
@@ -148,12 +149,13 @@ procedure Assignment2 is
       return -1;
    end Binary_Search;
 
+    -- read in magic items to a vector so we can use them
    function Get_Magic_Items (Filename : String) return Vector is
       Magic_Items : Vector;
       File : Ada.Text_IO.File_Type;
       Line : Unbounded_String;
    begin
-      -- Open the file
+      -- open file
       begin
           Ada.Text_IO.Open (File => File,
                             Mode => Ada.Text_IO.In_File,
@@ -161,33 +163,36 @@ procedure Assignment2 is
       exception
           when Ada.IO_Exceptions.Name_Error =>
             Ada.Text_IO.Put_Line ("File opening failed.");
-            return Magic_Items;  -- Return empty vector
+            return Magic_Items;  -- empty
       end;
 
-      -- Read lines from the file
+      -- read line by line
       while not Ada.Text_IO.End_Of_File (File) loop
           Line := To_Unbounded_String (Ada.Text_IO.Get_Line (File));
           Magic_Items.Elements.Append (Line);
       end loop;
 
-      -- Close the file
       Ada.Text_IO.Close (File);
       return Magic_Items;
    end Get_Magic_Items;
 
    Sample_Size : constant := 42;
-   -- Random number generator for sampling
-   subtype Random_Range is Positive range 1 .. Sample_Size;
+   List_Length : constant := 666;
+   -- fandom number generator for sampling
+   -- taken from stack overflow, I'm not 100% confident I really know how it works
+   subtype Random_Range is Positive range 1 .. List_Length;
    package Random_Integer is new Ada.Numerics.Discrete_Random (Random_Range);
    Gen : Random_Integer.Generator;
 
-    -- Function to get a random sample
+    -- get a UNIQUE random sample from our magic items
+    -- we do this by keeping track of the elements we've used
    function Get_Random_Sample (Items : Vector; Sample_Size : Positive) return Vector is
       Sample : Vector;
-      Used_Indices : array (1 .. Natural(Items.Elements.Length)) of Boolean := (others => False);
+      -- default them to false as in not used
+      Used_Indices : array (1 .. Natural(Items.Elements.Length)) of Boolean := (others => False); 
       Random_Index : Positive;
    begin
-      Random_Integer.Reset (Gen);  -- Initialize the random number generator
+      Random_Integer.Reset (Gen);  -- initialize the random number generator
       while Natural(Sample.Elements.Length) < Sample_Size loop
          Random_Index := Random_Integer.Random (Gen) mod Natural(Items.Elements.Length) + 1;
          if not Used_Indices(Random_Index) then
@@ -200,8 +205,6 @@ procedure Assignment2 is
 
 
    MAGICITEMS_PATH : constant String := "magicitems.txt"; 
-
-   -- Assuming these are defined in your Assignment2 package
    Magic_Items, Random_Sample : Vector;
    Magic_Table : Hash_Table_Array;
 
@@ -210,12 +213,17 @@ procedure Assignment2 is
    Found_Idx : Integer;
 
 begin
+   -- hash table testing
+   -- New_Line because why would \n or New_Line & work....
+   New_Line;
    Put_Line ("Hash Table Testing:");
    Put (To_Unbounded_String("Hello!"));
    Put (To_Unbounded_String("Hello!"));
    Put (To_Unbounded_String("test!"));
    Put (To_Unbounded_String("Something with a different hash"));
 
+   -- quick test case without declaring this variable before the main area
+   -- pretty neat
    declare
       Comparisons : Integer := Get (To_Unbounded_String ("Hello!"));
    begin
@@ -228,26 +236,28 @@ begin
       Put_Line ("""Not in table..."" was not found in the table.");
    end if;
 
-   -- Load magic items
+   -- read in magic items, apparently its best practice to put a space before the ()
    Magic_Items := Get_Magic_Items (MAGICITEMS_PATH);
-   Selection_Sort (Magic_Items);  -- Assuming you've implemented this
+   Selection_Sort (Magic_Items); 
 
-   -- Get random sample
    Random_Sample := Get_Random_Sample (Magic_Items, Sample_Size);
 
-   -- Load hash table
+   -- load up our hash table
    for Item of Magic_Items.Elements loop
       Put (Item);
    end loop;
-
+   -- make sure its filled up and distributed 
+   New_Line;
    Put_Line ("Magic Items Table Visualization:");
    Generate_Histogram;
 
-   Put_Line ("Searching for a random sample:");
+   New_Line;
+   Put_Line ("Generating and searching for a random sample:");
    for Item of Random_Sample.Elements loop
-      -- Sequential Search
+      -- sequential search
       Found_Idx := Sequential_Search (Magic_Items, Item);
       if Found_Idx /= -1 then
+        -- once again, i do not like that "" is escaped "
          Put_Line ("""" & To_String(Item) & """ found with Sequential Search at idx: " & 
                    Integer'Image(Found_Idx) & ". It took " & Integer'Image(Found_Idx + 1) & " Comparisons.");
          Total_Seq_Comps := Total_Seq_Comps + Found_Idx + 1;
@@ -268,7 +278,7 @@ begin
       end if;
       Total_Bin_Comps := Total_Bin_Comps + Binary_Comps;
 
-      -- Hash Table Search
+      -- hash table lookups
       Hash_Get := Get (Item);
       if Hash_Get /= -1 then
          Put_Line ("""" & To_String(Item) & """ found with Hash Table with " & 
@@ -279,7 +289,10 @@ begin
       Total_Hash_Get := Total_Hash_Get + Hash_Get;
    end loop;
 
-   -- Print average comparisons
+   New_Line;
+   -- print averages.. i know the output looks like garbage
+   -- I read lots of stack overflow about printing these and solutions either
+   -- gave me a compiler error or wanted me to use many lines of put. I choose my ugly put line.
    Put_Line ("Sequential/Linear search took an average of " & 
              Float'Image(Float(Total_Seq_Comps) / Float(Sample_Size)) & " comparisons to find each element.");
    Put_Line ("Binary search took an average of " & 
@@ -288,3 +301,4 @@ begin
              Float'Image(Float(Total_Hash_Get) / Float(Sample_Size)) & " comparisons to find each element.");
 
 end Assignment2;
+-- phew
