@@ -6,6 +6,7 @@
 using namespace std;
 
 const string MAGICITEMS_PATH = "magicitems.txt";
+const string ITEMS_2_FIND_PATH = "magicitems-find-in-bst.txt";
 
 // from assignment 1
 vector<string> getMagicItems(const string& filename) {
@@ -128,10 +129,39 @@ class BinarySearchTree {
             if (!shorthand) { return path += "Nullptr -> Not Found"; }
             else { return path += "NF"; };
         };
+
+        // awkward but need to start recursing
+        // this will put items in order!
+        void inOrderTraversal() { // left root right
+            traverseInOrder(root);
+        };
+
+        // recursively visit left children, root, then right
+        void traverseInOrder(BinaryNode<string>* root) {
+            if (root == nullptr) { return; };
+            traverseInOrder(root->leftChild);
+            cout << "\"" << root->value << "\", ";
+            traverseInOrder(root->rightChild);
+        };
 };
 
+// we can just look at the path to tell comparisons
+// ! counts as we need to check to make sure its the right item
+int checkComparisons(const std::string& str) {
+    int count = 0;
+    bool afterSemicolon = false;
+    for (char c : str) {
+        if (c == ';') {
+            afterSemicolon = true;
+        } else if (afterSemicolon && (c == 'L' || c == 'R' || c == '!')) {
+            count++;
+        };
+    };
+    return count;
+}
+
 int main() {
-    cout << "BST Testing: " << endl;
+    cout << "\nBST Testing: " << endl;
     BinarySearchTree BST;
     cout << BST.insert("Root!", false) << endl; // root
     cout << BST.insert("Alpha", false) << endl; // L
@@ -142,6 +172,8 @@ int main() {
     cout << BST.search("Alpha", false) << endl;
     cout << BST.search("Autumn", false) << endl;
     cout << BST.search("Not inserted", false) << endl;
+    cout << "\nIn-order Traversal (Left Root Right):" << endl;
+    BST.inOrderTraversal(); // they will be in order!
 
     // load magic items
     cout << "\nLoading Magic Items into a BST:\n" << endl;
@@ -150,6 +182,19 @@ int main() {
     for (string item : magicItems) {
         cout << magicItemTree->insert(item, true) << endl;
     };
+    cout << "\nIn-order Traversal (Left Root Right):" << endl;
+    magicItemTree->inOrderTraversal();
+
+    vector<string> itemsToFind = getMagicItems(ITEMS_2_FIND_PATH);
+    int totalComps = 0;
+    int comps;
+    for (string item : itemsToFind) {
+        string searchPath = magicItemTree->search(item, true);
+        comps = checkComparisons(searchPath);
+        totalComps += comps;
+        cout << searchPath << " Comps: " << comps << endl;
+    };
+    cout << "\nAverage Comparisons Taken: " << totalComps / itemsToFind.size() << endl;
 
     return 0;
 };
