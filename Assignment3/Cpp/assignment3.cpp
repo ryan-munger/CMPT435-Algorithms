@@ -164,6 +164,12 @@ int checkComparisons(const string& str) {
     return count;
 };
 
+struct linkedVertex {
+    int id;
+    bool processed = false;
+    vector<int> neighbors;
+};
+
 class Graph {
     private:
         // I used a map here as we may not have all vectors between 1 and 10, for example
@@ -172,6 +178,10 @@ class Graph {
 
         // not taking map approach with this one
         vector<vector<int>> matrixRep;
+
+        // keep track of our vertex objects
+        // use a map so we can actually look them up without checking them all
+        map<int, linkedVertex> linkedObjs;
     public:
         Graph() {
             // automatically create vertex 0
@@ -195,6 +205,9 @@ class Graph {
                     }   
                 }
             }
+
+            linkedVertex newVertex = {vertex};
+            this->linkedObjs[vertex] = newVertex;
         };
 
         void addEdge(int vertex1, int vertex2) {
@@ -204,6 +217,9 @@ class Graph {
 
             this->matrixRep[vertex1][vertex2] = 1;
             this->matrixRep[vertex2][vertex1] = 1;
+
+            this->linkedObjs[vertex1].neighbors.push_back(vertex2);
+            this->linkedObjs[vertex2].neighbors.push_back(vertex1);
         };
         
         void displayAdj() {
@@ -229,9 +245,23 @@ class Graph {
             }
         };
 
+        void depthFirstTraversal() {
+            cout << "Depth First Traversal: ";
+            // traverse!
+            cout << endl;
+        };
+
+        void breadthFirstTraversal() {
+            cout << "Breadth First Traversal: ";
+            // traverse!
+            cout << endl;
+        };
+
         void displayGraph() {
             this->displayAdj();
             this->displayMatrix();
+            this->depthFirstTraversal();
+            this->breadthFirstTraversal();
         };
 
         bool isEmpty() {
