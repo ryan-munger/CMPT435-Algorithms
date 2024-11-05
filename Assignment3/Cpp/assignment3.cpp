@@ -6,6 +6,7 @@
 #include <map>
 #include <regex>
 #include <iomanip>
+#include <queue>
 using namespace std;
 
 const string MAGICITEMS_PATH = "magicitems.txt";
@@ -167,7 +168,7 @@ int checkComparisons(const string& str) {
 struct linkedVertex {
     int id;
     bool processed = false;
-    vector<int> neighbors;
+    vector<linkedVertex*> neighbors;
 };
 
 class Graph {
@@ -181,7 +182,7 @@ class Graph {
 
         // keep track of our vertex objects
         // use a map so we can actually look them up without checking them all
-        map<int, linkedVertex> linkedObjs;
+        map<int, linkedVertex*> linkedObjs;
     public:
         Graph() {
             // automatically create vertex 0
@@ -207,7 +208,7 @@ class Graph {
             }
 
             linkedVertex newVertex = {vertex};
-            this->linkedObjs[vertex] = newVertex;
+            this->linkedObjs[vertex] = &newVertex;
         };
 
         void addEdge(int vertex1, int vertex2) {
@@ -218,8 +219,8 @@ class Graph {
             this->matrixRep[vertex1][vertex2] = 1;
             this->matrixRep[vertex2][vertex1] = 1;
 
-            this->linkedObjs[vertex1].neighbors.push_back(vertex2);
-            this->linkedObjs[vertex2].neighbors.push_back(vertex1);
+            this->linkedObjs[vertex1]->neighbors.push_back(linkedObjs[vertex2]);
+            this->linkedObjs[vertex2]->neighbors.push_back(linkedObjs[vertex1]);
         };
         
         void displayAdj() {
@@ -245,23 +246,47 @@ class Graph {
             }
         };
 
-        void depthFirstTraversal() {
-            cout << "Depth First Traversal: ";
-            // traverse!
-            cout << endl;
+        void depthFirstTraversal(linkedVertex* fromVertex) {
+            if (!fromVertex->processed) {
+                cout << fromVertex->id << " ";
+                fromVertex->processed = true;
+            }
+            for (linkedVertex* v : fromVertex->neighbors){
+                if (!v->processed) {
+                    depthFirstTraversal(v);
+                }
+            }
         };
 
-        void breadthFirstTraversal() {
+        void breadthFirstTraversal(linkedVertex* fromVertex) {
             cout << "Breadth First Traversal: ";
-            // traverse!
+            linkedVertex* cv;
+            queue<linkedVertex*> q;
+            q.push(fromVertex);
+            fromVertex->processed = true;
+            while (!q.empty()) {
+                cv = q.front();
+                q.pop();
+                cout << cv->id << " ";
+                for (linkedVertex* v : cv->neighbors) {
+                    if (!v->processed) {
+                        q.push(v);
+                        v->processed = true;
+                    }
+                }
+            }
             cout << endl;
         };
 
         void displayGraph() {
             this->displayAdj();
             this->displayMatrix();
-            this->depthFirstTraversal();
-            this->breadthFirstTraversal();
+
+            cout << "Depth First Traversal: ";
+            //this->depthFirstTraversal(linkedObjs.begin()->second); // grab smallest vertex ID
+            cout << endl;
+
+            //this->breadthFirstTraversal(linkedObjs.begin()->second);
         };
 
         bool isEmpty() {
