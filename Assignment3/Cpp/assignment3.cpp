@@ -174,11 +174,8 @@ class Graph {
         vector<vector<int>> matrixRep;
     public:
         Graph() {
+            // automatically create vertex 0
             this->matrixRep.push_back(vector<int>(1, 0)); 
-        }
-        // TODO
-        ~Graph() {
-
         }
 
         void addVertex(int vertex) {
