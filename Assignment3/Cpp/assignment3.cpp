@@ -364,6 +364,7 @@ void createGraphs(const string& filename) {
         };
     };
     file.close();
+    currentGraph.displayGraph();
 };
 
 int main() {
