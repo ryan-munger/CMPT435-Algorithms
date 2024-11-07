@@ -166,13 +166,23 @@ int checkComparisons(const string& str) {
 };
 
 struct linkedVertex {
-    int id;
-    bool processed = false;
+    string id;
+    bool processed;
     vector<linkedVertex*> neighbors;
 };
 
+// debug helper function
+// void printLinkedVertex(linkedVertex* v) {
+//     cout << v->id << ": ";
+//     for (auto& n : v->neighbors) {
+//         cout << n->id << " ";
+//     }
+//     cout << endl;
+// };
+
 class Graph {
     private:
+        string graphID;
         // Each map vertex stores a list of neighbors
         map<string, vector<string>> adjacencyRep; 
 
@@ -183,19 +193,17 @@ class Graph {
 
         // keep track of our vertex objects
         // use a map so we can actually look them up without checking them all
-        map<int, linkedVertex*> linkedObjs;
+        map<string, linkedVertex> linkedObjs;
 
         void resetProcessedFlags() {
             for (auto& pair : linkedObjs) {
-                pair.second->processed = false;
+                pair.second.processed = false;
             }
         };
 
     public:
-        ~Graph() { // used new to make linkedVertices
-            for (auto& pair : linkedObjs) {
-                delete pair.second;
-            }
+        Graph(string id) {
+            this->graphID = id;
         };
 
         void addVertex(string vertex) {
@@ -203,7 +211,6 @@ class Graph {
             if (vertexToMatrixID.count(vertex) == 0) { // make sure we haven't already added it!
                 vertexToMatrixID[vertex] = matrixRep.size();
                 matrixToVertexID[matrixRep.size()] = vertex;
-                cout << matrixRep.size() << endl;
                 // default to no neighbors           
                 if(this->isEmpty()) {
                     matrixRep.push_back(vector<int>(1, 0)); 
@@ -218,9 +225,7 @@ class Graph {
 
             this->adjacencyRep[vertex]; // start an adj for the vertex
 
-            // MUST USE NEW or the object it references will cease to exist after func scope
-            // linkedVertex* newVertex = new linkedVertex{vertex};
-            // this->linkedObjs[vertex] = newVertex;
+            linkedObjs[vertex] = linkedVertex{vertex}; // Store by value
         };
 
         void addEdge(string vertex1, string vertex2) {
@@ -231,8 +236,8 @@ class Graph {
             this->matrixRep[vertexToMatrixID[vertex1]][vertexToMatrixID[vertex2]] = 1;
             this->matrixRep[vertexToMatrixID[vertex2]][vertexToMatrixID[vertex1]] = 1;
 
-            // this->linkedObjs[vertex1]->neighbors.push_back(linkedObjs[vertex2]);
-            // this->linkedObjs[vertex2]->neighbors.push_back(linkedObjs[vertex1]);
+            this->linkedObjs[vertex1].neighbors.push_back(&linkedObjs[vertex2]);
+            this->linkedObjs[vertex2].neighbors.push_back(&linkedObjs[vertex1]);
         };
         
         void displayAdj() {
@@ -259,19 +264,21 @@ class Graph {
         };
 
         void depthFirstTraversal(linkedVertex* fromVertex) {
+            if (fromVertex == nullptr) return;
+
             if (!fromVertex->processed) {
                 cout << fromVertex->id << "->";
                 fromVertex->processed = true;
             }
             for (linkedVertex* v : fromVertex->neighbors){
-                if (!v->processed) {
+                if (v != nullptr && !v->processed) {
                     depthFirstTraversal(v);
                 }
             }
         };
 
         void breadthFirstTraversal(linkedVertex* fromVertex) {
-            cout << "Breadth First Traversal: ";
+            cout << "\nBreadth First Traversal: ";
             linkedVertex* cv;
             queue<linkedVertex*> q;
             q.push(fromVertex);
@@ -287,29 +294,28 @@ class Graph {
                     }
                 }
             }
-            cout << endl;
+            cout << "End" << endl;
         };
 
         void displayGraph() {
             if (this->isEmpty()) {
-                cout << "Graph is empty silly!" << endl;
+                cout << "Graph " << this->graphID << " is empty silly!" << endl;
                 return;
             }
             
-            cout << "\n\nGraph Display:" << endl;
+            cout << "\n\nGraph " << this->graphID << " Display:" << endl;
             this->displayAdj();
             this->displayMatrix();
 
             // just start at the smallest vertex ID by default
-            // linkedVertex* defaultStart = linkedObjs.begin()->second;
-            // this->resetProcessedFlags(); // remove any flags from prior traversal
-           // cout << "\nDepth First Traversal: ";
-            // cout << defaultStart->id << endl;
-            // this->depthFirstTraversal(defaultStart); // grab smallest vertex ID
-           //  cout << endl;
+            linkedVertex* defaultStart = &this->linkedObjs.begin()->second;
+            this->resetProcessedFlags(); // remove any flags from prior traversal
+            cout << "\nDepth First Traversal: ";
+            this->depthFirstTraversal(defaultStart); 
+            cout << "End" << endl;
 
-            // this->resetProcessedFlags(); 
-            // this->breadthFirstTraversal(defaultStart);
+            this->resetProcessedFlags(); 
+            this->breadthFirstTraversal(defaultStart);
         };
 
         bool isEmpty() {
@@ -318,9 +324,9 @@ class Graph {
         };
 };
 
-vector<Graph> createGraphs(const string& filename) {
-    vector<Graph> graphs;
-    Graph currentGraph;
+void createGraphs(const string& filename) {
+    int graphCount = 1;
+    Graph currentGraph(to_string(graphCount));
     // I am taking formal lang so regex it'll be!
     regex newGraphRe(R"(new graph)");
     regex addVertexRe(R"(add\s*vertex\s*(\S+))");
@@ -340,8 +346,9 @@ vector<Graph> createGraphs(const string& filename) {
         if (regex_match(instruction, newGraphRe)) {
             // check to see if the graph has anything in it
             if (!currentGraph.isEmpty()) {
-                graphs.push_back(currentGraph); // save the old graph
-                currentGraph = Graph(); // start a new graph
+                currentGraph.displayGraph();
+                graphCount++;
+                currentGraph = Graph(to_string(graphCount)); // start a new graph
             }
         } else {
             smatch match; // captures subexpressions/groups
@@ -357,7 +364,6 @@ vector<Graph> createGraphs(const string& filename) {
         };
     };
     file.close();
-    return graphs;
 };
 
 int main() {
@@ -396,9 +402,7 @@ int main() {
     };
     cout << "\nAverage Comparisons Taken: " << totalComps / itemsToFind.size() << endl;
 
-    vector<Graph> graphs = createGraphs(GRAPH_PATH);
-    for (Graph g : graphs) {
-        g.displayGraph();
-    };
+    createGraphs(GRAPH_PATH); 
+
     return 0;
 };
