@@ -189,7 +189,7 @@ class Graph {
         // map whatever user named the vertex to a matrix index
         map<string, int> vertexToMatrixID;
         map<int, string> matrixToVertexID; // so we can go backwards
-        vector<vector<int>> matrixRep;
+        vector<vector<string>> matrixRep;
 
         // keep track of our vertex objects
         // use a map so we can actually look them up without checking them all
@@ -213,12 +213,12 @@ class Graph {
                 matrixToVertexID[matrixRep.size()] = vertex;
                 // default to no neighbors           
                 if(this->isEmpty()) {
-                    matrixRep.push_back(vector<int>(1, 0)); 
+                    matrixRep.push_back(vector<string>(1, ".")); 
                 } else {
-                    this->matrixRep.push_back(vector<int>(matrixRep[0].size(), 0)); // new row
+                    this->matrixRep.push_back(vector<string>(matrixRep[0].size(), ".")); // new row
                     // update relations for new row (no relations unless edge added) - new col
-                    for (vector<int>& vertex : this->matrixRep) {
-                        vertex.push_back(0);
+                    for (vector<string>& vertex : this->matrixRep) {
+                        vertex.push_back(".");
                     }   
                 }
             }
@@ -233,8 +233,8 @@ class Graph {
             this->adjacencyRep[vertex1].push_back(vertex2);
             this->adjacencyRep[vertex2].push_back(vertex1);
 
-            this->matrixRep[vertexToMatrixID[vertex1]][vertexToMatrixID[vertex2]] = 1;
-            this->matrixRep[vertexToMatrixID[vertex2]][vertexToMatrixID[vertex1]] = 1;
+            this->matrixRep[vertexToMatrixID[vertex1]][vertexToMatrixID[vertex2]] = "1";
+            this->matrixRep[vertexToMatrixID[vertex2]][vertexToMatrixID[vertex1]] = "1";
 
             this->linkedObjs[vertex1].neighbors.push_back(&linkedObjs[vertex2]);
             this->linkedObjs[vertex2].neighbors.push_back(&linkedObjs[vertex1]);
