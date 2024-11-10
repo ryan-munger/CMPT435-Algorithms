@@ -1,0 +1,1109 @@
+
+
+Graph 1 Display:
+
+Adjacency List:
+  1: 2 5 6 
+  2: 1 3 5 6 
+  3: 2 4 
+  4: 3 5 
+  5: 1 2 4 6 7 
+  6: 1 2 5 7 
+  7: 5 6 
+
+Matrix:
+    1: . 1 . . 1 1 . 
+    2: 1 . 1 . 1 1 . 
+    3: . 1 . 1 . . . 
+    4: . . 1 . 1 . . 
+    5: 1 1 . 1 . 1 1 
+    6: 1 1 . . 1 . 1 
+    7: . . . . 1 1 . 
+
+Depth First Traversal: 1->2->3->4->5->6->7->End
+
+Breadth First Traversal: 1->2->5->6->3->4->7->End
+
+
+Graph 2 Display:
+
+Adjacency List:
+  1: 2 3 4 5 6 7 8 
+  2: 1 3 4 5 6 7 8 
+  3: 1 2 4 5 6 7 8 
+  4: 1 2 3 5 6 7 8 
+  5: 1 2 3 4 6 7 8 
+  6: 1 2 3 4 5 7 8 
+  7: 1 2 3 4 5 6 8 
+  8: 1 2 3 4 5 6 7 
+
+Matrix:
+    1: . 1 1 1 1 1 1 1 
+    2: 1 . 1 1 1 1 1 1 
+    3: 1 1 . 1 1 1 1 1 
+    4: 1 1 1 . 1 1 1 1 
+    5: 1 1 1 1 . 1 1 1 
+    6: 1 1 1 1 1 . 1 1 
+    7: 1 1 1 1 1 1 . 1 
+    8: 1 1 1 1 1 1 1 . 
+
+Depth First Traversal: 1->2->3->4->5->6->7->8->End
+
+Breadth First Traversal: 1->2->3->4->5->6->7->8->End
+
+
+Graph 3 Display:
+
+Adjacency List:
+  1: 2 3 
+  2: 1 4 5 
+  3: 1 6 7 
+  4: 2 8 9 
+  5: 2 10 11 
+  6: 3 12 13 
+  7: 3 14 15 
+  8: 4 16 17 
+  9: 4 18 19 
+ 10: 5 20 21 
+ 11: 5 22 23 
+ 12: 6 24 25 
+ 13: 6 26 27 
+ 14: 7 28 29 
+ 15: 7 30 31 
+ 16: 8 32 33 
+ 17: 8 34 35 
+ 18: 9 36 37 
+ 19: 9 38 39 
+ 20: 10 40 41 
+ 21: 10 42 43 
+ 22: 11 44 45 
+ 23: 11 46 47 
+ 24: 12 48 49 
+ 25: 12 50 51 
+ 26: 13 52 53 
+ 27: 13 54 55 
+ 28: 14 56 57 
+ 29: 14 58 59 
+ 30: 15 60 61 
+ 31: 15 62 63 
+ 32: 16 
+ 33: 16 
+ 34: 17 
+ 35: 17 
+ 36: 18 
+ 37: 18 
+ 38: 19 
+ 39: 19 
+ 40: 20 
+ 41: 20 
+ 42: 21 
+ 43: 21 
+ 44: 22 
+ 45: 22 
+ 46: 23 
+ 47: 23 
+ 48: 24 
+ 49: 24 
+ 50: 25 
+ 51: 25 
+ 52: 26 
+ 53: 26 
+ 54: 27 
+ 55: 27 
+ 56: 28 
+ 57: 28 
+ 58: 29 
+ 59: 29 
+ 60: 30 
+ 61: 30 
+ 62: 31 
+ 63: 31 
+
+Matrix:
+    1: . 1 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+    2: 1 . . 1 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+    3: 1 . . . . 1 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+    4: . 1 . . . . . 1 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+    5: . 1 . . . . . . . 1 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+    6: . . 1 . . . . . . . . 1 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+    7: . . 1 . . . . . . . . . . 1 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+    8: . . . 1 . . . . . . . . . . . 1 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+    9: . . . 1 . . . . . . . . . . . . . 1 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+   10: . . . . 1 . . . . . . . . . . . . . . 1 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+   11: . . . . 1 . . . . . . . . . . . . . . . . 1 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+   12: . . . . . 1 . . . . . . . . . . . . . . . . . 1 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+   13: . . . . . 1 . . . . . . . . . . . . . . . . . . . 1 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+   14: . . . . . . 1 . . . . . . . . . . . . . . . . . . . . 1 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+   15: . . . . . . 1 . . . . . . . . . . . . . . . . . . . . . . 1 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+   16: . . . . . . . 1 . . . . . . . . . . . . . . . . . . . . . . . 1 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+   17: . . . . . . . 1 . . . . . . . . . . . . . . . . . . . . . . . . . 1 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+   18: . . . . . . . . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . 1 1 . . . . . . . . . . . . . . . . . . . . . . . . . . 
+   19: . . . . . . . . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1 1 . . . . . . . . . . . . . . . . . . . . . . . . 
+   20: . . . . . . . . . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1 1 . . . . . . . . . . . . . . . . . . . . . . 
+   21: . . . . . . . . . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1 1 . . . . . . . . . . . . . . . . . . . . 
+   22: . . . . . . . . . . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1 1 . . . . . . . . . . . . . . . . . . 
+   23: . . . . . . . . . . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1 1 . . . . . . . . . . . . . . . . 
+   24: . . . . . . . . . . . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1 1 . . . . . . . . . . . . . . 
+   25: . . . . . . . . . . . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1 1 . . . . . . . . . . . . 
+   26: . . . . . . . . . . . . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1 1 . . . . . . . . . . 
+   27: . . . . . . . . . . . . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1 1 . . . . . . . . 
+   28: . . . . . . . . . . . . . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1 1 . . . . . . 
+   29: . . . . . . . . . . . . . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1 1 . . . . 
+   30: . . . . . . . . . . . . . . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1 1 . . 
+   31: . . . . . . . . . . . . . . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1 1 
+   32: . . . . . . . . . . . . . . . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+   33: . . . . . . . . . . . . . . . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+   34: . . . . . . . . . . . . . . . . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+   35: . . . . . . . . . . . . . . . . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+   36: . . . . . . . . . . . . . . . . . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+   37: . . . . . . . . . . . . . . . . . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+   38: . . . . . . . . . . . . . . . . . . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+   39: . . . . . . . . . . . . . . . . . . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+   40: . . . . . . . . . . . . . . . . . . . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+   41: . . . . . . . . . . . . . . . . . . . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+   42: . . . . . . . . . . . . . . . . . . . . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+   43: . . . . . . . . . . . . . . . . . . . . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+   44: . . . . . . . . . . . . . . . . . . . . . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+   45: . . . . . . . . . . . . . . . . . . . . . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+   46: . . . . . . . . . . . . . . . . . . . . . . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+   47: . . . . . . . . . . . . . . . . . . . . . . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+   48: . . . . . . . . . . . . . . . . . . . . . . . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+   49: . . . . . . . . . . . . . . . . . . . . . . . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+   50: . . . . . . . . . . . . . . . . . . . . . . . . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+   51: . . . . . . . . . . . . . . . . . . . . . . . . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+   52: . . . . . . . . . . . . . . . . . . . . . . . . . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+   53: . . . . . . . . . . . . . . . . . . . . . . . . . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+   54: . . . . . . . . . . . . . . . . . . . . . . . . . . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+   55: . . . . . . . . . . . . . . . . . . . . . . . . . . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+   56: . . . . . . . . . . . . . . . . . . . . . . . . . . . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+   57: . . . . . . . . . . . . . . . . . . . . . . . . . . . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+   58: . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+   59: . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+   60: . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+   61: . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+   62: . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+   63: . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+
+Depth First Traversal: 1->2->4->8->16->32->33->17->34->35->9->18->36->37->19->38->39->5->10->20->40->41->21->42->43->11->22->44->45->23->46->47->3->6->12->24->48->49->25->50->51->13->26->52->53->27->54->55->7->14->28->56->57->29->58->59->15->30->60->61->31->62->63->End
+
+Breadth First Traversal: 1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->22->23->24->25->26->27->28->29->30->31->32->33->34->35->36->37->38->39->40->41->42->43->44->45->46->47->48->49->50->51->52->53->54->55->56->57->58->59->60->61->62->63->End
+
+
+Graph 4 Display:
+
+Adjacency List:
+  1: 11 16 38 
+  2: 5 20 34 35 48 52 55 
+  3: 14 62 
+  4: 54 62 
+  5: 2 12 14 38 46 62 
+  6: 17 24 42 48 
+  7: 20 36 51 
+  8: 50 
+  9: 
+ 10: 30 
+ 11: 1 18 29 49 
+ 12: 5 13 18 
+ 13: 12 48 
+ 14: 3 5 50 
+ 15: 
+ 16: 1 29 
+ 17: 6 43 
+ 18: 11 12 56 
+ 19: 37 49 
+ 20: 2 7 61 
+ 21: 
+ 22: 
+ 23: 60 
+ 24: 6 
+ 25: 28 31 58 
+ 26: 43 48 
+ 27: 46 50 
+ 28: 25 46 53 61 
+ 29: 11 16 
+ 30: 10 35 
+ 31: 25 47 60 61 
+ 32: 
+ 33: 
+ 34: 2 42 
+ 35: 2 30 41 
+ 36: 7 51 
+ 37: 19 60 
+ 38: 1 5 42 47 63 
+ 39: 
+ 40: 42 60 64 
+ 41: 35 53 
+ 42: 6 34 38 40 48 
+ 43: 17 26 
+ 44: 
+ 45: 55 
+ 46: 5 27 28 
+ 47: 31 38 
+ 48: 2 6 13 26 42 
+ 49: 11 19 57 
+ 50: 8 14 27 
+ 51: 7 36 
+ 52: 2 59 
+ 53: 28 41 
+ 54: 4 
+ 55: 2 45 
+ 56: 18 
+ 57: 49 
+ 58: 25 61 
+ 59: 52 
+ 60: 23 31 37 40 
+ 61: 20 28 31 58 
+ 62: 3 4 5 
+ 63: 38 
+ 64: 40 
+
+Matrix:
+    1: . . . . . . . . . . 1 . . . . 1 . . . . . . . . . . . . . . . . . . . . . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . 
+    2: . . . . 1 . . . . . . . . . . . . . . 1 . . . . . . . . . . . . . 1 1 . . . . . . . . . . . . 1 . . . 1 . . 1 . . . . . . . . . 
+    3: . . . . . . . . . . . . . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1 . . 
+    4: . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1 . . . . . . . 1 . . 
+    5: . 1 . . . . . . . . . 1 . 1 . . . . . . . . . . . . . . . . . . . . . . . 1 . . . . . . . 1 . . . . . . . . . . . . . . . 1 . . 
+    6: . . . . . . . . . . . . . . . . 1 . . . . . . 1 . . . . . . . . . . . . . . . . . 1 . . . . . 1 . . . . . . . . . . . . . . . . 
+    7: . . . . . . . . . . . . . . . . . . . 1 . . . . . . . . . . . . . . . 1 . . . . . . . . . . . . . . 1 . . . . . . . . . . . . . 
+    8: . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1 . . . . . . . . . . . . . . 
+    9: . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+   10: . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+   11: 1 . . . . . . . . . . . . . . . . 1 . . . . . . . . . . 1 . . . . . . . . . . . . . . . . . . . 1 . . . . . . . . . . . . . . . 
+   12: . . . . 1 . . . . . . . 1 . . . . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+   13: . . . . . . . . . . . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1 . . . . . . . . . . . . . . . . 
+   14: . . 1 . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1 . . . . . . . . . . . . . . 
+   15: . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+   16: 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+   17: . . . . . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1 . . . . . . . . . . . . . . . . . . . . . 
+   18: . . . . . . . . . . 1 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1 . . . . . . . . 
+   19: . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1 . . . . . . . . . . . 1 . . . . . . . . . . . . . . . 
+   20: . 1 . . . . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1 . . . 
+   21: . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+   22: . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+   23: . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1 . . . . 
+   24: . . . . . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+   25: . . . . . . . . . . . . . . . . . . . . . . . . . . . 1 . . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . 1 . . . . . . 
+   26: . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1 . . . . 1 . . . . . . . . . . . . . . . . 
+   27: . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1 . . . 1 . . . . . . . . . . . . . . 
+   28: . . . . . . . . . . . . . . . . . . . . . . . . 1 . . . . . . . . . . . . . . . . . . . . 1 . . . . . . 1 . . . . . . . 1 . . . 
+   29: . . . . . . . . . . 1 . . . . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+   30: . . . . . . . . . 1 . . . . . . . . . . . . . . . . . . . . . . . . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+   31: . . . . . . . . . . . . . . . . . . . . . . . . 1 . . . . . . . . . . . . . . . . . . . . . 1 . . . . . . . . . . . . 1 1 . . . 
+   32: . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+   33: . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+   34: . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1 . . . . . . . . . . . . . . . . . . . . . . 
+   35: . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . 1 . . . . . . . . . . 1 . . . . . . . . . . . . . . . . . . . . . . . 
+   36: . . . . . . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1 . . . . . . . . . . . . . 
+   37: . . . . . . . . . . . . . . . . . . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1 . . . . 
+   38: 1 . . . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1 . . . . 1 . . . . . . . . . . . . . . . 1 . 
+   39: . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+   40: . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1 . . . . . . . . . . . . . . . . . 1 . . . 1 
+   41: . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1 . . . . . . . . . . . . . . . . . 1 . . . . . . . . . . . 
+   42: . . . . . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . 1 . . . 1 . 1 . . . . . . . 1 . . . . . . . . . . . . . . . . 
+   43: . . . . . . . . . . . . . . . . 1 . . . . . . . . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+   44: . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+   45: . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1 . . . . . . . . . 
+   46: . . . . 1 . . . . . . . . . . . . . . . . . . . . . 1 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+   47: . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1 . . . . . . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . 
+   48: . 1 . . . 1 . . . . . . 1 . . . . . . . . . . . . 1 . . . . . . . . . . . . . . . 1 . . . . . . . . . . . . . . . . . . . . . . 
+   49: . . . . . . . . . . 1 . . . . . . . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1 . . . . . . . 
+   50: . . . . . . . 1 . . . . . 1 . . . . . . . . . . . . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+   51: . . . . . . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+   52: . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1 . . . . . 
+   53: . . . . . . . . . . . . . . . . . . . . . . . . . . . 1 . . . . . . . . . . . . 1 . . . . . . . . . . . . . . . . . . . . . . . 
+   54: . . . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+   55: . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1 . . . . . . . . . . . . . . . . . . . 
+   56: . . . . . . . . . . . . . . . . . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+   57: . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1 . . . . . . . . . . . . . . . 
+   58: . . . . . . . . . . . . . . . . . . . . . . . . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1 . . . 
+   59: . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1 . . . . . . . . . . . . 
+   60: . . . . . . . . . . . . . . . . . . . . . . 1 . . . . . . . 1 . . . . . 1 . . 1 . . . . . . . . . . . . . . . . . . . . . . . . 
+   61: . . . . . . . . . . . . . . . . . . . 1 . . . . . . . 1 . . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . 1 . . . . . . 
+   62: . . 1 1 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+   63: . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1 . . . . . . . . . . . . . . . . . . . . . . . . . . 
+   64: . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1 . . . . . . . . . . . . . . . . . . . . . . . . 
+
+Depth First Traversal: 1->11->18->12->5->2->20->7->36->51->61->28->25->31->47->38->42->6->17->43->26->48->13->24->34->40->60->23->37->19->49->57->64->63->58->46->27->50->8->14->3->62->4->54->53->41->35->30->10->52->59->55->45->56->29->16->End
+
+Breadth First Traversal: 1->11->16->38->18->29->49->5->42->47->63->12->56->19->57->2->14->46->62->6->34->40->48->31->13->37->20->35->52->55->3->50->27->28->4->17->24->60->64->26->25->61->7->30->41->59->45->8->53->54->43->23->58->36->51->10->End
+
+
+Graph 5 Display:
+
+Adjacency List:
+  0: 1 3 13 
+  1: 0 2 14 
+  2: 1 3 7 
+  3: 0 2 12 
+  4: 5 6 
+  5: 4 
+  6: 4 
+  7: 2 8 12 17 
+  8: 7 12 9 
+  9: 8 11 
+ 10: 11 
+ 11: 9 10 
+ 12: 3 7 8 13 
+ 13: 0 12 14 15 
+ 14: 1 13 15 16 
+ 15: 13 14 17 
+ 16: 14 
+ 17: 7 15 18 
+ 18: 17 
+ 19: 20 
+ 20: 19 
+
+Matrix:
+    0: . 1 . 1 . . . . . . . . . 1 . . . . . . . 
+    1: 1 . 1 . . . . . . . . . . . 1 . . . . . . 
+    2: . 1 . 1 . . . 1 . . . . . . . . . . . . . 
+    3: 1 . 1 . . . . . . . . . 1 . . . . . . . . 
+    4: . . . . . 1 1 . . . . . . . . . . . . . . 
+    5: . . . . 1 . . . . . . . . . . . . . . . . 
+    6: . . . . 1 . . . . . . . . . . . . . . . . 
+    7: . . 1 . . . . . 1 . . . 1 . . . . 1 . . . 
+    8: . . . . . . . 1 . 1 . . 1 . . . . . . . . 
+    9: . . . . . . . . 1 . . 1 . . . . . . . . . 
+   10: . . . . . . . . . . . 1 . . . . . . . . . 
+   11: . . . . . . . . . 1 1 . . . . . . . . . . 
+   12: . . . 1 . . . 1 1 . . . . 1 . . . . . . . 
+   13: 1 . . . . . . . . . . . 1 . 1 1 . . . . . 
+   14: . 1 . . . . . . . . . . . 1 . 1 1 . . . . 
+   15: . . . . . . . . . . . . . 1 1 . . 1 . . . 
+   16: . . . . . . . . . . . . . . 1 . . . . . . 
+   17: . . . . . . . 1 . . . . . . . 1 . . 1 . . 
+   18: . . . . . . . . . . . . . . . . . 1 . . . 
+   19: . . . . . . . . . . . . . . . . . . . . 1 
+   20: . . . . . . . . . . . . . . . . . . . 1 . 
+
+Depth First Traversal: 0->1->2->3->12->7->8->9->11->10->17->15->13->14->16->18->End
+
+Breadth First Traversal: 0->1->3->13->2->14->12->15->7->16->8->17->9->18->11->10->End
+
+BST Testing: 
+"Root!" Insert Moves; Nullptr -> !
+"Alpha" Insert Moves; (Root!):L -> Nullptr -> !
+"Beta" Insert Moves; (Root!):L -> (Alpha):R -> Nullptr -> !
+"Zebra" Insert Moves; (Root!):R -> Nullptr -> !
+"Autumn" Insert Moves; (Root!):L -> (Alpha):R -> (Beta):L -> Nullptr -> !
+"Root!" Search Path; (Root!) -> !
+"Alpha" Search Path; (Root!):L -> (Alpha) -> !
+"Autumn" Search Path; (Root!):L -> (Alpha):R -> (Beta):L -> (Autumn) -> !
+"Not inserted" Search Path; (Root!):L -> (Alpha):R -> (Beta):R -> Nullptr -> Not Found
+
+In-order Traversal (Left Root Right):
+"Alpha", "Autumn", "Beta", "Root!", "Zebra", 
+Loading Magic Items into a BST:
+
+"Saddle Blanket of Warmth" Insert Moves; !
+"Cloak of the bat" Insert Moves;  L !
+"Sword of Kings" Insert Moves;  R !
+"Psionic Keystone" Insert Moves;  L R !
+"Club" Insert Moves;  L R L !
+"The Thain Soul ring" Insert Moves;  R R !
+"Traycie's Thunder Tooth" Insert Moves;  R R R !
+"Cube of frost resistance" Insert Moves;  L R L R !
+"Boccob" Insert Moves;  L L !
+"Sable" Insert Moves;  L R R !
+"Parchment of Plagiarism" Insert Moves;  L R L R R !
+"Bedroom knockers" Insert Moves;  L L L !
+"Daggers of V" Insert Moves;  L R L R R L !
+"Portable Home" Insert Moves;  L R L R R R !
+"Boots of the Wraith" Insert Moves;  L L R !
+"Healing Torc" Insert Moves;  L R L R R L R !
+"Bloodstone Ring" Insert Moves;  L L L R !
+"Seuss Igniting Issues" Insert Moves;  R L !
+"Gloves of swimming and climbing" Insert Moves;  L R L R R L R L !
+"Mortis Ring" Insert Moves;  L R L R R L R R !
+"Thumb Ring of Grasping" Insert Moves;  R R R L !
+"Swords of the Four Kings" Insert Moves;  R R L !
+"Phylactery of Favor" Insert Moves;  L R L R R R L !
+"Drenaf Juggernaut" Insert Moves;  L R L R R L R L L !
+"Scarab, golembane" Insert Moves;  R L L !
+"Bone Dust of Undead Control" Insert Moves;  L L R L !
+"Elondel" Insert Moves;  L R L R R L R L L R !
+"Necklace of fireballs type I" Insert Moves;  L R L R R L R R R !
+"Potion of Delayed healing" Insert Moves;  L R L R R R R !
+"Boots of elvenkind" Insert Moves;  L L R L R !
+"Bowl of commanding water elementals" Insert Moves;  L L R R !
+"Headband of intellect +2" Insert Moves;  L R L R R L R L R !
+"Tome of leadership and influence +3" Insert Moves;  R R R L R !
+"Mug of Infinite Thirst" Insert Moves;  L R L R R L R R R L !
+"Amulet of natural armor +1" Insert Moves;  L L L L !
+"Uncle Trapspringer's Delocking Lockpicks" Insert Moves;  R R R R !
+"Mimgot's Anti-magic Girdle" Insert Moves;  L R L R R L R R L !
+"Bracers of armor +7" Insert Moves;  L L R R R !
+"Manual of quickness of action +5" Insert Moves;  L R L R R L R R L L !
+"Claws of Nepotist" Insert Moves;  L L R R R R !
+"Short Battle Bow" Insert Moves;  R L R !
+"Dragoliness" Insert Moves;  L R L R R L R L L L !
+"Claymore" Insert Moves;  L L R R R R R !
+"UFO tofu" Insert Moves;  R R R R L !
+"Rope of entanglement" Insert Moves;  L R R L !
+"Broad Sword" Insert Moves;  L L R R R R L !
+"Wartexx" Insert Moves;  R R R R R !
+"Periapt of Wisdom +2" Insert Moves;  L R L R R R L L !
+"Tower Shield" Insert Moves;  R R R L R R !
+"Cup of Change" Insert Moves;  L R L R R L L !
+"Staff of Tripping" Insert Moves;  R L R R !
+"Gloves of Wizardry" Insert Moves;  L R L R R L R L R L !
+"Robe of stars" Insert Moves;  L R R L L !
+"Moonthrax" Insert Moves;  L R L R R L R R L R !
+"Ring of Sin' Sona" Insert Moves;  L R R L L L !
+"Ioun Crown" Insert Moves;  L R L R R L R R L L L !
+"Drums of panic" Insert Moves;  L R L R R L R L L R L !
+"Twig of a Dozen Uses or The Handy Stick" Insert Moves;  R R R R L L !
+"Sword Of Fear" Insert Moves;  R L R R R !
+"Blindfold of Wakeful Sleep" Insert Moves;  L L L R L !
+"Sheldon's Ring of the Fishes" Insert Moves;  R L R L !
+"Ebuc Cube" Insert Moves;  L R L R R L R L L R L R !
+"Bracers of armor +1" Insert Moves;  L L R R R L !
+"Marvelous pigments" Insert Moves;  L R L R R L R R L L R !
+"Warding Stakes" Insert Moves;  R R R R R L !
+"Flail of Armor Disruption" Insert Moves;  L R L R R L R L L R R !
+"Backhand" Insert Moves;  L L L L R !
+"Cloak of resistance +5" Insert Moves;  L L R R R R R R !
+"Winter's Night" Insert Moves;  R R R R R R !
+"Circlet of Superiority" Insert Moves;  L L R R R R L R !
+"Deck of Cards" Insert Moves;  L R L R R L R L L L L !
+"Orb of storms" Insert Moves;  L R L R R L R R R R !
+"Chaos diamond" Insert Moves;  L L R R R R L R L !
+"Fan of Deadly Quills" Insert Moves;  L R L R R L R L L R R L !
+"Hand of the mage" Insert Moves;  L R L R R L R L R L R !
+"Lightning Totem" Insert Moves;  L R L R R L R R L L L R !
+"Apparatus of the crab" Insert Moves;  L L L L R L !
+"Ring of Treasure Location" Insert Moves;  L R R L L L R !
+"Long Staff" Insert Moves;  L R L R R L R R L L L R R !
+"Full Helm" Insert Moves;  L R L R R L R L L R R R !
+"Hwoctul's Masks" Insert Moves;  L R L R R L R R L L L L !
+"Bracers of Repellence" Insert Moves;  L L R R R R L L !
+"Tome of clear thought +4" Insert Moves;  R R R L R L !
+"Dagger" Insert Moves;  L R L R R L L R !
+"Horn of Confusion" Insert Moves;  L R L R R L R R L L L L L !
+"Maul of the titans" Insert Moves;  L R L R R L R R L L R R !
+"Ring of Quick Casting" Insert Moves;  L R R L L L L !
+"Five Chromatic Banes, The" Insert Moves;  L R L R R L R L L R R L R !
+"Hide of Transformation" Insert Moves;  L R L R R L R R L L L L L L !
+"Bag of Thorns" Insert Moves;  L L L L R R !
+"Sword of Life" Insert Moves;  R R L L !
+"Stone of alarm" Insert Moves;  R L R R R L !
+"Fleen's Reagent" Insert Moves;  L R L R R L R L L R R R L !
+"Boots of Running" Insert Moves;  L L R L R R !
+"Shield of Tenser" Insert Moves;  R L R L R !
+"Ring of Defense" Insert Moves;  L R R L L L L L !
+"Mattock of the titans" Insert Moves;  L R L R R L R R L L R R L !
+"Towgar's Twin Rings of Strength and Wisdom" Insert Moves;  R R R L R R R !
+"Figurine of wondrous power, silver raven" Insert Moves;  L R L R R L R L L R R L R L !
+"Horseshoes of Cleanliness" Insert Moves;  L R L R R L R R L L L L L R !
+"Broad Axe" Insert Moves;  L L R R R R L L R !
+"Earring of Cooling" Insert Moves;  L R L R R L R L L R L R L !
+"War Staff" Insert Moves;  R R R R R L L !
+"Ring Of Venom" Insert Moves;  L R R L L L R R !
+"Belt of Concealing" Insert Moves;  L L L R L L !
+"Ranger's Sword" Insert Moves;  L R R L L L L L L !
+"Sack of Plunder" Insert Moves;  L R R R !
+"Pearl of power, 7th-level spell" Insert Moves;  L R L R R R L L L !
+"Torque of Aerie" Insert Moves;  R R R L R R L !
+"Bow of Called Shots" Insert Moves;  L L R R L !
+"Kings Coinear" Insert Moves;  L R L R R L R R L L L R L !
+"Zales Might" Insert Moves;  R R R R R R R !
+"Twin Short Swords of Defence" Insert Moves;  R R R R L L R !
+"Disenchanter/Unenchanter" Insert Moves;  L R L R R L R L L L L R !
+"Ring gates" Insert Moves;  L R R L L L L L L R !
+"Stone Bloodhounds" Insert Moves;  R L R R R L L !
+"Sword of Gith" Insert Moves;  R L R R R R !
+"Horn of blasting, greater" Insert Moves;  L R L R R L R R L L L L L L R !
+"Shuriken +1, Returning" Insert Moves;  R L R R L !
+"Hard Leather Armor" Insert Moves;  L R L R R L R L R L R R !
+"Manual of quickness of action +2" Insert Moves;  L R L R R L R R L L L R R R !
+"Cutter" Insert Moves;  L R L R R L L R L !
+"Short Sword" Insert Moves;  R L R R L L !
+"Coronet of Gith" Insert Moves;  L R L R L !
+"Grenade of the Healer" Insert Moves;  L R L R R L R L R L R L !
+"Cloak of the manta ray" Insert Moves;  L R L L !
+"Wand of Bigby" Insert Moves;  R R R R R L L L !
+"Portable Portal" Insert Moves;  L R L R R R R L !
+"Ring of the Eight Skills" Insert Moves;  L R R L L L R L !
+"Book of Untruth" Insert Moves;  L L R L R L !
+"Tome of leadership and influence +2" Insert Moves;  R R R L R L R !
+"Bag of tricks, tan" Insert Moves;  L L L L R R R !
+"Tome of leadership and influence" Insert Moves;  R R R L R L R L !
+"Glasses of Speed Reading" Insert Moves;  L R L R R L R L L R R R R !
+"Als Magna Deux" Insert Moves;  L L L L L !
+"Potion of Icewater" Insert Moves;  L R L R R R R R !
+"tapastry of disease protection" Insert Moves;  R R L R !
+"Gloves of Dexterity +2" Insert Moves;  L R L R R L R L L R R R R R !
+"Necklace of fireballs type IV" Insert Moves;  L R L R R L R R R R L !
+"Ring of the Merciful Blow" Insert Moves;  L R R L L L R L R !
+"Gauntlets of ogre power" Insert Moves;  L R L R R L R L L R R R R L !
+"Efreeti bottle" Insert Moves;  L R L R R L R L L R L R R !
+"Vestments of Virtue" Insert Moves;  R R R R R L L L L !
+"Darkskull" Insert Moves;  L R L R R L R L L L L L !
+"Manual of gainful exercise +5" Insert Moves;  L R L R R L R R L L L R R R L !
+"Vambraces of Unarmed Prowess" Insert Moves;  R R R R R L L L L L !
+"Heartstake" Insert Moves;  L R L R R L R R L L L L L L L !
+"Belt of Keeping" Insert Moves;  L L L R L L R !
+"Silversheen" Insert Moves;  R L R R L R !
+"Cloak of Magic Shielding" Insert Moves;  L L R R R R R R L !
+"Mantle of spell resistance" Insert Moves;  L R L R R L R R L L L R R R L L !
+"Tordour's Reusable Writing Tablet" Insert Moves;  R R R L R R L L !
+"Bone Dust" Insert Moves;  L L R L L !
+"Plate Mail" Insert Moves;  L R L R R R L R !
+"Hectorius's Twin Rings" Insert Moves;  L R L R R L R R L L L L L L L R !
+"Pheonix Spellbook" Insert Moves;  L R L R R R L L R !
+"Manual of bodily health +1" Insert Moves;  L R L R R L R R L L L R R R L L R !
+"Censer of controlling air elementals" Insert Moves;  L L R R R R L R L L !
+"Spectral Darts" Insert Moves;  R L R R L R R !
+"Long Bow" Insert Moves;  L R L R R L R R L L L R R L !
+"Aibohphobia" Insert Moves;  L L L L L L !
+"Bowl of Purity" Insert Moves;  L L R R R L L !
+"Feather token, fan" Insert Moves;  L R L R R L R L L R R L R L L !
+"Doom Horn" Insert Moves;  L R L R R L R L L L L R R !
+"Morning Star" Insert Moves;  L R L R R L R R L R R !
+"Crystal ball with see invisibility" Insert Moves;  L R L R L R !
+"Long War Bow" Insert Moves;  L R L R R L R R L L L R R R L L L !
+"Manacadam Rings" Insert Moves;  L R L R R L R R L L L R R R L L L R !
+"Amulet of mighty fists +5" Insert Moves;  L L L L L R !
+"Manual of bodily health +4" Insert Moves;  L R L R R L R R L L L R R R L L R R !
+"Ye Robe of Useless Things" Insert Moves;  R R R R R R R L !
+"Battlefield Map Table" Insert Moves;  L L L L R R R R !
+"Pearl of power, 8th-level spell" Insert Moves;  L R L R R R L L L R !
+"Amber Spider" Insert Moves;  L L L L L R L !
+"Cloak of Charisma +6" Insert Moves;  L L R R R R R R L L !
+"Statuette of Tyadria" Insert Moves;  R L R R R L L L !
+"Manual of gainful exercise +1" Insert Moves;  L R L R R L R R L L L R R R L L R R R !
+"Arachnid tome" Insert Moves;  L L L L R L R !
+"Dust of disappearance" Insert Moves;  L R L R R L R L L R L R L L !
+"Dagger +1, Mistcutter" Insert Moves;  L R L R R L L R R !
+"Incense of meditation" Insert Moves;  L R L R R L R R L L L L R !
+"Gloves of the Pugelist" Insert Moves;  L R L R R L R L R L L !
+"Breast Plate" Insert Moves;  L L R R R R L L R L !
+"Bag of holding type III" Insert Moves;  L L L L R R L !
+"Gloves of Far Reaching" Insert Moves;  L R L R R L R L L R R R R R R !
+"Boat, folding" Insert Moves;  L L L R R !
+"Potion of the Hero's Heart" Insert Moves;  L R L R R R R R R !
+"Full Plate Mail" Insert Moves;  L R L R R L R L L R R R R L L !
+"Casters Aid" Insert Moves;  L L R R R R L R L L L !
+"Book of the Necromancer" Insert Moves;  L L R L R L L !
+"Box of Delights" Insert Moves;  L L R R R L L R !
+"Potion of Dreaming" Insert Moves;  L R L R R R R R L !
+"Ring of Fire Absorbing" Insert Moves;  L R R L L L L L R !
+"Ring of Telepathic Bonds" Insert Moves;  L R R L L L R L L !
+"Cloak of resistance +1" Insert Moves;  L L R R R R R R L R !
+"Folding Catapult (or Ballista)" Insert Moves;  L R L R R L R L L R R R L R !
+"Amulet of health +6" Insert Moves;  L L L L L R L R !
+"Scimitar" Insert Moves;  R L L R !
+"FrostBite" Insert Moves;  L R L R R L R L L R R R L R R !
+"Ring of Letumoris" Insert Moves;  L R R L L L L L R R !
+"Staff of Divine Winds" Insert Moves;  R L R R L R R R !
+"Manual of quickness of action +4" Insert Moves;  L R L R R L R R L L L R R R R !
+"Soap of Cleanliness" Insert Moves;  R L R R L R R L !
+"Sal'keshes Splendid Stronghold" Insert Moves;  R L L L !
+"Coffin of Blessing" Insert Moves;  L R L R L L !
+"Rod of the Rust Monster" Insert Moves;  L R R L L R !
+"Well of many worlds" Insert Moves;  R R R R R R L !
+"Pipes of sounding" Insert Moves;  L R L R R R L R L !
+"Manual of quickness of action +1" Insert Moves;  L R L R R L R R L L L R R R L R !
+"The Scalp of Kung" Insert Moves;  R R L R R !
+"Dust of dryness" Insert Moves;  L R L R R L R L L R L R L L R !
+"Composite Staff" Insert Moves;  L R L R L L R !
+"Flytrap Liquid" Insert Moves;  L R L R R L R L L R R R L R L !
+"Quicksilver Amulet" Insert Moves;  L R R L L L L L L L !
+"Handbook of the Magus" Insert Moves;  L R L R R L R L R L R R L !
+"Saddle of Stability" Insert Moves;  R L L L L !
+"Skull Cap" Insert Moves;  R L R R L R R L L !
+"Dust of illusion" Insert Moves;  L R L R R L R L L R L R L L R R !
+"Cloak" Insert Moves;  L L R R R R R R L L L !
+"Leather Armor" Insert Moves;  L R L R R L R R L L L R L R !
+"Exploding Caltrops" Insert Moves;  L R L R R L R L L R R L L !
+"Pearl of power, 9th-level spell" Insert Moves;  L R L R R R L L L R R !
+"Cape" Insert Moves;  L L R R R R L R L L L L !
+"canticle of concealments" Insert Moves;  L L R R R R L R L L L L L !
+"Rod of Substituted Spell Components" Insert Moves;  L R R L L R L !
+"Chainmail of Random Surprise" Insert Moves;  L L R R R R L R L L R !
+"Skin of Fresh Water" Insert Moves;  R L R R L R R L L L !
+"Horseman's Spear" Insert Moves;  L R L R R L R R L L L L L R L !
+"Bow of Doubling" Insert Moves;  L L R R L R !
+"Breast plate of the champion" Insert Moves;  L L R R R R L L R L R !
+"Weapon ring" Insert Moves;  R R R R R R L L !
+"Sling of Slugging" Insert Moves;  R L R R L R R L L R !
+"Arenea Wand" Insert Moves;  L L L L R L R R !
+"Necklace of fireballs type V" Insert Moves;  L R L R R L R R R R L R !
+"Sword of the Kauhns" Insert Moves;  R R L L R !
+"Rod of Ascension" Insert Moves;  L R R L L R L L !
+"Taco cat" Insert Moves;  R R L R L !
+"Crystal ball" Insert Moves;  L R L R L R L !
+"Sheldon's Avenger" Insert Moves;  R L R L L !
+"Mirror of opposition" Insert Moves;  L R L R R L R R L R L !
+"Splint Mail" Insert Moves;  R L R R L R R R L !
+"Elixir of hiding" Insert Moves;  L R L R R L R L L R L R R R !
+"Razor of Bluntness" Insert Moves;  L R R L L L L L L R L !
+"Manual of bodily health +5" Insert Moves;  L R L R R L R R L L L R R R L L R R R L !
+"ropper" Insert Moves;  L R R L R !
+"Aquasword" Insert Moves;  L L L L R L R L !
+"Shield - Stone Warden" Insert Moves;  R L R L R L !
+"Phylactery of faithfulness" Insert Moves;  L R L R R R L L R R !
+"Wafers of Death Avoidance" Insert Moves;  R R R R R L L L L R !
+"Sword of Critique" Insert Moves;  R L R R R L R !
+"Great Sword" Insert Moves;  L R L R R L R L R L R L L !
+"Amulet of health +2" Insert Moves;  L L L L L R L R L !
+"Shadowskill Armor" Insert Moves;  R L R L L L !
+"Eversol's Innebriator" Insert Moves;  L R L R R L R L L R R L L L !
+"Amulet of Proof Against Turning" Insert Moves;  L L L L R L L !
+"Gothic Shield" Insert Moves;  L R L R R L R L R L R L L L !
+"Ring of power" Insert Moves;  L R R L L L L L R R R !
+"Crown" Insert Moves;  L R L R L R L L !
+"Boots of striding and springing" Insert Moves;  L L R L R R R !
+"Battle Axe" Insert Moves;  L L L L R R R R L !
+"Mats of Travelling" Insert Moves;  L R L R R L R R L L R R L L !
+"Feather token, swan boat" Insert Moves;  L R L R R L R L L R R L R L L R !
+"Martial Arts Weapon of Change" Insert Moves;  L R L R R L R R L L R L !
+"Sceptre of Illusions" Insert Moves;  R L L R L !
+"Harpy Blade" Insert Moves;  L R L R R L R L R L R R R !
+"Sorcerer's robe" Insert Moves;  R L R R L R R L R !
+"Stone Of Acid Arrow" Insert Moves;  R L R R R L L R !
+"Tome of leadership and influence +4" Insert Moves;  R R R L R R L L L !
+"Cloak of etherealness" Insert Moves;  L L R R R R R R L L R !
+"Elixir of fire breath" Insert Moves;  L R L R R L R L L R L R R R L !
+"Was It A Rat I Saw" Insert Moves;  R R R R R R L L L !
+"Gem of Hoodwinking" Insert Moves;  L R L R R L R L L R R R R L R !
+"Ring of Armoring" Insert Moves;  L R R L L L L L L R R !
+"Amulet of proof against detection and location" Insert Moves;  L L L L R L L L !
+"Feather token, bird" Insert Moves;  L R L R R L R L L R R L R L L L !
+"Kite Shield" Insert Moves;  L R L R R L R R L L L R L R L !
+"Bola Necklace" Insert Moves;  L L R L L L !
+"Item of Instant Armour Appearance" Insert Moves;  L R L R R L R R L L L R L L !
+"Manual of gainful exercise +2" Insert Moves;  L R L R R L R R L L L R R R L L R R R R !
+"Horseshoes of Stealth" Insert Moves;  L R L R R L R R L L L L L R R !
+"Pouch of Spare Parts" Insert Moves;  L R L R R R R R R R !
+"Circlet of blasting, minor" Insert Moves;  L L R R R R L R L R !
+"Athame of Soul Stealing" Insert Moves;  L L L L R L R R R !
+"Arrows of Eroch the Archer" Insert Moves;  L L L L R L R R R L !
+"Periapt of Wisdom +6" Insert Moves;  L R L R R R L L R L !
+"Death Rod" Insert Moves;  L R L R R L R L L L L L R !
+"Mace of Divine Wrath" Insert Moves;  L R L R R L R R L L L R R R L L L R L !
+"Tome of clear thought +2" Insert Moves;  R R R L R L L !
+"Tome of understanding +5" Insert Moves;  R R R L R R L L L R !
+"Aphid" Insert Moves;  L L L L R L L R !
+"Mantle of faith" Insert Moves;  L R L R R L R R L L L R R R L L L R R !
+"Kidnapper's Bag" Insert Moves;  L R L R R L R R L L L R L L R !
+"Mongoose Ring" Insert Moves;  L R L R R L R R L R L R !
+"Bag of holding type I" Insert Moves;  L L L L R R L L !
+"Draught of Lycanthropy" Insert Moves;  L R L R R L R L L L R !
+"Objects of Obsessiveness" Insert Moves;  L R L R R L R R R R L R R !
+"Walking Stick +3" Insert Moves;  R R R R R L L L L R R !
+"Robe of scintillating colors" Insert Moves;  L R R L L L R R R !
+"Erikson Ring" Insert Moves;  L R L R R L R L L R R L L L L !
+"Spiked Club" Insert Moves;  R L R R L R R R L L !
+"Circle of blasting, major" Insert Moves;  L L R R R R L R L R L !
+"Circlet of Demonic Protection" Insert Moves;  L L R R R R L R L R R !
+"Skiero's Scimitar" Insert Moves;  R L R R L R R L L L L !
+"snowghost" Insert Moves;  R L R R L R R L L R R !
+"Borgir's Sugar Cubes" Insert Moves;  L L R R L L !
+"Rod of Golem-Casting" Insert Moves;  L R R L L R L L R !
+"Gem of seeing" Insert Moves;  L R L R R L R L L R R R R L R R !
+"Throwing Stone" Insert Moves;  R R R L L !
+"Barotak's Hammer" Insert Moves;  L L L L R R R R L L !
+"Sleepytime Bear" Insert Moves;  R L R R L R R L L R L !
+"Ice Mace" Insert Moves;  L R L R R L R R L L L L R L !
+"Brazier of commanding fire elementals" Insert Moves;  L L R R R R L L R L L !
+"Sword of the Ageless" Insert Moves;  R R L L R L !
+"Plate of Glimmering hope" Insert Moves;  L R L R R R L R R !
+"Robe of Darkness" Insert Moves;  L R R L L L R R R L !
+"Bag of tricks, gray" Insert Moves;  L L L L R R R L !
+"Great Axe" Insert Moves;  L R L R R L R L R L R L L L R !
+"Crystal ball with true seeing" Insert Moves;  L R L R L R R !
+"Signal bow" Insert Moves;  R L R R L R L !
+"Scale Mail" Insert Moves;  R L L L R !
+"Sessiel's Snake Staff" Insert Moves;  R L L R R !
+"Rope of Elemental Binding" Insert Moves;  L R R L L R R !
+"Carpet of flying, 5 ft. by 10 ft." Insert Moves;  L L R R R R L R L L L L R !
+"Long Battle Bow" Insert Moves;  L R L R R L R R L L L R R L L !
+"Talisman of Heroic Returns" Insert Moves;  R R L R L R !
+"Gloves of Spell Storing" Insert Moves;  L R L R R L R L L R R R R R R R !
+"Cloak of displacement, major" Insert Moves;  L L R R R R R R L L R L !
+"Potion of Infestation" Insert Moves;  L R L R R R R R R L !
+"Fairy Bowstring" Insert Moves;  L R L R R L R L L R R L L R !
+"Boots of teleportation" Insert Moves;  L L R L R R R R !
+"Crossbow Rod" Insert Moves;  L R L R L R L L L !
+"Olah Halo" Insert Moves;  L R L R R L R R R R L R R R !
+"Velunaedor" Insert Moves;  R R R R R L L L L L R !
+"Horseshoes of Water-Striding" Insert Moves;  L R L R R L R R L L L L L R R R !
+"Blade of Shattering" Insert Moves;  L L L R L L R R !
+"Pipes of haunting" Insert Moves;  L R L R R R L R L L !
+"Sustaining spoon" Insert Moves;  R L R R R L R L !
+"Stone salve" Insert Moves;  R L R R R L R L L !
+"Amulet of mighty fists +4" Insert Moves;  L L L L L R L R R !
+"Amulet of lightning protection" Insert Moves;  L L L L L R L R R L !
+"Crystal ball with detect thoughts" Insert Moves;  L R L R L R L R !
+"Ioun stone, pale green prism" Insert Moves;  L R L R R L R R L L L R L L L !
+"Amulet of natural armor +5" Insert Moves;  L L L L R L L L L !
+"Handy haversack" Insert Moves;  L R L R R L R L R L R R L R !
+"Shield of Attachment" Insert Moves;  R L R L R L R !
+"Pipes of the sewers" Insert Moves;  L R L R R R L R L R !
+"Wings of flying" Insert Moves;  R R R R R R L R !
+"Pins of Acupuncture." Insert Moves;  L R L R R R L R L L L !
+"Bag of holding type II" Insert Moves;  L L L L R R L L R !
+"Robe" Insert Moves;  L R R L L L R R R L L !
+"Helm of brilliance" Insert Moves;  L R L R R L R R L L L L L L L R R !
+"Cloak of the Undead" Insert Moves;  L R L L R !
+"Towgar's Twin Maces of Day and Night" Insert Moves;  R R R L R R R L !
+"Cloak of resistance +2" Insert Moves;  L L R R R R R R L R R !
+"Spectacles of Spell Learning" Insert Moves;  R L R R L R R L R R !
+"Ring-Blade" Insert Moves;  L R R L L L R R R L L L !
+"Helm of Debilitation" Insert Moves;  L R L R R L R R L L L L L L L R R R !
+"Belt of giant Strength +6" Insert Moves;  L L L R L L R L !
+"Towgar's Armor of the Heavens" Insert Moves;  R R R L R R R L L !
+"Manual of quickness of action +3" Insert Moves;  L R L R R L R R L L L R R R R L !
+"Small Axe" Insert Moves;  R L R R L R R L L R R L !
+"Totem of Hiding" Insert Moves;  R R R L R R L R !
+"Dream Weaver" Insert Moves;  L R L R R L R L L L R R !
+"Amulet of False Race" Insert Moves;  L L L L L R L R L L !
+"Self-Loading Bow" Insert Moves;  R L L R R L !
+"Figurine of wondrous power, obsidian steed" Insert Moves;  L R L R R L R L L R R L R L L R R !
+"Vaporizer" Insert Moves;  R R R R R L L L L L R L !
+"Dust of appearance" Insert Moves;  L R L R R L R L L R L R L L L !
+"CD case divides ACDC" Insert Moves;  L L R R R R L R L L L R !
+"Gloves of arrow snaring" Insert Moves;  L R L R R L R L L R R R R R L !
+"Dacad" Insert Moves;  L R L R R L L R L R !
+"Bracers of archery, greater" Insert Moves;  L L R R R L L R R !
+"Sailor's Charm" Insert Moves;  R L L L L R !
+"Pearl of power, 5th-level spell" Insert Moves;  L R L R R R L L L L !
+"Vestments of Holy Might" Insert Moves;  R R R R R L L L L L R R !
+"Tome of understanding +4" Insert Moves;  R R R L R R L L L R L !
+"Circlet of persuasion" Insert Moves;  L L R R R R L R L R R R !
+"Soot of Hardening" Insert Moves;  R L R R L R R L R L !
+"Gems of Darkness" Insert Moves;  L R L R R L R L L R R R R L R R R !
+"Po-Tien's Stoney Blade" Insert Moves;  L R L R R R L R R R !
+"Amulet of natural armor +4" Insert Moves;  L L L L R L L L L L !
+"Gloves of Dexterity +6" Insert Moves;  L R L R R L R L L R R R R R R L !
+"Cloak of Charisma +2" Insert Moves;  L L R R R R R R L L L R !
+"The Nose of Venco" Insert Moves;  R R L R R L !
+"Attenuation field" Insert Moves;  L L L L R L R R R R !
+"Thorn wand" Insert Moves;  R R R L L L !
+"Ring of Annoyance" Insert Moves;  L R R L L L L L L R R L !
+"Tome of leadership and influence +5" Insert Moves;  R R R L R R L L L R L L !
+"Steel Sash" Insert Moves;  R L R R R L L L R !
+"Vampire Cone" Insert Moves;  R R R R R L L L L L R L L !
+"Spider Ring" Insert Moves;  R L R R L R R R L L L !
+"Cursed Sword of Ratha-Zim" Insert Moves;  L R L R R L L R L L !
+"Ring of Redemption" Insert Moves;  L R R L L L L R !
+"Eyes of petrification" Insert Moves;  L R L R R L R L L R R L L R L !
+"Elixir of sneaking" Insert Moves;  L R L R R L R L L R L R R R R !
+"Slippers of spider climbing" Insert Moves;  R L R R L R R L L R R L L !
+"Helm of teleportation" Insert Moves;  L R L R R L R R L L L L L L L R R R R !
+"Horn of Holding" Insert Moves;  L R L R R L R R L L L L L R L L !
+"Sword Scabbard of Hiding" Insert Moves;  R R L L R R !
+"Short War Bow" Insert Moves;  R L R R L L R !
+"War Hammer" Insert Moves;  R R R R R L L L R !
+"The Hawkblade" Insert Moves;  R R L R R L L !
+"Rod of Revelation" Insert Moves;  L R R L L R L L R R !
+"Vest of escape" Insert Moves;  R R R R R L L L L L R R L !
+"Manual of bodily health +3" Insert Moves;  L R L R R L R R L L L R R R L L R R L !
+"Tome of understanding +3" Insert Moves;  R R R L R R L L L R L L R !
+"Two-Handed Sword" Insert Moves;  R R R R L L R R !
+"Dragon Cloak" Insert Moves;  L R L R R L R L L L R L !
+"Judecca" Insert Moves;  L R L R R L R R L L L R L L R L !
+"Amulet of mighty fists +1" Insert Moves;  L L L L L R L R R L R !
+"Chime of opening" Insert Moves;  L L R R R R L R L R L L !
+"Helm" Insert Moves;  L R L R R L R R L L L L L L L R R L !
+"Tear of Life" Insert Moves;  R R L R R L L L !
+"Pearl of power, 2nd-level spell" Insert Moves;  L R L R R R L L L L L !
+"Tongue Twister" Insert Moves;  R R R L R R L L L R R !
+"Alarm Wire" Insert Moves;  L L L L L L R !
+"Wizards Wardrobe" Insert Moves;  R R R R R R R L L !
+"Tome of understanding +1" Insert Moves;  R R R L R R L L L R L L R L !
+"Strand of prayer beads, greater" Insert Moves;  R L R R R L R L L R !
+"Razor Leaf" Insert Moves;  L R R L L L L L L R L L !
+"Cane of Evocation" Insert Moves;  L L R R R R L R L L L L L L !
+"Helm of underwater action" Insert Moves;  L R L R R L R R L L L L L L L R R R R R !
+"Searing Totem" Insert Moves;  R L L R R L L !
+"Helm of telepathy" Insert Moves;  L R L R R L R R L L L L L L L R R R R L !
+"Dagger of the wilds" Insert Moves;  L R L R R L L R R R !
+"Periapt of health" Insert Moves;  L R L R R R L L L R R R !
+"Ioun stone, clear spindle" Insert Moves;  L R L R R L R R L L L R L L L L !
+"Pearl of power, two spells" Insert Moves;  L R L R R R L L L R R R L !
+"Ring of Fiery Assistance" Insert Moves;  L R R L L L L L R L !
+"Footsteps of Shaltot" Insert Moves;  L R L R R L R L L R R R L R R L !
+"Feather token, anchor" Insert Moves;  L R L R R L R L L R R L R L L L L !
+"Cubic gate" Insert Moves;  L R L R R L L L !
+"Elixir of truth" Insert Moves;  L R L R R L R L L R L R R R R R !
+"Arrows of Translocation" Insert Moves;  L L L L R L R R R L R !
+"White sword" Insert Moves;  R R R R R R L R L !
+"Lantern of revealing" Insert Moves;  L R L R R L R R L L L R L R L R !
+"Hunter's Bow" Insert Moves;  L R L R R L R R L L L L L R R R R !
+"Stone of controlling earth elementals" Insert Moves;  R L R R R L R L L L !
+"Field Plate" Insert Moves;  L R L R R L R L L R R L R L L R R L !
+"Tome of clear thought +5" Insert Moves;  R R R L R L R L L !
+"Robe of the archmagi" Insert Moves;  L R R L L R L L L !
+"Small Shield" Insert Moves;  R L R R L R R L L R R L R !
+"Pearl of power, 1st-level spell" Insert Moves;  L R L R R R L L L L L L !
+"Mirror of mental prowess" Insert Moves;  L R L R R L R R L R L L !
+"Hammer of Weylund" Insert Moves;  L R L R R L R L R L R L R !
+"Necklace of fireballs type II" Insert Moves;  L R L R R L R R R R L L !
+"Delacour" Insert Moves;  L R L R R L R L L L L R L !
+"Blessed (Cursed) Oil" Insert Moves;  L L L R L L R R R !
+"Hero Musk" Insert Moves;  L R L R R L R R L L L L L L L R R R R R R !
+"Ioun stone, lavender and green ellipsoid" Insert Moves;  L R L R R L R R L L L R L L L L R !
+"Feather token, tree" Insert Moves;  L R L R R L R L L R R L R L L R R L L !
+"Seeds of Plenty" Insert Moves;  R L L R R L L R !
+"Bracers of armor +8" Insert Moves;  L L R R R R L L L !
+"Book of the Past" Insert Moves;  L L R L R L L R !
+"Amulet of Deception" Insert Moves;  L L L L L R L R L L L !
+"Lens of detection" Insert Moves;  L R L R R L R R L L L R L R R !
+"Poultice of Ori" Insert Moves;  L R L R R R R R R R R !
+"Mirror of life trapping" Insert Moves;  L R L R R L R R L R L L L !
+"Nigrals Book of Amassment" Insert Moves;  L R L R R L R R R R L R R L !
+"Brooch of shielding" Insert Moves;  L L R R R R L R L L L L L L L !
+"Crossbow of Power" Insert Moves;  L R L R L R L L L L !
+"Golem manual, iron" Insert Moves;  L R L R R L R L R L R L L L L !
+"Sword of Enlightenment" Insert Moves;  R L R R R L R R !
+"Sword of Life Destruction" Insert Moves;  R R L L R L L !
+"Eye Stalk" Insert Moves;  L R L R R L R L L R R L L R L L !
+"Falchion" Insert Moves;  L R L R R L R L L R R L L R R !
+"Metal-morphic Hammer" Insert Moves;  L R L R R L R R L L R R R !
+"Statuette of Nightveil" Insert Moves;  R L R R R L L L L !
+"Dior Droid" Insert Moves;  L R L R R L R L L L L R L R !
+"Robot Tobor" Insert Moves;  L R R L L R L L L R !
+"Candle of truth" Insert Moves;  L L R R R R L R L L L L L L L R !
+"Mood Ring" Insert Moves;  L R L R R L R R L R L R R !
+"Hammer of Power Dampening" Insert Moves;  L R L R R L R L R L R L R L !
+"Seed of Understanding" Insert Moves;  R L L R R L L R L !
+"Wand of Yellow Stones" Insert Moves;  R R R R R L L L R L !
+"Sword of Melnor" Insert Moves;  R R L L R L L R !
+"Boots of the winterlands" Insert Moves;  L L R L R R R R R !
+"Dragon Helm" Insert Moves;  L R L R R L R L L L R L R !
+"Fire Stones" Insert Moves;  L R L R R L R L L R R L R L R !
+"Aerewens armor" Insert Moves;  L L L L L L L !
+"Unguent of timelessness" Insert Moves;  R R R R R L L L L L L !
+"Pearl of power, 6th-level spell" Insert Moves;  L R L R R R L L L L R !
+"Manual of gainful exercise +3" Insert Moves;  L R L R R L R R L L L R R R L L R R R R R !
+"Aerial's Dagger of magic missles" Insert Moves;  L L L L L L L R !
+"Potion of testing" Insert Moves;  L R L R R R R R R L R !
+"Broach of insect repulsion" Insert Moves;  L L R R R R L L R L R R !
+"Terro Piccapoc's Halfling Longblades" Insert Moves;  R R L R R L L L R !
+"Horn of Valhalla" Insert Moves;  L R L R R L R R L L L L L R L L R !
+"Wild Wild Wizard's Staff" Insert Moves;  R R R R R R L R L R !
+"Flail" Insert Moves;  L R L R R L R L L R R L R R !
+"The Circlet of Zahnlok" Insert Moves;  R R L R R L L L R R !
+"Instant fortress" Insert Moves;  L R L R R L R R L L L L R R !
+"Robe of useful items" Insert Moves;  L R R L L R L L L R L !
+"Shield of Tunororizile" Insert Moves;  R L R L R R !
+"Anvil of Wonderous Works" Insert Moves;  L L L L R L L R L !
+"Snuff of Poison Detection" Insert Moves;  R L R R L R R L L R R R !
+"Eyes of the eagle" Insert Moves;  L R L R R L R L L R R L L R L R !
+"Paladin" Insert Moves;  L R L R R L R R R R R !
+"Ring of Random Striking" Insert Moves;  L R R L L L L R L !
+"Mace" Insert Moves;  L R L R R L R R L L L R R R L L L R L L !
+"Arrow of Wormwood" Insert Moves;  L L L L R L R R R L L !
+"Sword of Darkness" Insert Moves;  R L R R R L R R L !
+"Gutbuster's Smelly Mithral Armor" Insert Moves;  L R L R R L R L R L R L R L L !
+"Teleport Ribbon" Insert Moves;  R R L R R L L L R L !
+"Chalice of Giantkind" Insert Moves;  L L R R R R L R L L R R !
+"Dust of tracelessness" Insert Moves;  L R L R R L R L L R L R L L R R R !
+"Hectorius's Twin Maces of The Heavens" Insert Moves;  L R L R R L R R L L L L L L L R L !
+"Ring of Air" Insert Moves;  L R R L L L L L L R R L L !
+"Hammer of Wonderous Works" Insert Moves;  L R L R R L R L R L R L R R !
+"Nanath's Ring-Statue" Insert Moves;  L R L R R L R R R L R !
+"Guardian Armor" Insert Moves;  L R L R R L R L R L R L R L L L !
+"Dawa's Scrollcase of Safekeeping" Insert Moves;  L R L R R L R L L L L L R L !
+"Horn of goodness/evil" Insert Moves;  L R L R R L R R L L L L L R L L L !
+"Tome of clear thought +1" Insert Moves;  R R R L R L L L !
+"Clevershot" Insert Moves;  L L R R R R R R L L L L !
+"Ioun stone, orange" Insert Moves;  L R L R R L R R L L L R L L L L R R !
+"Wei Chin's Portable Writing Desk" Insert Moves;  R R R R R R L L R !
+"Dimensional shackles	28,000 gp" Insert Moves;  L R L R R L R L L L L R L R L !
+"Garment of Yveth" Insert Moves;  L R L R R L R L L R R R R L L R !
+"Quarter Staff" Insert Moves;  L R R L L L L L L L L !
+"Star of Landryn Teriak" Insert Moves;  R L R R R L L L L L !
+"Healing Totem" Insert Moves;  L R L R R L R R L L L L L L L L !
+"Manual of gainful exercise +4" Insert Moves;  L R L R R L R R L L L R R R L L R R R R R R !
+"Elixir of swimming" Insert Moves;  L R L R R L R L L R L R R R R R L !
+"Bracers of armor +5" Insert Moves;  L L R R R L R !
+"Narc in a panic ran" Insert Moves;  L R L R R L R R R L R R !
+"Carpet of flying, 10 ft. by 10 ft." Insert Moves;  L L R R R R L R L L L L R L !
+"Eyes of charming" Insert Moves;  L R L R R L R L L R R L L R L L R !
+"The Red Asp" Insert Moves;  R R L R R L R !
+"Link Tabbard" Insert Moves;  L R L R R L R R L L L R R L L L !
+"Robe of blending" Insert Moves;  L R R L L L R R R L L R !
+"Shield of Metal Adherence" Insert Moves;  R L R L R L R R !
+"Globe of War" Insert Moves;  L R L R R L R L L R R R R R L L !
+"Amulet of mighty fists +2" Insert Moves;  L L L L L R L R R L R R !
+"Maul" Insert Moves;  L R L R R L R R L L R R L R !
+"Malhrek's Staff of Flame" Insert Moves;  L R L R R L R R L L L R R R L L L R L R !
+"Ioun stone, vibrant purple prism" Insert Moves;  L R L R R L R R L L L R L L L R !
+"Horseshoes of a zephyr" Insert Moves;  L R L R R L R R L L L L L R L R !
+"Rope of climbing" Insert Moves;  L R R L L R R L !
+"Composite Bow" Insert Moves;  L R L R L L R L !
+"gosherwhip of life essence transferral" Insert Moves;  L R L R R L R L R L R L L L L R !
+"Bastard Sword" Insert Moves;  L L L L R R R R L L R !
+"Sword of Mastery +2" Insert Moves;  R R L L R L L R L !
+"Mantle of Fiery Dissolving" Insert Moves;  L R L R R L R R L L L R R R L L L R R R !
+"Elemental gem" Insert Moves;  L R L R R L R L L R L R R R L L !
+"Diplomat's Brooch" Insert Moves;  L R L R R L R L L L L R L R R !
+"Animal lord's helms" Insert Moves;  L L L L R L L R L L !
+"Iron Rats" Insert Moves;  L R L R R L R R L L L R L L L R R !
+"The Cup of Life" Insert Moves;  R R L R R L L L R R R !
+"Wise Whisper (Sword Of Guidance)" Insert Moves;  R R R R R R R L L L !
+"Snail Liquid" Insert Moves;  R L R R L R R L L R R L R R !
+"Armatha's long sword" Insert Moves;  L L L L R L R R R L L L !
+"Shrouds of disintegration" Insert Moves;  R L R R L L R R !
+"Amulet of mighty fists +3" Insert Moves;  L L L L L R L R R L R R R !
+"Disc of Illumination" Insert Moves;  L R L R R L R L L L L R L R R R !
+"Foolkiller" Insert Moves;  L R L R R L R L L R R R L R R L L !
+"Ogre's Requiem" Insert Moves;  L R L R R L R R R R L R R R L !
+"Hand of Tyr" Insert Moves;  L R L R R L R L R L R R L L !
+"Scarab of protection" Insert Moves;  R L L L R R !
+"The Eye of Iaxolok" Insert Moves;  R R L R R L L L R R R R !
+"Bracers of archery, lesser" Insert Moves;  L L R R R L L R R R !
+"Chain Mail" Insert Moves;  L L R R R R L R L L R L !
+"Eyes of doom" Insert Moves;  L R L R R L R L L R R L L R L L R R !
+"Manual of bodily health +2" Insert Moves;  L R L R R L R R L L L R R R L L R R L L !
+"Tome of understanding +2" Insert Moves;  R R R L R R L L L R L L R L R !
+"Bottle of air" Insert Moves;  L L R R L L R !
+"Bedroll of Comfort" Insert Moves;  L L L L R R R R R !
+"Sovereign glue" Insert Moves;  R L R R L R R L R R L !
+"Fighting Suit of Prowess" Insert Moves;  L R L R R L R L L R R L R L L R R L R !
+"Bead of force" Insert Moves;  L L L L R R R R R L !
+"Ioun stone, dusty rose prism" Insert Moves;  L R L R R L R R L L L R L L L L R L !
+"Potion of Liquefaction" Insert Moves;  L R L R R R R R R L R L !
+"Tome of clear thought +3" Insert Moves;  R R R L R L L R !
+"Eversmoking bottle" Insert Moves;  L R L R R L R L L R R L L L L R !
+"Angel's Fury" Insert Moves;  L L L L R L L R L L L !
+"Strand of prayer beads" Insert Moves;  R L R R R L R L L R L !
+"Ring Of Gaseous Form" Insert Moves;  L R R L L L L L R R L !
+"Gloves of the Servant" Insert Moves;  L R L R R L R L R L L R !
+"Necklace of fireballs type III" Insert Moves;  L R L R R L R R R R L L R !
+"The healing ring of Sheldon" Insert Moves;  R R L R R L L R !
+"Endless Rope" Insert Moves;  L R L R R L R L L R R L L L L L !
+"Hat of disguise" Insert Moves;  L R L R R L R L R L R R R R !
+"Axe of Shattering" Insert Moves;  L L L L R L R R R R R !
+"Carpet of flying, 6 ft. by 9 ft." Insert Moves;  L L R R R R L R L L L L R R !
+"Malk'es Magnificent Mansion" Insert Moves;  L R L R R L R R L L L R R R L L L R L R R !
+"Map Of Friends" Insert Moves;  L R L R R L R R L L R L L !
+"Ring of the Maggot" Insert Moves;  L R R L L L R L R L !
+"Feather token, whip" Insert Moves;  L R L R R L R L L R R L R L L R R L L R !
+"Ring Mail" Insert Moves;  L R R L L L L L L R R L L L !
+"Frictionless Shield" Insert Moves;  L R L R R L R L L R R R L R R L R !
+"Torch Ring" Insert Moves;  R R R L R R L L L R R R !
+"Universal solvent" Insert Moves;  R R R R R L L L L L L R !
+"Large Shield" Insert Moves;  L R L R R L R R L L L R L R L R R !
+"Buckler" Insert Moves;  L L R R R R L R L L L L L L L R L !
+"Iron bands of binding" Insert Moves;  L R L R R L R R L L L R L L L R R L !
+"Ring of Flickering" Insert Moves;  L R R L L L L L R R L L !
+"Wind fan" Insert Moves;  R R R R R R L R L R R !
+"Bridle of Control" Insert Moves;  L L R R R R L L R L R R L !
+"Goggles of minute seeing" Insert Moves;  L R L R R L R L R L R L L L L L !
+"Rod of Defense" Insert Moves;  L R R L L R L L R L !
+"Bracers of armor +6" Insert Moves;  L L R R R L R R !
+"Helm of comprehend languages and read magic" Insert Moves;  L R L R R L R R L L L L L L L R R R L !
+"Whisper Blade" Insert Moves;  R R R R R R L R L L !
+"Sword Pin" Insert Moves;  R R L L R R L !
+"Nugget of Preserving" Insert Moves;  L R L R R L R R R R L R R L R !
+"Snapping Purse" Insert Moves;  R L R R L R R L L R R L R R R !
+"War Drum" Insert Moves;  R R R R R L L L R L R !
+"Studded Leather Armor" Insert Moves;  R L R R R L R L L R R !
+"Amulet of the planes" Insert Moves;  L L L L R L L R L L L L !
+"Blood Spear +2" Insert Moves;  L L L R L R !
+"Cloak of Blackshadows" Insert Moves;  L L R R R R R R L L L R L !
+"Robe of bones" Insert Moves;  L R R L L L R R R L L R R !
+"Rod of Wound Aggravation" Insert Moves;  L R R L L R R L L !
+"Book of Spelling Mistakes" Insert Moves;  L L R L R L L L !
+"Salve of slipperiness" Insert Moves;  R L L L R L !
+"Restorative ointment" Insert Moves;  L R R L L L L L L R L R !
+"Periapt of proof against poison" Insert Moves;  L R L R R R L L L R R R R !
+"Festdoom" Insert Moves;  L R L R R L R L L R R L R L L R R L L R R !
+"Chopper" Insert Moves;  L L R R R R L R L R L L R !
+"Frying Pan of Whacking" Insert Moves;  L R L R R L R L L R R R L R R R !
+"Instant Armour and Ring" Insert Moves;  L R L R R L R R L L L L R R L !
+"Bracers of armor +2" Insert Moves;  L L R R R L R L !
+"Dust of Darkness" Insert Moves;  L R L R R L R L L R L R L L L R !
+"Gothic Plate" Insert Moves;  L R L R R L R L R L R L L L L R R !
+"Spear +1, Telescoping" Insert Moves;  R L R R L R R L R R L R !
+"Troll Jar" Insert Moves;  R R R R L L L !
+"Elixir of vision" Insert Moves;  L R L R R L R L L R L R R R R R R !
+"Robe of eyes" Insert Moves;  L R R L L L R R R L R !
+"Bag of tricks" Insert Moves;  L L L L R R R L L !
+"Cloak of elvenkind" Insert Moves;  L L R R R R R R L L R L R !
+"Fire Javelin" Insert Moves;  L R L R R L R L L R R L R L R L !
+"Dragon Saddle" Insert Moves;  L R L R R L R L L L R L R R !
+"Glaive, Dragon Slayer +1/+5" Insert Moves;  L R L R R L R L L R R R R L R R R R !
+"Shadow Cards" Insert Moves;  R L R L L L L !
+"radar" Insert Moves;  L R R L L L L L L L R !
+"Efficient quiver" Insert Moves;  L R L R R L R L L R L R R L !
+"Golf flog" Insert Moves;  L R L R R L R L R L R L L L L R L !
+"Cloak of displacement, minor" Insert Moves;  L L R R R R R R L L R L R L !
+"Large Axe" Insert Moves;  L R L R R L R R L L L R L R L R R L !
+"Blessed Sword of Dancing" Insert Moves;  L L L R L L R R R R !
+"Javelins of Paranoia" Insert Moves;  L R L R R L R R L L L R L L R L L !
+"Horseshoes of speed" Insert Moves;  L R L R R L R R L L L L L R R L !
+"Golem manual, greater stone" Insert Moves;  L R L R R L R L R L R L L L L L R !
+"Quilted Armor" Insert Moves;  L R R L L L L L L L R L !
+"Wine Bottle of High Spirits" Insert Moves;  R R R R R R L R L R R R !
+"Crystal of (specific creature) Finding" Insert Moves;  L R L R L R R R !
+"Og's unbreakable orb" Insert Moves;  L R L R R L R R R R L R R R L L !
+"Long Sword of Battle field +2" Insert Moves;  L R L R R L R R L L L R R R L L L L !
+"Short Bow" Insert Moves;  R L R R L L L !
+"Wood Wand" Insert Moves;  R R R R R R R L L R !
+"Hive Dart" Insert Moves;  L R L R R L R R L L L L L L R L !
+"Gauntlets of Warrior Might" Insert Moves;  L R L R R L R L L R R R R L R L !
+"Dagger of Prying" Insert Moves;  L R L R R L L R R R L !
+"Bucker, Spiked Razor Wing" Insert Moves;  L L R R R R L R L L L L L L L R L L !
+"Great Helm" Insert Moves;  L R L R R L R L R L R L L L R R !
+"Arrows of Outrageous Fortune" Insert Moves;  L L L L R L R R R L R L !
+"War Hammer +3/+2" Insert Moves;  R R R R R L L L R R !
+"Long Sword" Insert Moves;  L R L R R L R R L L L R R R L L L L L !
+"Horn of fog" Insert Moves;  L R L R R L R R L L L L L R L L L L !
+"Ring of Flying" Insert Moves;  L R R L L L L L R R L L R !
+"Banded mail of grounding" Insert Moves;  L L L L R R R R L L L !
+"Elixir of love" Insert Moves;  L R L R R L R L L R L R R R R L !
+"Sword of the Unicorn" Insert Moves;  R R L L R R L L !
+"Nebel Orbs" Insert Moves;  L R L R R L R R R L R R R !
+"Battle Axe +3, Earthshaker" Insert Moves;  L L L L R R R R L R !
+"Book of Stealth" Insert Moves;  L L R L R L L L R !
+
+In-order Traversal (Left Root Right):
+"Aerewens armor", "Aerial's Dagger of magic missles", "Aibohphobia", "Alarm Wire", "Als Magna Deux", "Amber Spider", "Amulet of Deception", "Amulet of False Race", "Amulet of health +2", "Amulet of health +6", "Amulet of lightning protection", "Amulet of mighty fists +1", "Amulet of mighty fists +2", "Amulet of mighty fists +3", "Amulet of mighty fists +4", "Amulet of mighty fists +5", "Amulet of natural armor +1", "Amulet of natural armor +4", "Amulet of natural armor +5", "Amulet of proof against detection and location", "Amulet of Proof Against Turning", "Amulet of the planes", "Angel's Fury", "Animal lord's helms", "Anvil of Wonderous Works", "Aphid", "Apparatus of the crab", "Aquasword", "Arachnid tome", "Arenea Wand", "Armatha's long sword", "Arrow of Wormwood", "Arrows of Eroch the Archer", "Arrows of Outrageous Fortune", "Arrows of Translocation", "Athame of Soul Stealing", "Attenuation field", "Axe of Shattering", "Backhand", "Bag of holding type I", "Bag of holding type II", "Bag of holding type III", "Bag of Thorns", "Bag of tricks", "Bag of tricks, gray", "Bag of tricks, tan", "Banded mail of grounding", "Barotak's Hammer", "Bastard Sword", "Battle Axe", "Battle Axe +3, Earthshaker", "Battlefield Map Table", "Bead of force", "Bedroll of Comfort", "Bedroom knockers", "Belt of Concealing", "Belt of giant Strength +6", "Belt of Keeping", "Blade of Shattering", "Blessed (Cursed) Oil", "Blessed Sword of Dancing", "Blindfold of Wakeful Sleep", "Blood Spear +2", "Bloodstone Ring", "Boat, folding", "Boccob", "Bola Necklace", "Bone Dust", "Bone Dust of Undead Control", "Book of Spelling Mistakes", "Book of Stealth", "Book of the Necromancer", "Book of the Past", "Book of Untruth", "Boots of elvenkind", "Boots of Running", "Boots of striding and springing", "Boots of teleportation", "Boots of the winterlands", "Boots of the Wraith", "Borgir's Sugar Cubes", "Bottle of air", "Bow of Called Shots", "Bow of Doubling", "Bowl of commanding water elementals", "Bowl of Purity", "Box of Delights", "Bracers of archery, greater", "Bracers of archery, lesser", "Bracers of armor +1", "Bracers of armor +2", "Bracers of armor +5", "Bracers of armor +6", "Bracers of armor +7", "Bracers of armor +8", "Bracers of Repellence", "Brazier of commanding fire elementals", "Breast Plate", "Breast plate of the champion", "Bridle of Control", "Broach of insect repulsion", "Broad Axe", "Broad Sword", "Brooch of shielding", "Bucker, Spiked Razor Wing", "Buckler", "Candle of truth", "Cane of Evocation", "canticle of concealments", "Cape", "Carpet of flying, 10 ft. by 10 ft.", "Carpet of flying, 5 ft. by 10 ft.", "Carpet of flying, 6 ft. by 9 ft.", "Casters Aid", "CD case divides ACDC", "Censer of controlling air elementals", "Chain Mail", "Chainmail of Random Surprise", "Chalice of Giantkind", "Chaos diamond", "Chime of opening", "Chopper", "Circle of blasting, major", "Circlet of blasting, minor", "Circlet of Demonic Protection", "Circlet of persuasion", "Circlet of Superiority", "Claws of Nepotist", "Claymore", "Clevershot", "Cloak", "Cloak of Blackshadows", "Cloak of Charisma +2", "Cloak of Charisma +6", "Cloak of displacement, major", "Cloak of displacement, minor", "Cloak of elvenkind", "Cloak of etherealness", "Cloak of Magic Shielding", "Cloak of resistance +1", "Cloak of resistance +2", "Cloak of resistance +5", "Cloak of the bat", "Cloak of the manta ray", "Cloak of the Undead", "Club", "Coffin of Blessing", "Composite Bow", "Composite Staff", "Coronet of Gith", "Crossbow of Power", "Crossbow Rod", "Crown", "Crystal ball", "Crystal ball with detect thoughts", "Crystal ball with see invisibility", "Crystal ball with true seeing", "Crystal of (specific creature) Finding", "Cube of frost resistance", "Cubic gate", "Cup of Change", "Cursed Sword of Ratha-Zim", "Cutter", "Dacad", "Dagger", "Dagger +1, Mistcutter", "Dagger of Prying", "Dagger of the wilds", "Daggers of V", "Darkskull", "Dawa's Scrollcase of Safekeeping", "Death Rod", "Deck of Cards", "Delacour", "Dimensional shackles	28,000 gp", "Dior Droid", "Diplomat's Brooch", "Disc of Illumination", "Disenchanter/Unenchanter", "Doom Horn", "Dragoliness", "Dragon Cloak", "Dragon Helm", "Dragon Saddle", "Draught of Lycanthropy", "Dream Weaver", "Drenaf Juggernaut", "Drums of panic", "Dust of appearance", "Dust of Darkness", "Dust of disappearance", "Dust of dryness", "Dust of illusion", "Dust of tracelessness", "Earring of Cooling", "Ebuc Cube", "Efficient quiver", "Efreeti bottle", "Elemental gem", "Elixir of fire breath", "Elixir of hiding", "Elixir of love", "Elixir of sneaking", "Elixir of swimming", "Elixir of truth", "Elixir of vision", "Elondel", "Endless Rope", "Erikson Ring", "Eversmoking bottle", "Eversol's Innebriator", "Exploding Caltrops", "Eye Stalk", "Eyes of charming", "Eyes of doom", "Eyes of petrification", "Eyes of the eagle", "Fairy Bowstring", "Falchion", "Fan of Deadly Quills", "Feather token, anchor", "Feather token, bird", "Feather token, fan", "Feather token, swan boat", "Feather token, tree", "Feather token, whip", "Festdoom", "Field Plate", "Fighting Suit of Prowess", "Figurine of wondrous power, obsidian steed", "Figurine of wondrous power, silver raven", "Fire Javelin", "Fire Stones", "Five Chromatic Banes, The", "Flail", "Flail of Armor Disruption", "Fleen's Reagent", "Flytrap Liquid", "Folding Catapult (or Ballista)", "Foolkiller", "Footsteps of Shaltot", "Frictionless Shield", "FrostBite", "Frying Pan of Whacking", "Full Helm", "Full Plate Mail", "Garment of Yveth", "Gauntlets of ogre power", "Gauntlets of Warrior Might", "Gem of Hoodwinking", "Gem of seeing", "Gems of Darkness", "Glaive, Dragon Slayer +1/+5", "Glasses of Speed Reading", "Globe of War", "Gloves of arrow snaring", "Gloves of Dexterity +2", "Gloves of Dexterity +6", "Gloves of Far Reaching", "Gloves of Spell Storing", "Gloves of swimming and climbing", "Gloves of the Pugelist", "Gloves of the Servant", "Gloves of Wizardry", "Goggles of minute seeing", "Golem manual, greater stone", "Golem manual, iron", "Golf flog", "gosherwhip of life essence transferral", "Gothic Plate", "Gothic Shield", "Great Axe", "Great Helm", "Great Sword", "Grenade of the Healer", "Guardian Armor", "Gutbuster's Smelly Mithral Armor", "Hammer of Power Dampening", "Hammer of Weylund", "Hammer of Wonderous Works", "Hand of the mage", "Hand of Tyr", "Handbook of the Magus", "Handy haversack", "Hard Leather Armor", "Harpy Blade", "Hat of disguise", "Headband of intellect +2", "Healing Torc", "Healing Totem", "Heartstake", "Hectorius's Twin Maces of The Heavens", "Hectorius's Twin Rings", "Helm", "Helm of brilliance", "Helm of comprehend languages and read magic", "Helm of Debilitation", "Helm of telepathy", "Helm of teleportation", "Helm of underwater action", "Hero Musk", "Hide of Transformation", "Hive Dart", "Horn of blasting, greater", "Horn of Confusion", "Horn of fog", "Horn of goodness/evil", "Horn of Holding", "Horn of Valhalla", "Horseman's Spear", "Horseshoes of a zephyr", "Horseshoes of Cleanliness", "Horseshoes of speed", "Horseshoes of Stealth", "Horseshoes of Water-Striding", "Hunter's Bow", "Hwoctul's Masks", "Ice Mace", "Incense of meditation", "Instant Armour and Ring", "Instant fortress", "Ioun Crown", "Ioun stone, clear spindle", "Ioun stone, dusty rose prism", "Ioun stone, lavender and green ellipsoid", "Ioun stone, orange", "Ioun stone, pale green prism", "Ioun stone, vibrant purple prism", "Iron bands of binding", "Iron Rats", "Item of Instant Armour Appearance", "Javelins of Paranoia", "Judecca", "Kidnapper's Bag", "Kings Coinear", "Kite Shield", "Lantern of revealing", "Large Axe", "Large Shield", "Leather Armor", "Lens of detection", "Lightning Totem", "Link Tabbard", "Long Battle Bow", "Long Bow", "Long Staff", "Long Sword", "Long Sword of Battle field +2", "Long War Bow", "Mace", "Mace of Divine Wrath", "Malhrek's Staff of Flame", "Malk'es Magnificent Mansion", "Manacadam Rings", "Mantle of faith", "Mantle of Fiery Dissolving", "Mantle of spell resistance", "Manual of bodily health +1", "Manual of bodily health +2", "Manual of bodily health +3", "Manual of bodily health +4", "Manual of bodily health +5", "Manual of gainful exercise +1", "Manual of gainful exercise +2", "Manual of gainful exercise +3", "Manual of gainful exercise +4", "Manual of gainful exercise +5", "Manual of quickness of action +1", "Manual of quickness of action +2", "Manual of quickness of action +3", "Manual of quickness of action +4", "Manual of quickness of action +5", "Map Of Friends", "Martial Arts Weapon of Change", "Marvelous pigments", "Mats of Travelling", "Mattock of the titans", "Maul", "Maul of the titans", "Metal-morphic Hammer", "Mimgot's Anti-magic Girdle", "Mirror of life trapping", "Mirror of mental prowess", "Mirror of opposition", "Mongoose Ring", "Mood Ring", "Moonthrax", "Morning Star", "Mortis Ring", "Mug of Infinite Thirst", "Nanath's Ring-Statue", "Narc in a panic ran", "Nebel Orbs", "Necklace of fireballs type I", "Necklace of fireballs type II", "Necklace of fireballs type III", "Necklace of fireballs type IV", "Necklace of fireballs type V", "Nigrals Book of Amassment", "Nugget of Preserving", "Objects of Obsessiveness", "Og's unbreakable orb", "Ogre's Requiem", "Olah Halo", "Orb of storms", "Paladin", "Parchment of Plagiarism", "Pearl of power, 1st-level spell", "Pearl of power, 2nd-level spell", "Pearl of power, 5th-level spell", "Pearl of power, 6th-level spell", "Pearl of power, 7th-level spell", "Pearl of power, 8th-level spell", "Pearl of power, 9th-level spell", "Pearl of power, two spells", "Periapt of health", "Periapt of proof against poison", "Periapt of Wisdom +2", "Periapt of Wisdom +6", "Pheonix Spellbook", "Phylactery of faithfulness", "Phylactery of Favor", "Pins of Acupuncture.", "Pipes of haunting", "Pipes of sounding", "Pipes of the sewers", "Plate Mail", "Plate of Glimmering hope", "Po-Tien's Stoney Blade", "Portable Home", "Portable Portal", "Potion of Delayed healing", "Potion of Dreaming", "Potion of Icewater", "Potion of Infestation", "Potion of Liquefaction", "Potion of testing", "Potion of the Hero's Heart", "Pouch of Spare Parts", "Poultice of Ori", "Psionic Keystone", "Quarter Staff", "Quicksilver Amulet", "Quilted Armor", "radar", "Ranger's Sword", "Razor Leaf", "Razor of Bluntness", "Restorative ointment", "Ring gates", "Ring Mail", "Ring of Air", "Ring of Annoyance", "Ring of Armoring", "Ring of Defense", "Ring of Fiery Assistance", "Ring of Fire Absorbing", "Ring of Flickering", "Ring of Flying", "Ring Of Gaseous Form", "Ring of Letumoris", "Ring of power", "Ring of Quick Casting", "Ring of Random Striking", "Ring of Redemption", "Ring of Sin' Sona", "Ring of Telepathic Bonds", "Ring of the Eight Skills", "Ring of the Maggot", "Ring of the Merciful Blow", "Ring of Treasure Location", "Ring Of Venom", "Ring-Blade", "Robe", "Robe of blending", "Robe of bones", "Robe of Darkness", "Robe of eyes", "Robe of scintillating colors", "Robe of stars", "Robe of the archmagi", "Robe of useful items", "Robot Tobor", "Rod of Ascension", "Rod of Defense", "Rod of Golem-Casting", "Rod of Revelation", "Rod of Substituted Spell Components", "Rod of the Rust Monster", "Rod of Wound Aggravation", "Rope of climbing", "Rope of Elemental Binding", "Rope of entanglement", "ropper", "Sable", "Sack of Plunder", "Saddle Blanket of Warmth", "Saddle of Stability", "Sailor's Charm", "Sal'keshes Splendid Stronghold", "Salve of slipperiness", "Scale Mail", "Scarab of protection", "Scarab, golembane", "Sceptre of Illusions", "Scimitar", "Searing Totem", "Seed of Understanding", "Seeds of Plenty", "Self-Loading Bow", "Sessiel's Snake Staff", "Seuss Igniting Issues", "Shadow Cards", "Shadowskill Armor", "Sheldon's Avenger", "Sheldon's Ring of the Fishes", "Shield - Stone Warden", "Shield of Attachment", "Shield of Metal Adherence", "Shield of Tenser", "Shield of Tunororizile", "Short Battle Bow", "Short Bow", "Short Sword", "Short War Bow", "Shrouds of disintegration", "Shuriken +1, Returning", "Signal bow", "Silversheen", "Skiero's Scimitar", "Skin of Fresh Water", "Skull Cap", "Sleepytime Bear", "Sling of Slugging", "Slippers of spider climbing", "Small Axe", "Small Shield", "Snail Liquid", "Snapping Purse", "snowghost", "Snuff of Poison Detection", "Soap of Cleanliness", "Soot of Hardening", "Sorcerer's robe", "Sovereign glue", "Spear +1, Telescoping", "Spectacles of Spell Learning", "Spectral Darts", "Spider Ring", "Spiked Club", "Splint Mail", "Staff of Divine Winds", "Staff of Tripping", "Star of Landryn Teriak", "Statuette of Nightveil", "Statuette of Tyadria", "Steel Sash", "Stone Bloodhounds", "Stone Of Acid Arrow", "Stone of alarm", "Stone of controlling earth elementals", "Stone salve", "Strand of prayer beads", "Strand of prayer beads, greater", "Studded Leather Armor", "Sustaining spoon", "Sword of Critique", "Sword of Darkness", "Sword of Enlightenment", "Sword Of Fear", "Sword of Gith", "Sword of Kings", "Sword of Life", "Sword of Life Destruction", "Sword of Mastery +2", "Sword of Melnor", "Sword of the Ageless", "Sword of the Kauhns", "Sword of the Unicorn", "Sword Pin", "Sword Scabbard of Hiding", "Swords of the Four Kings", "Taco cat", "Talisman of Heroic Returns", "tapastry of disease protection", "Tear of Life", "Teleport Ribbon", "Terro Piccapoc's Halfling Longblades", "The Circlet of Zahnlok", "The Cup of Life", "The Eye of Iaxolok", "The Hawkblade", "The healing ring of Sheldon", "The Nose of Venco", "The Red Asp", "The Scalp of Kung", "The Thain Soul ring", "Thorn wand", "Throwing Stone", "Thumb Ring of Grasping", "Tome of clear thought +1", "Tome of clear thought +2", "Tome of clear thought +3", "Tome of clear thought +4", "Tome of clear thought +5", "Tome of leadership and influence", "Tome of leadership and influence +2", "Tome of leadership and influence +3", "Tome of leadership and influence +4", "Tome of leadership and influence +5", "Tome of understanding +1", "Tome of understanding +2", "Tome of understanding +3", "Tome of understanding +4", "Tome of understanding +5", "Tongue Twister", "Torch Ring", "Tordour's Reusable Writing Tablet", "Torque of Aerie", "Totem of Hiding", "Tower Shield", "Towgar's Armor of the Heavens", "Towgar's Twin Maces of Day and Night", "Towgar's Twin Rings of Strength and Wisdom", "Traycie's Thunder Tooth", "Troll Jar", "Twig of a Dozen Uses or The Handy Stick", "Twin Short Swords of Defence", "Two-Handed Sword", "UFO tofu", "Uncle Trapspringer's Delocking Lockpicks", "Unguent of timelessness", "Universal solvent", "Vambraces of Unarmed Prowess", "Vampire Cone", "Vaporizer", "Velunaedor", "Vest of escape", "Vestments of Holy Might", "Vestments of Virtue", "Wafers of Death Avoidance", "Walking Stick +3", "Wand of Bigby", "Wand of Yellow Stones", "War Drum", "War Hammer", "War Hammer +3/+2", "War Staff", "Warding Stakes", "Wartexx", "Was It A Rat I Saw", "Weapon ring", "Wei Chin's Portable Writing Desk", "Well of many worlds", "Whisper Blade", "White sword", "Wild Wild Wizard's Staff", "Wind fan", "Wine Bottle of High Spirits", "Wings of flying", "Winter's Night", "Wise Whisper (Sword Of Guidance)", "Wizards Wardrobe", "Wood Wand", "Ye Robe of Useless Things", "Zales Might", "Kidnapper's Bag" Search Path;  L R L R R L R R L L L R L L R ! Comps: 16
+"Eversol's Innebriator" Search Path;  L R L R R L R L L R R L L L ! Comps: 15
+"Rope of climbing" Search Path;  L R R L L R R L ! Comps: 9
+"Gloves of the Pugelist" Search Path;  L R L R R L R L R L L ! Comps: 12
+"Book of the Past" Search Path;  L L R L R L L R ! Comps: 9
+"Bag of holding type II" Search Path;  L L L L R R L L R ! Comps: 10
+"Tome of understanding +2" Search Path;  R R R L R R L L L R L L R L R ! Comps: 16
+"Horn of goodness/evil" Search Path;  L R L R R L R R L L L L L R L L L ! Comps: 18
+"Totem of Hiding" Search Path;  R R R L R R L R ! Comps: 9
+"Ring of the Merciful Blow" Search Path;  L R R L L L R L R ! Comps: 10
+"Gems of Darkness" Search Path;  L R L R R L R L L R R R R L R R R ! Comps: 18
+"Ioun stone, vibrant purple prism" Search Path;  L R L R R L R R L L L R L L L R ! Comps: 17
+"Carpet of flying, 6 ft. by 9 ft." Search Path;  L L R R R R L R L L L L R R ! Comps: 15
+"Breast plate of the champion" Search Path;  L L R R R R L L R L R ! Comps: 12
+"Throwing Stone" Search Path;  R R R L L ! Comps: 6
+"Amulet of health +6" Search Path;  L L L L L R L R ! Comps: 9
+"Pearl of power, 7th-level spell" Search Path;  L R L R R R L L L ! Comps: 10
+"Dior Droid" Search Path;  L R L R R L R L L L L R L R ! Comps: 15
+"Bottle of air" Search Path;  L L R R L L R ! Comps: 8
+"Hive Dart" Search Path;  L R L R R L R R L L L L L L R L ! Comps: 17
+"Sword of Kings" Search Path;  R ! Comps: 2
+"Stone of controlling earth elementals" Search Path;  R L R R R L R L L L ! Comps: 11
+"Phylactery of faithfulness" Search Path;  L R L R R R L L R R ! Comps: 11
+"Gloves of Wizardry" Search Path;  L R L R R L R L R L ! Comps: 11
+"Crown" Search Path;  L R L R L R L L ! Comps: 9
+"Crystal ball" Search Path;  L R L R L R L ! Comps: 8
+"Full Helm" Search Path;  L R L R R L R L L R R R ! Comps: 13
+"Hero Musk" Search Path;  L R L R R L R R L L L L L L L R R R R R R ! Comps: 22
+"Mantle of Fiery Dissolving" Search Path;  L R L R R L R R L L L R R R L L L R R R ! Comps: 21
+"Snuff of Poison Detection" Search Path;  R L R R L R R L L R R R ! Comps: 13
+"Bracers of Repellence" Search Path;  L L R R R R L L ! Comps: 9
+"Cane of Evocation" Search Path;  L L R R R R L R L L L L L L ! Comps: 15
+"Scimitar" Search Path;  R L L R ! Comps: 5
+"Ring of Fiery Assistance" Search Path;  L R R L L L L L R L ! Comps: 11
+"Statuette of Nightveil" Search Path;  R L R R R L L L L ! Comps: 10
+"Cloak of the Undead" Search Path;  L R L L R ! Comps: 6
+"Short Bow" Search Path;  R L R R L L L ! Comps: 8
+"Sack of Plunder" Search Path;  L R R R ! Comps: 5
+"Self-Loading Bow" Search Path;  R L L R R L ! Comps: 7
+"Potion of the Hero's Heart" Search Path;  L R L R R R R R R ! Comps: 10
+"Link Tabbard" Search Path;  L R L R R L R R L L L R R L L L ! Comps: 17
+"Eyes of doom" Search Path;  L R L R R L R L L R R L L R L L R R ! Comps: 19
+
+Average Comparisons Taken: 11

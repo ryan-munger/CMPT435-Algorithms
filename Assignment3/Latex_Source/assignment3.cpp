@@ -411,7 +411,6 @@ int main() {
     magicItemTree->inOrderTraversal();
 
     // find the requested items
-    cout << "\n\nFinding Requested Items:" << endl;
     vector<string> itemsToFind = getMagicItems(ITEMS_2_FIND_PATH);
     int totalComps = 0;
     int comps;

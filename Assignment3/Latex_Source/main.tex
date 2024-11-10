@@ -1,0 +1,234 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% CMPT 435
+% Lab Three
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Short Sectioned Assignment
+% LaTeX Template
+% Version 1.0 (5/5/12)
+%
+% This template has been downloaded from: http://www.LaTeXTemplates.com
+% Original author: % Frits Wenneker (http://www.howtotex.com)
+% License: CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+% Modified by Alan G. Labouseur  - alan@labouseur.com, and Ryan Munger - ryan.munger1@marist.edu
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[letterpaper, 10pt]{article} 
+
+\usepackage[english]{babel} % English language/hyphenation
+\usepackage{graphicx}
+\usepackage[lined,linesnumbered,commentsnumbered]{algorithm2e}
+\usepackage{listings}
+\usepackage{float}
+\usepackage{fancyhdr} % Custom headers and footers
+\pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
+\usepackage{lastpage}
+\usepackage{url}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{ulem}
+
+% Stolen from https://www.overleaf.com/learn/latex/Code_listing 
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+\lstset{style=mystyle, language=c++}
+
+
+\fancyhead{} % No page header - if you want one, create it in the same way as the footers below
+\fancyfoot[L]{} % Empty left footer
+\fancyfoot[C]{page \thepage\ of \pageref{LastPage}} % Page numbering for center footer
+\fancyfoot[R]{}
+
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{13.6pt} % Customize the height of the header
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+\title{	
+   \normalfont \normalsize 
+   \textsc{CMPT 435 - Fall 2024 - Dr. Labouseur} \\[10pt] % Header stuff.
+   \horrule{0.5pt} \\[0.25cm] 	% Top horizontal rule
+   \huge Assignment Three -- Graphs \& Trees\\     	    % Assignment title
+   \horrule{0.5pt} \\[0.25cm] 	% Bottom horizontal rule
+}
+
+\author{Ryan Munger \\ \normalsize Ryan.Munger1@marist.edu}
+
+\date{\normalsize\today} 	% Today's date.
+
+\begin{document}
+
+\maketitle % Print the title
+
+%----------------------------------------------------------------------------------------
+%   CONTENT SECTION
+%----------------------------------------------------------------------------------------
+
+% - -- -  - -- -  - -- -  -
+\section{Introduction}
+\subsection{Goals}
+Assignment 3 focuses on undirected graphs and binary search trees. I was tasked with reading in a list of instructions such as "add vertex A" and build an undirected graph with them. I was able to add vertexes, edges, traverse the graph, and keep an adjacency list, a matrix, and linked objects to represent it. I was also able to place items, find items, and traverse my binary search trees. 
+\subsection{Write-up Format}
+    In this report I will describe the logic being presented. Below the text explanation, relevant code will follow in C++. Unfortunately, as we approach finals season, I no longer have the spare time to also create the assignment in Ada :(. 
+\subsection{Limerick of Luck}
+\noindent
+When life feels undirected \\
+And your vertices become disconnected, \\
+    \hspace*{1.5em}One must traverse within, \\
+    \hspace*{1.5em}Letting one's edges win, \\
+Rendering your attitude corrected. \\
+
+\hrule
+\vspace{.25cm}
+How did the binary tree learn so much? - \textit{It excelled at branching out...}\\
+\hrule
+\vspace{.25cm}
+
+\newpage
+
+\section{Undirected Graphs}
+\subsection{Reading the Instructions}
+I was provided a file of instructions to create undirected graphs such as \textit{add vertex} and \textit{add edge}. Since I am in Dr. Norton's Formal Languages class, regex flooded my mind. Capture groups make this task very easy. When I encountered the \textit{new graph} command, I displayed the current graph and initialized a new one. 
+\lstinputlisting[linerange={340-383}, firstnumber=340]{assignment3.cpp}
+
+\subsection{Graph Object}
+The graph object is pretty simple. Each graph has an ID, and serveral representations of it. First, we have an adjacency list. This is simply a list of neighbors corresponding to each vertex. Next, we have our matrix. I used a map to keep track of the index I placed each vertex into the matrix since the user can name them whatever they want. This matrix is a 2d array that stores where edges are using a '1' or a '.' at the respective location. Finally, I stored each linked vertex object (that has an ID, a processed flag for traversals, and a list of neighbors) in a map corresponding to their ID so that I can look them up quickly. 
+\lstinputlisting[linerange={184-198}, firstnumber=184]{assignment3.cpp}
+\lstinputlisting[linerange={169-173}, firstnumber=169]{assignment3.cpp}
+
+\subsection{Add a Vertex}
+When adding a vertex, we must update all three representations of the graph. My code works just fine if we add vertexes after edges (as long as those edges didn't reference a nonexistent vertex of course). 
+\begin{enumerate}
+    \item If the matrix is empty, start a matrix (1x1).
+    \item If the matrix is not empty, resize it by adding a column and a row.
+    \item Store the index we stored the new vertex at.
+    \item Start an adjacency list for this vertex.
+    \item If the target is less than the midpoint, search the half before the midpoint.
+    \item Create a new linkedVertex object and store it.
+\end{enumerate}
+\lstinputlisting[linerange={212-232}, firstnumber=212]{assignment3.cpp}
+\hrule
+\vspace{.25cm}
+What do you call a vertex with no edges? \textit{Lonely... you think that's funny?}\\
+\hrule
+\vspace{.5cm}
+
+\subsection{Adding an Edge}
+Since this graph is undirected, we must add two edges (one in the reverse direction as well).
+\begin{enumerate}
+    \item Append the respective vertexIDs to the affected vertex's adjacency tables.
+    \item Update the row \& column intersections of the vertices in the matrix with a 1.
+    \item Update the linkedVertex objects' neighbors list.
+\end{enumerate}
+\lstinputlisting[linerange={234-244}, firstnumber=234]{assignment3.cpp}
+
+\subsection{Displaying the Graph}
+We must now display the different representations of the graph. The adjacency list is is simple, we can just print out each key in the map followed by the contents of the appropriate array. I printed them out in the order the user added them (because I am \sout{too lazy to sort a combo of numbers and strings} experienced in UI/UX). The matrix is also easy to display, as it is a 2d array. I decided to skip the column headers as headers above width 1 made the table printed hard to read. Finally, we conducted a depth first and breadth first traversal of the linked objects. \newline \indent To conduct a depth first traversal, we recursively visit each vertex, its neighbors, and the neighbors of each neighbor... etc., effectively traveling deep before wide. Once we visit a node, we mark it as seen to prevent loops and printing the same ID multiple times. The time complexity of this is $O(n)$ because the execution is directly related to the size of the graph. Since we visit each vertex and edge exactly once, our complexity is exactly $O(\#Vertices + \#Edges)$. \newline \indent To conduct a breadth first search, we must visit every vertex at each depth level before going further. We process each neighbor of the current vertex before the neighbors of the neighbors. Using a Queue, we can control the order of processing FIFO. This traversal is also $O(\#Vertices + \#Edges)$, or $O(n)$, for the same reasons. We visit each vertex and edge exactly once. Keep in mind that we have twice the amount of edges we added since the graph is undirected.
+\lstinputlisting[linerange={246-332}, firstnumber=246]{assignment3.cpp}
+I have selected a smaller graph to show as output. Since the graph is undirected, we can see symmetry in the matrix! My nerd font makes the -\textgreater{} look great in my terminal...
+\lstinputlisting[linerange={3-25}, firstnumber=3]{cppout_for_writeup.txt}
+
+
+\section{Binary Search Trees}
+\subsection{How it Works}
+Binary search trees store data based on their relation to the other data in the tree. To find a specific item or place an item, we can compare it to the other items stored in the nodes. If our item is less than a node, we should move to the left children of the node. If we are greater than or equal to, we go right. My tree has two "modes:" shorthand mode and reagular mode. In shorthand mode, it will print the insertion/lookup path like: "L R L R !", to indicate the path. ! represents the final location. In regular mode, it will also print the value at the node we visited along with the action we took: ""Autumn" Insert Moves; (Root!):L -\textgreater{} (Alpha):R -\textgreater{} (Beta):L -\textgreater{} Nullptr -\textgreater{} !" \\
+\lstinputlisting[linerange={38-75}, firstnumber=238]{assignment3.cpp}
+
+\subsection{Insertion}
+Inserting a new item into the tree will usually take $O(log(n))$ time. This is exactly like binary search! As we look for where to put our new item, we reduce the search space by half recursively (given the tree is balanced!!!). An unbalanced tree, such as one created from a sorted list, degrades all the way down to $O(n)$ time as we do not eliminate any of the search space as we move. We end up with a binary search stick. Not even a charlie brown tree, at least that has branches and leaves (needles)! If only someone smart taught us about AVL tree balancing or something like that...
+\begin{enumerate}
+    \item Create a new binary node.
+    \item If we do not have a root, this node is now the root.
+    \item Until we find a nullptr (empty spot for item), we move down the child node structure.
+    \item If we are less than the current node, check its left child.
+    \item If we are greater or equal to current node, check its right child.
+    \item As we move, print out the paths we took.
+\end{enumerate}
+\lstinputlisting[linerange={77-114}, firstnumber=77]{assignment3.cpp}
+
+\subsection{Searching}
+Searching has the exact same time complexity as insertion for the same reasons, $O(log(n))$. Just as before, the same tree balancing risks apply.
+\begin{enumerate}
+    \item Start at the root.
+    \item Until we find a nullptr (we didn't find our item), we move down the child node structure.
+    \item If we are less than the current node, check its left child.
+    \item If we are greater or equal to current node, check its right child.
+    \item As we move, print out the paths we took.
+\end{enumerate}
+\lstinputlisting[linerange={116-137}, firstnumber=116]{assignment3.cpp}
+
+\subsection{In-Order Traversal}
+Left, root, right! An in-order traversal visits each node precisely once. Therefore, this is an $O(n)$ time operation, as the visits increase linearly with the size of the tree. Even if the tree is completely unbalanced, it remains linear time!
+\begin{enumerate}
+    \item Start at the root.
+    \item Recursively in-order traverse the left side of the tree.
+    \item Print the root.
+    \item Recursively in-order traverse the right side of the tree.
+\end{enumerate}
+So, the root ends up near the middle of the traversal! At each recursive call, the current node becomes the 'root' of a smaller tree. By always going left first, we get the items in sorted order!
+\lstinputlisting[linerange={139-151}, firstnumber=139]{assignment3.cpp}
+
+\subsection{Tree in Action}
+Test cases with detailed output: \\
+\textbf{Code:}
+\lstinputlisting[linerange={389-401}, firstnumber=389]{assignment3.cpp}
+\textbf{Output:}
+\lstinputlisting[linerange={383-392}, firstnumber=383]{cppout_for_writeup.txt}
+\noindent
+Loading up magic items: 
+\lstinputlisting[linerange={398-403}, firstnumber=398]{cppout_for_writeup.txt}
+In order traversal of magic items: (Its in order!)
+\lstinputlisting[linerange={405-406}, firstnumber=405]{cppout_for_writeup.txt}
+Finding our sample of magic items:
+\lstinputlisting[linerange={408-4017}, firstnumber=408]{cppout_for_writeup.txt}
+\newpage
+\lstinputlisting[linerange={404-424}, firstnumber=404]{assignment3.cpp}
+
+\section{Conclusion}
+Graphs are cool I guess. Graphs are a vital concept that drive a lot of the world as we know it. Social networks we discussed in class aside, I use graphs every day! As a network technician here at Marist, everything such as our fiber link map, our topology, our firewall connections, our RF profiles, and routing are all graphs! You can think of almost anything as a graph if you try hard enough. The automata Dr. Norton has us create are graphs as well! My neural firings are a graph! Am I a graph? Do I even care if I am? Hopefully I'm directed... \\
+
+\hrule
+\vspace{.25cm}
+One vertex to another: \textit{V1: "I'm leaving you! I've found a better connection." V2: "Can we still be neighbors?"}
+\vspace{.25cm}
+\hrule
+\vspace{.25cm}
+How did the graph get a job? \textit{It was really good with networking...}
+\vspace{.25cm}
+\hrule
+
+\end{document}
