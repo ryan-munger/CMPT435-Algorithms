@@ -101,7 +101,7 @@
 % - -- -  - -- -  - -- -  -
 \section{Introduction}
 \subsection{Goals}
-Assignment 3 focuses on undirected graphs and binary search trees. I was tasked with reading in a list of instructions such as "add vertex A" and build an undirected graph with them. I was able to add vertexes, edges, traverse the graph, and keep an adjacency list, a matrix, and linked objects to represent it. I was also able to place items, find items, and traverse my binary search trees. 
+Assignment 3 focuses on undirected graphs and binary search trees. I was tasked with reading in a list of instructions such as \textit{add vertex} and \textit{add edge} and build an undirected graph with them. I was able to add vertexes, add edges, traverse the graph, and keep an adjacency list, a matrix, and linked objects to represent it. In my binary search trees, I was also able to place items, find items, and traverse them in order. 
 \subsection{Write-up Format}
     In this report I will describe the logic being presented. Below the text explanation, relevant code will follow in C++. Unfortunately, as we approach finals season, I no longer have the spare time to also create the assignment in Ada :(. 
 \subsection{Limerick of Luck}
@@ -122,11 +122,11 @@ How did the binary tree learn so much? - \textit{It excelled at branching out...
 
 \section{Undirected Graphs}
 \subsection{Reading the Instructions}
-I was provided a file of instructions to create undirected graphs such as \textit{add vertex} and \textit{add edge}. Since I am in Dr. Norton's Formal Languages class, regex flooded my mind. Capture groups make this task very easy. When I encountered the \textit{new graph} command, I displayed the current graph and initialized a new one. 
+I was provided a file of instructions to create undirected graphs such as \textit{add vertex} and \textit{add edge}. Since I am in Dr. Norton's Formal Languages class, regex immediately came to mind. Capture groups make this task very easy. When I encountered the \textit{new graph} command, I displayed the current graph and initialized a new one. 
 \lstinputlisting[linerange={340-383}, firstnumber=340]{assignment3.cpp}
 
 \subsection{Graph Object}
-The graph object is pretty simple. Each graph has an ID, and serveral representations of it. First, we have an adjacency list. This is simply a list of neighbors corresponding to each vertex. Next, we have our matrix. I used a map to keep track of the index I placed each vertex into the matrix since the user can name them whatever they want. This matrix is a 2d array that stores where edges are using a '1' or a '.' at the respective location. Finally, I stored each linked vertex object (that has an ID, a processed flag for traversals, and a list of neighbors) in a map corresponding to their ID so that I can look them up quickly. 
+The graph object is pretty simple. Each graph has an ID, and several representations of it. First, we have an adjacency list. This is simply a list of neighbors mapped to each vertex. Next, we have our matrix. I used a map to keep track of the index I placed each vertex into the matrix since the user can name them whatever they want. This matrix is a 2d array that stores where edges are using a '1' or a '.' at the respective location. Finally, I stored each linked vertex object (that has an ID, a processed flag for traversals, and a list of neighbors) in a map corresponding to their ID so that I can look them up quickly. 
 \lstinputlisting[linerange={184-198}, firstnumber=184]{assignment3.cpp}
 \lstinputlisting[linerange={169-173}, firstnumber=169]{assignment3.cpp}
 
@@ -137,7 +137,6 @@ When adding a vertex, we must update all three representations of the graph. My 
     \item If the matrix is not empty, resize it by adding a column and a row.
     \item Store the index we stored the new vertex at.
     \item Start an adjacency list for this vertex.
-    \item If the target is less than the midpoint, search the half before the midpoint.
     \item Create a new linkedVertex object and store it.
 \end{enumerate}
 \lstinputlisting[linerange={212-232}, firstnumber=212]{assignment3.cpp}
@@ -157,7 +156,7 @@ Since this graph is undirected, we must add two edges (one in the reverse direct
 \lstinputlisting[linerange={234-244}, firstnumber=234]{assignment3.cpp}
 
 \subsection{Displaying the Graph}
-We must now display the different representations of the graph. The adjacency list is is simple, we can just print out each key in the map followed by the contents of the appropriate array. I printed them out in the order the user added them (because I am \sout{too lazy to sort a combo of numbers and strings} experienced in UI/UX). The matrix is also easy to display, as it is a 2d array. I decided to skip the column headers as headers above width 1 made the table printed hard to read. Finally, we conducted a depth first and breadth first traversal of the linked objects. \newline \indent To conduct a depth first traversal, we recursively visit each vertex, its neighbors, and the neighbors of each neighbor... etc., effectively traveling deep before wide. Once we visit a node, we mark it as seen to prevent loops and printing the same ID multiple times. The time complexity of this is $O(n)$ because the execution is directly related to the size of the graph. Since we visit each vertex and edge exactly once, our complexity is exactly $O(\#Vertices + \#Edges)$. \newline \indent To conduct a breadth first search, we must visit every vertex at each depth level before going further. We process each neighbor of the current vertex before the neighbors of the neighbors. Using a Queue, we can control the order of processing FIFO. This traversal is also $O(\#Vertices + \#Edges)$, or $O(n)$, for the same reasons. We visit each vertex and edge exactly once. Keep in mind that we have twice the amount of edges we added since the graph is undirected.
+We must now display the different representations of the graph. The adjacency list is is simple, we can just print out each key in the map followed by the contents of the appropriate array. I printed them out in the order the user added them (because I am \sout{too lazy to sort a combo of numbers and strings} experienced in UI/UX). The matrix is also easy to display, as it is a 2d array. I decided to skip the column headers as names above width 1 made the table hard to read. Finally, we must conduct a depth first and breadth first traversal of the linked objects. \newline \indent To conduct a depth first traversal, we recursively visit each vertex, its neighbors, and the neighbors of each neighbor... etc., effectively traveling deep before wide. Once we visit a node, we mark it as seen to prevent loops and printing the same ID multiple times. The time complexity of this is $O(n)$ because the execution is directly related to the size of the graph. Since we visit each vertex and edge exactly once, our complexity is exactly $O(\#Vertices + \#Edges)$. \newline \indent To conduct a breadth first search, we must visit every vertex at each depth level before going further. We process each neighbor of the current vertex before the neighbors of the neighbors. Using a Queue, we can control the order of processing FIFO. This traversal is also $O(\#Vertices + \#Edges)$, or $O(n)$, for the same reasons. We visit each vertex and edge exactly once. Keep in mind that we have twice the amount of edges we added since the graph is undirected.
 \lstinputlisting[linerange={246-332}, firstnumber=246]{assignment3.cpp}
 I have selected a smaller graph to show as output. Since the graph is undirected, we can see symmetry in the matrix! My nerd font makes the -\textgreater{} look great in my terminal...
 \lstinputlisting[linerange={3-25}, firstnumber=3]{cppout_for_writeup.txt}
@@ -165,8 +164,8 @@ I have selected a smaller graph to show as output. Since the graph is undirected
 
 \section{Binary Search Trees}
 \subsection{How it Works}
-Binary search trees store data based on their relation to the other data in the tree. To find a specific item or place an item, we can compare it to the other items stored in the nodes. If our item is less than a node, we should move to the left children of the node. If we are greater than or equal to, we go right. My tree has two "modes:" shorthand mode and reagular mode. In shorthand mode, it will print the insertion/lookup path like: "L R L R !", to indicate the path. ! represents the final location. In regular mode, it will also print the value at the node we visited along with the action we took: ""Autumn" Insert Moves; (Root!):L -\textgreater{} (Alpha):R -\textgreater{} (Beta):L -\textgreater{} Nullptr -\textgreater{} !" \\
-\lstinputlisting[linerange={38-75}, firstnumber=238]{assignment3.cpp}
+Binary search trees store data based on their relation to the other data in the tree. To find a specific item or place an item, we can compare it to the other items stored in the nodes. If our item is less than a node, we should move to the left children of the node. If we are greater than or equal to, we go right. My tree has two "modes:" shorthand mode and regular mode. In shorthand mode, it will print the insertion/lookup path like: "L R L R !", to indicate the path. ! represents the final location. In regular mode, it will also print the value at the node we visited along with the action we took: ""Autumn" Insert Moves; (Root!):L -\textgreater{} (Alpha):R -\textgreater{} (Beta):L -\textgreater{} Nullptr -\textgreater{} !." This is great for visualization and debugging! \\
+\lstinputlisting[linerange={39-75}, firstnumber=39]{assignment3.cpp}
 
 \subsection{Insertion}
 Inserting a new item into the tree will usually take $O(log(n))$ time. This is exactly like binary search! As we look for where to put our new item, we reduce the search space by half recursively (given the tree is balanced!!!). An unbalanced tree, such as one created from a sorted list, degrades all the way down to $O(n)$ time as we do not eliminate any of the search space as we move. We end up with a binary search stick. Not even a charlie brown tree, at least that has branches and leaves (needles)! If only someone smart taught us about AVL tree balancing or something like that...
@@ -219,7 +218,7 @@ Finding our sample of magic items:
 \lstinputlisting[linerange={404-424}, firstnumber=404]{assignment3.cpp}
 
 \section{Conclusion}
-Graphs are cool I guess. Graphs are a vital concept that drive a lot of the world as we know it. Social networks we discussed in class aside, I use graphs every day! As a network technician here at Marist, everything such as our fiber link map, our topology, our firewall connections, our RF profiles, and routing are all graphs! You can think of almost anything as a graph if you try hard enough. The automata Dr. Norton has us create are graphs as well! My neural firings are a graph! Am I a graph? Do I even care if I am? Hopefully I'm directed... \\
+Graphs are cool I guess. Graphs are a vital concept that drive a lot of the world as we know it. Social networks like we discussed in class aside, I use graphs every day! As a network technician here at Marist, everything such as our fiber link map, our topology, our firewall connections, our RF profiles, and routing are all graphs. You can think of almost anything as a graph if you try hard enough. The automata Dr. Norton has us create are graphs as well! My neural firings are a graph! Am I a graph? Do I even care if I am? Hopefully I'm directed... \\
 
 \hrule
 \vspace{.25cm}
