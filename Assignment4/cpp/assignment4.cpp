@@ -20,8 +20,12 @@ struct linkedVertex {
 // debug helper function
 void printLinkedVertex(linkedVertex v) {
     cout << "LinkedVertex " << v.id << "; Neighbors: " << endl;
-    for (const auto& tuple : v.neighbors) {
-        cout << "\tVertex: " << get<vertexTupleIdx>(tuple)->id << " Weight: " << get<weightTupleIdx>(tuple) << endl;
+    if (v.neighbors.empty()) {
+        cout << "\tNo Neighbors" << endl;
+    } else {
+        for (const auto& tuple : v.neighbors) {
+            cout << "\tVertex: " << get<vertexTupleIdx>(tuple)->id << " Weight: " << get<weightTupleIdx>(tuple) << endl;
+        }
     }
 };
 
