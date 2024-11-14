@@ -137,7 +137,7 @@ class BinarySearchTree {
         };
 
         // awkward but need to start recursing
-        // this will put items in order!
+        // I used depth first so that it orders the items!
         void inOrderTraversal() { // left root right
             traverseInOrder(root);
         };
@@ -159,7 +159,7 @@ int checkBSTComps(const string& str) {
     for (char c : str) {
         if (c == ';') {
             afterSemicolon = true;
-        } else if (afterSemicolon && (c == 'L' || c == 'R' || c == '!')) {
+        } else if (afterSemicolon && (c == 'L' || c == 'R' || c == '!' || c == 'N')) {
             count++;
         };
     };
@@ -289,7 +289,7 @@ class Graph {
             }
         };
 
-        // use a queue to print vertices closest to origin first
+        // use a queue to print vertexes in depth bands
         void breadthFirstTraversal(linkedVertex* fromVertex) {
             cout << "\nBreadth First Traversal: ";
             linkedVertex* cv;
@@ -322,13 +322,27 @@ class Graph {
 
             // just start at the first vertex user created
             linkedVertex* defaultStart = &this->linkedObjs[this->matrixToVertexID.begin()->second];
+
             this->resetProcessedFlags(); // remove any flags from prior traversal
             cout << "\nDepth First Traversal: ";
             this->depthFirstTraversal(defaultStart); 
             cout << "End" << endl;
+            // also traverse any straggling or disconnected vertices
+            for (auto& pair: linkedObjs) {
+                if (!pair.second.processed) {
+                    cout << "\nDepth First Traversal: ";
+                    this->depthFirstTraversal(&pair.second);
+                    cout << "End" << endl;
+                }
+            }
 
             this->resetProcessedFlags(); // remove flags
             this->breadthFirstTraversal(defaultStart);
+            for (auto& pair: linkedObjs) {
+                if (!pair.second.processed) {
+                    this->breadthFirstTraversal(&pair.second);
+                }
+            }
         };
 
         bool isEmpty() {
@@ -401,7 +415,7 @@ int main() {
     BST.inOrderTraversal(); // they will be in order!
 
     // load magic items
-    cout << "\nLoading Magic Items into a BST:\n" << endl;
+    cout << "\n\nLoading Magic Items into a BST:" << endl;
     vector<string> magicItems = getMagicItems(MAGICITEMS_PATH);
     BinarySearchTree* magicItemTree = new BinarySearchTree;
     for (string item : magicItems) {
@@ -413,7 +427,7 @@ int main() {
     // find the requested items
     cout << "\n\nFinding Requested Items:" << endl;
     vector<string> itemsToFind = getMagicItems(ITEMS_2_FIND_PATH);
-    int totalComps = 0;
+    float totalComps = 0;
     int comps;
     for (string item : itemsToFind) {
         string searchPath = magicItemTree->search(item, true);
@@ -421,7 +435,7 @@ int main() {
         totalComps += comps;
         cout << searchPath << " Comps: " << comps << endl;
     };
-    cout << "\nAverage Comparisons Taken: " << totalComps / itemsToFind.size() << endl;
+    cout << "\nAverage Comparisons Taken: " << fixed << setprecision(2) << totalComps / itemsToFind.size() << endl;
 
     return 0;
 };

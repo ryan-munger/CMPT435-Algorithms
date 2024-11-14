@@ -123,7 +123,7 @@ How did the binary tree learn so much? - \textit{It excelled at branching out...
 \section{Undirected Graphs}
 \subsection{Reading the Instructions}
 I was provided a file of instructions to create undirected graphs such as \textit{add vertex} and \textit{add edge}. Since I am in Dr. Norton's Formal Languages class, regex immediately came to mind. Capture groups make this task very easy. When I encountered the \textit{new graph} command, I displayed the current graph and initialized a new one. 
-\lstinputlisting[linerange={340-383}, firstnumber=340]{assignment3.cpp}
+\lstinputlisting[linerange={354-397}, firstnumber=354]{assignment3.cpp}
 
 \subsection{Graph Object}
 The graph object is pretty simple. Each graph has an ID, and several representations of it. First, we have an adjacency list. This is simply a list of neighbors mapped to each vertex. Next, we have our matrix. I used a map to keep track of the index I placed each vertex into the matrix since the user can name them whatever they want. This matrix is a 2d array that stores where edges are using a '1' or a '.' at the respective location. Finally, I stored each linked vertex object (that has an ID, a processed flag for traversals, and a list of neighbors) in a map corresponding to their ID so that I can look them up quickly. 
@@ -153,12 +153,13 @@ Since this graph is undirected, we must add two edges (one in the reverse direct
     \item Update the row \& column intersections of the vertices in the matrix with a 1.
     \item Update the linkedVertex objects' neighbors list.
 \end{enumerate}
+\newpage
 \lstinputlisting[linerange={234-244}, firstnumber=234]{assignment3.cpp}
 
 \subsection{Displaying the Graph}
-We must now display the different representations of the graph. The adjacency list is is simple, we can just print out each key in the map followed by the contents of the appropriate array. I printed them out in the order the user added them (because I am \sout{too lazy to sort a combo of numbers and strings} experienced in UI/UX). The matrix is also easy to display, as it is a 2d array. I decided to skip the column headers as names above width 1 made the table hard to read. Finally, we must conduct a depth first and breadth first traversal of the linked objects. \newline \indent To conduct a depth first traversal, we recursively visit each vertex, its neighbors, and the neighbors of each neighbor... etc., effectively traveling deep before wide. Once we visit a node, we mark it as seen to prevent loops and printing the same ID multiple times. The time complexity of this is $O(n)$ because the execution is directly related to the size of the graph. Since we visit each vertex and edge exactly once, our complexity is exactly $O(\#Vertices + \#Edges)$. \newline \indent To conduct a breadth first search, we must visit every vertex at each depth level before going further. We process each neighbor of the current vertex before the neighbors of the neighbors. Using a Queue, we can control the order of processing FIFO. This traversal is also $O(\#Vertices + \#Edges)$, or $O(n)$, for the same reasons. We visit each vertex and edge exactly once. Keep in mind that we have twice the amount of edges we added since the graph is undirected.
-\lstinputlisting[linerange={246-332}, firstnumber=246]{assignment3.cpp}
-I have selected a smaller graph to show as output. Since the graph is undirected, we can see symmetry in the matrix! My nerd font makes the -\textgreater{} look great in my terminal...
+We must now display the different representations of the graph. The adjacency list is is simple, we can just print out each key in the map followed by the contents of the appropriate array. I printed them out in the order the user added them (because I am \sout{too lazy to sort a combo of numbers and strings} experienced in UI/UX). The matrix is also easy to display, as it is a 2d array. I decided to skip the column headers as names above width 1 made the table hard to read. Finally, we must conduct a depth first and breadth first traversal of the linked objects. \newline \indent To conduct a depth first traversal, we recursively visit each vertex, its first neighbor, and the neighbor of each neighbor... etc., effectively traveling deep before wide. Once we visit a node, we mark it as seen to prevent loops and printing the same ID multiple times. The time complexity of this is $O(n)$ because the execution is linearly related to the size of the graph. Since we visit each vertex and edge exactly once, our complexity is exactly $O(|V| + |E|)$ where V is the set of vertices and E is the set of edges. \newline \indent To conduct a breadth first search, we must visit every vertex at each depth level before going further. We process each neighbor of the current vertex before the neighbors of the neighbors. Using a Queue, we can control the order of processing FIFO. This traversal is also $O(|V| + |E|)$, for the same reasons. We visit each vertex and edge exactly once. Keep in mind that we have twice the amount of edges we added since the graph is undirected.
+\lstinputlisting[linerange={246-346}, firstnumber=246]{assignment3.cpp}
+I have selected a smaller graph to show as output. Since the graph is undirected, we can see symmetry in the matrix! My nerd font makes the -\textgreater{} look great in my terminal... \newline
 \lstinputlisting[linerange={3-25}, firstnumber=3]{cppout_for_writeup.txt}
 
 
@@ -204,18 +205,18 @@ So, the root ends up near the middle of the traversal! At each recursive call, t
 \subsection{Tree in Action}
 Test cases with detailed output: \\
 \textbf{Code:}
-\lstinputlisting[linerange={389-401}, firstnumber=389]{assignment3.cpp}
+\lstinputlisting[linerange={403-415}, firstnumber=403]{assignment3.cpp}
 \textbf{Output:}
-\lstinputlisting[linerange={383-392}, firstnumber=383]{cppout_for_writeup.txt}
+\lstinputlisting[linerange={423-432}, firstnumber=423]{cppout_for_writeup.txt}
 \noindent
 Loading up magic items: 
-\lstinputlisting[linerange={398-403}, firstnumber=398]{cppout_for_writeup.txt}
+\lstinputlisting[linerange={437-443}, firstnumber=437]{cppout_for_writeup.txt}
 In order traversal of magic items: (Its in order!)
-\lstinputlisting[linerange={405-406}, firstnumber=405]{cppout_for_writeup.txt}
+\lstinputlisting[linerange={445-446}, firstnumber=445]{cppout_for_writeup.txt}
 Finding our sample of magic items:
-\lstinputlisting[linerange={408-4017}, firstnumber=408]{cppout_for_writeup.txt}
-\newpage
-\lstinputlisting[linerange={404-424}, firstnumber=404]{assignment3.cpp}
+\lstinputlisting[linerange={448-455}, firstnumber=448]{cppout_for_writeup.txt}
+
+\lstinputlisting[linerange={417-438}, firstnumber=417]{assignment3.cpp}
 
 \section{Conclusion}
 Graphs are cool I guess. Graphs are a vital concept that drive a lot of the world as we know it. Social networks like we discussed in class aside, I use graphs every day! As a network technician here at Marist, everything such as our fiber link map, our topology, our firewall connections, our RF profiles, and routing are all graphs. You can think of almost anything as a graph if you try hard enough. The automata Dr. Norton has us create are graphs as well! My neural firings are a graph! Am I a graph? Do I even care if I am? Hopefully I'm directed... \\
