@@ -135,12 +135,33 @@ void printSpice(Spice s) {
     cout << "\tUnit Price: " << s.unit_price << endl;
 };
 
+void spiceSort(vector<Spice>& arr) {
+    int n = arr.size();
+    for (int i = 1; i < n; i++) {
+        int insertIdx = i;
+        Spice currentCheck = arr[i];
+        for (int j = i-1; j >= 0; j--) {
+            if (arr[j].unit_price < currentCheck.unit_price) {
+                arr[j+1] = arr[j];
+                insertIdx = j;
+            } else {
+                break;
+            }
+        }
+        arr[insertIdx] = currentCheck;
+    }
+};
+
+void maximizeTake(float knapsack) {
+
+};
+
 void spiceHeist(const string& filename) {
     regex spiceRe(R"(\s*spice\s*name\s*=\s*(\S*)\s*;\s*total_price\s*=\s*(\d*.?\d*)\s*;\s*qty\s*=\s*(\d*.?\d*)\s*;)");
     regex knapsackRe(R"(knapsack\s*capacity\s*=\s*(\d*.?\d*)\s*;)");
 
     // store spices and knapsacks
-    vector<Spice> spiceList;
+    vector<Spice> spiceInventory;
     vector<float> knapsacks;
 
     ifstream file(filename); // input file stream
@@ -159,7 +180,7 @@ void spiceHeist(const string& filename) {
             float unit_price = total_price / quantity;
             Spice newSpice = Spice{color, total_price, quantity, unit_price};
             printSpice(newSpice);
-            spiceList.push_back(newSpice);
+            spiceInventory.push_back(newSpice);
         } else if (regex_match(instruction, match, knapsackRe)) { // case 2: knapsack
             float newKnapsackCapacity = stof(match[1].str());
             knapsacks.push_back(newKnapsackCapacity);
@@ -167,6 +188,12 @@ void spiceHeist(const string& filename) {
         };
     };
     file.close();
+    // sort our spices based on unit price
+    spiceSort(spiceInventory);
+    // maximize take for each knapsack!
+    for (float knapsack : knapsacks) {
+        maximizeTake(knapsack);
+    }
 };
 
 int main() {
