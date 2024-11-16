@@ -1,10 +1,12 @@
 #include <vector>
 #include <string>
+#include <sstream>
 #include <iostream>
 #include <fstream>
 #include <map>
 #include <regex>
 #include <tuple>
+#include <iomanip>
 using namespace std;
 
 const string GRAPH_PATH = "graphs2.txt";
@@ -152,9 +154,31 @@ void spiceSort(vector<Spice>& arr) {
     }
 };
 
-void maximizeTake(float knapsack) {
+void maximizeTake(float knapsack, vector<Spice> spices) {
+    float knapValue = 0;
+    ostringstream scoops;
+    float capacityLeft = knapsack;
+    for (Spice spice : spices) {
+        if (capacityLeft == 0) {
+            break; // no more spice!!
+        } else if(capacityLeft >= spice.quantity) {
+            capacityLeft -= spice.quantity;
+            knapValue += spice.total_price;
+            scoops << fixed << setprecision(2) << spice.quantity << " scoops of " << spice.color << ", ";
+        } else if (capacityLeft < spice.quantity) {
+            knapValue += capacityLeft * spice.unit_price;
+            scoops << fixed << setprecision(2) << capacityLeft << " scoops of " << spice.color << ", ";
+            capacityLeft = 0;
+        } 
+    }
+    string scoopString = scoops.str();
+    // replace last comma with period
+    scoopString.pop_back(); 
+    scoopString.back() = '.';
 
-};
+    cout << "\nKnapsack of Capacity " << fixed << setprecision(2) << knapsack << " is worth " << 
+        fixed << setprecision(2) << knapValue << " quatloos and contains " << scoopString << endl; 
+}; 
 
 void spiceHeist(const string& filename) {
     regex spiceRe(R"(\s*spice\s*name\s*=\s*(\S*)\s*;\s*total_price\s*=\s*(\d*.?\d*)\s*;\s*qty\s*=\s*(\d*.?\d*)\s*;)");
@@ -184,7 +208,7 @@ void spiceHeist(const string& filename) {
         } else if (regex_match(instruction, match, knapsackRe)) { // case 2: knapsack
             float newKnapsackCapacity = stof(match[1].str());
             knapsacks.push_back(newKnapsackCapacity);
-            cout << "Sack: " << newKnapsackCapacity << endl;
+            cout << "New Knapsack: " << newKnapsackCapacity << endl;
         };
     };
     file.close();
@@ -192,7 +216,7 @@ void spiceHeist(const string& filename) {
     spiceSort(spiceInventory);
     // maximize take for each knapsack!
     for (float knapsack : knapsacks) {
-        maximizeTake(knapsack);
+        maximizeTake(knapsack, spiceInventory);
     }
 };
 
