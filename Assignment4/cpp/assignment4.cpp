@@ -8,6 +8,7 @@
 using namespace std;
 
 const string GRAPH_PATH = "graphs2.txt";
+const string SPICE_PATH = "spice.txt";
 const int vertexTupleIdx = 0;
 const int weightTupleIdx = 1;
 
@@ -119,9 +120,59 @@ void createGraphs(const string& filename) {
     currentGraph.displayGraph();
 };
 
+struct Spice {
+    string color;
+    float total_price;
+    float quantity;
+    float unit_price;
+};
+
+void printSpice(Spice s) {
+    cout << "Spice: " << endl;
+    cout << "\tColor: " << s.color << endl;
+    cout << "\tTotal Price: " << s.total_price << endl;
+    cout << "\tQuantity: " << s.quantity << endl;
+    cout << "\tUnit Price: " << s.unit_price << endl;
+};
+
+void spiceHeist(const string& filename) {
+    regex spiceRe(R"(\s*spice\s*name\s*=\s*(\S*)\s*;\s*total_price\s*=\s*(\d*.?\d*)\s*;\s*qty\s*=\s*(\d*.?\d*)\s*;)");
+    regex knapsackRe(R"(knapsack\s*capacity\s*=\s*(\d*.?\d*)\s*;)");
+
+    // store spices and knapsacks
+    vector<Spice> spiceList;
+    vector<float> knapsacks;
+
+    ifstream file(filename); // input file stream
+    if (!file) {
+        cerr << "File opening failed." << endl;
+    }
+    string instruction;
+
+    while (getline(file, instruction)) {
+        smatch match; // captures subexpressions/groups
+        // case 1: adding a spice
+        if (regex_match(instruction, match, spiceRe)) {
+            string color = match[1].str();
+            float total_price = stof(match[2].str());
+            float quantity = stof(match[3].str());
+            float unit_price = total_price / quantity;
+            Spice newSpice = Spice{color, total_price, quantity, unit_price};
+            printSpice(newSpice);
+            spiceList.push_back(newSpice);
+        } else if (regex_match(instruction, match, knapsackRe)) { // case 2: knapsack
+            float newKnapsackCapacity = stof(match[1].str());
+            knapsacks.push_back(newKnapsackCapacity);
+            cout << "Sack: " << newKnapsackCapacity << endl;
+        };
+    };
+    file.close();
+};
+
 int main() {
-    // read in the instructions and create the associated graphs
     createGraphs(GRAPH_PATH); 
+
+    spiceHeist(SPICE_PATH);
 
     return 0;
 };
