@@ -176,11 +176,12 @@ void maximizeTake(float knapsack, vector<Spice> spices) {
     scoopString.pop_back(); 
     scoopString.back() = '.';
 
-    cout << "\nKnapsack of Capacity " << fixed << setprecision(2) << knapsack << " is worth " << 
+    cout << "Knapsack of Capacity " << fixed << setprecision(2) << knapsack << " is worth " << 
         fixed << setprecision(2) << knapValue << " quatloos and contains " << scoopString << endl; 
 }; 
 
 void spiceHeist(const string& filename) {
+    cout << "\n\nLoading in Spices and Knapsacks!" << endl;
     regex spiceRe(R"(\s*spice\s*name\s*=\s*(\S*)\s*;\s*total_price\s*=\s*(\d*.?\d*)\s*;\s*qty\s*=\s*(\d*.?\d*)\s*;)");
     regex knapsackRe(R"(knapsack\s*capacity\s*=\s*(\d*.?\d*)\s*;)");
 
@@ -215,6 +216,7 @@ void spiceHeist(const string& filename) {
     // sort our spices based on unit price
     spiceSort(spiceInventory);
     // maximize take for each knapsack!
+    cout << "\nMaximizing Take:" << endl;
     for (float knapsack : knapsacks) {
         maximizeTake(knapsack, spiceInventory);
     }
