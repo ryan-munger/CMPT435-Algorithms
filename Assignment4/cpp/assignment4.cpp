@@ -37,13 +37,6 @@ class Graph {
         string graphID;
         map<string, linkedVertex> linkedObjs;
 
-        // if we want to traverse again
-        void resetProcessedFlags() {
-            for (auto& pair : linkedObjs) {
-                pair.second.processed = false;
-            }
-        };
-
     public:
         Graph(string id) {
             this->graphID = id;
@@ -76,8 +69,6 @@ void createGraphs(const string& filename) {
     int graphCount = 1;
     cout << "\n\nGRAPH" << graphCount << "\n" << endl;
     Graph currentGraph(to_string(graphCount));
-    // I am taking formal lang so regex it'll be!
-    // this will take care of any small whitespace errors as well
     regex newGraphRe(R"(new graph)");
     regex addVertexRe(R"(add\s*vertex\s*(\S+))");
     regex addEdgeRe(R"(add\s*edge\s*(\S+)\s*-\s*(\S+)\s+(-?\d+))");
@@ -91,7 +82,6 @@ void createGraphs(const string& filename) {
     while (getline(file, instruction)) {
         // ignore any commands we don't know, empty lines, comments etc.
         // regex will allow some slack with white space, but assuming perfect syntax by user
-
         // case 1: start a new graph
         if (regex_match(instruction, newGraphRe)) {
             // check to see if the current graph has anything in it
@@ -137,6 +127,7 @@ void printSpice(Spice s) {
     cout << "\tUnit Price: " << s.unit_price << endl;
 };
 
+// Insertion sort to get descending order based on unit price
 void spiceSort(vector<Spice>& arr) {
     int n = arr.size();
     for (int i = 1; i < n; i++) {
@@ -161,11 +152,11 @@ void maximizeTake(float knapsack, vector<Spice> spices) {
     for (Spice spice : spices) {
         if (capacityLeft == 0) {
             break; // no more spice!!
-        } else if(capacityLeft >= spice.quantity) {
+        } else if(capacityLeft >= spice.quantity) { // take all the spice
             capacityLeft -= spice.quantity;
             knapValue += spice.total_price;
             scoops << fixed << setprecision(2) << spice.quantity << " scoops of " << spice.color << ", ";
-        } else if (capacityLeft < spice.quantity) {
+        } else if (capacityLeft < spice.quantity) { // take what we can fit
             knapValue += capacityLeft * spice.unit_price;
             scoops << fixed << setprecision(2) << capacityLeft << " scoops of " << spice.color << ", ";
             capacityLeft = 0;
@@ -176,6 +167,7 @@ void maximizeTake(float knapsack, vector<Spice> spices) {
     scoopString.pop_back(); 
     scoopString.back() = '.';
 
+    // report the value of our knapsack and scoops taken
     cout << "Knapsack of Capacity " << fixed << setprecision(2) << knapsack << " is worth " << 
         fixed << setprecision(2) << knapValue << " quatloos and contains " << scoopString << endl; 
 }; 
