@@ -7,6 +7,7 @@
 #include <regex>
 #include <tuple>
 #include <iomanip>
+#include <stack>
 using namespace std;
 
 const string GRAPH_PATH = "graphs2.txt";
@@ -84,8 +85,7 @@ class Graph {
             this->SSSP();
         };
 
-        bool bellmanFord() {
-            linkedVertex* startVertex = &this->linkedObjs.begin()->second;
+        bool bellmanFord(linkedVertex* startVertex) {
             this->initSingleSource(startVertex);
 
             // Relax all edges |V| - 1 times
@@ -116,15 +116,36 @@ class Graph {
             return true; // No negative weight cycles
         };
 
+        string getShortestPath(linkedVertex* destination) {
+            stack<string> pathStack;
+            linkedVertex* predecessor = destination;
+            while (predecessor != nullptr) {
+                pathStack.push(predecessor->id);
+                predecessor = predecessor->predecessor;
+            }
+
+            ostringstream pathstr;
+            while (!pathStack.empty()) {
+                // Check if something is already in the stream for ->
+                if (pathstr.tellp() > 0) {
+                    pathstr << "->";
+                }
+                pathstr << pathStack.top();
+                pathStack.pop();
+            }
+            return pathstr.str();
+        };
+
         void SSSP() {
-            bellmanFord();
+            linkedVertex* startVertex = &this->linkedObjs.begin()->second;
+            // set distances, predecessors, etc
+            bellmanFord(startVertex);
 
             cout << "SSSP: " << endl;
-            linkedVertex* startVertex = &this->linkedObjs.begin()->second;
             for (auto& pair : this->linkedObjs) {
                 linkedVertex* current = &pair.second;
-                cout << startVertex->id << "->" << current->id << " cost is " << setw(2) << current->distance << "; shortest path is " 
-                    << "something man don't look at me" << endl;
+                cout << startVertex->id << "->" << current->id << " cost is " << setw(2) << 
+                    current->distance << "; shortest path is " << getShortestPath(current) << endl;
             }
         };
 };
