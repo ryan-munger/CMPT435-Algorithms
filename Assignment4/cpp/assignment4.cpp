@@ -40,7 +40,7 @@ class Graph {
         string graphID;
         map<string, linkedVertex> linkedObjs;
 
-        void initSingleSource(linkedVertex s) {
+        void initSingleSource(linkedVertex* s) {
             // set all vertices to distance infinite (large but not max)
             // no predecessors yet
             for (auto& pair : this->linkedObjs) {
@@ -48,12 +48,12 @@ class Graph {
                 pair.second.predecessor = nullptr;
             }
             // set single source
-            s.distance = 0;
+            s->distance = 0;
         };
 
         void relax(linkedVertex* source, linkedVertex* destination, int weight) {
             if (destination->distance > (source->distance + weight)) {
-                destination->distance = source->distance + weight;
+                destination->distance = (source->distance + weight);
                 destination->predecessor = source;
             }
         };
@@ -76,31 +76,62 @@ class Graph {
         };
 
         void displayGraph() {
+            // print graph objects to ensure validity
             for (const auto& pair : this->linkedObjs) {
                 printLinkedVertex(pair.second);
             }
+
+            this->SSSP();
         };
 
-        void bellmanFord() {
-            linkedVertex startVertex = this->linkedObjs.begin()->second;
+        bool bellmanFord() {
+            linkedVertex* startVertex = &this->linkedObjs.begin()->second;
             this->initSingleSource(startVertex);
 
+            // Relax all edges |V| - 1 times
+            for (size_t i = 1; i < this->linkedObjs.size(); ++i) {
+                for (auto& pair : this->linkedObjs) {
+                    linkedVertex* current = &pair.second;
+                    for (auto& edge : current->neighbors) {
+                        linkedVertex* destination = get<vertexTupleIdx>(edge);
+                        int weight = get<weightTupleIdx>(edge);
+                        relax(current, destination, weight);
+                    }
+                }
+            }
+
+            // Detect negative weight cycles
             for (auto& pair : this->linkedObjs) {
                 linkedVertex* current = &pair.second;
                 for (auto& edge : current->neighbors) {
                     linkedVertex* destination = get<vertexTupleIdx>(edge);
                     int weight = get<weightTupleIdx>(edge);
-                    relax(current, destination, weight);
+
+                    if (destination->distance > (current->distance + weight)) {
+                        return false; // Negative weight cycle found
+                    }
                 }
             }
 
-            
+            return true; // No negative weight cycles
+        };
+
+        void SSSP() {
+            bellmanFord();
+
+            cout << "SSSP: " << endl;
+            linkedVertex* startVertex = &this->linkedObjs.begin()->second;
+            for (auto& pair : this->linkedObjs) {
+                linkedVertex* current = &pair.second;
+                cout << startVertex->id << "->" << current->id << " cost is " << setw(2) << current->distance << "; shortest path is " 
+                    << "something man don't look at me" << endl;
+            }
         };
 };
 
 void createGraphs(const string& filename) {
     int graphCount = 1;
-    cout << "\n\nGRAPH" << graphCount << "\n" << endl;
+    cout << "Graph #" << graphCount << ":\n" << endl;
     Graph currentGraph(to_string(graphCount));
     regex newGraphRe(R"(new graph)");
     regex addVertexRe(R"(add\s*vertex\s*(\S+))");
@@ -120,10 +151,9 @@ void createGraphs(const string& filename) {
             // check to see if the current graph has anything in it
             // if not, no need to start a new one
             if (!currentGraph.isEmpty()) {
-                currentGraph.bellmanFord();
                 currentGraph.displayGraph();
                 graphCount++;
-                cout << "\n\nGRAPH" << graphCount << "\n" << endl;
+                cout << "\n\nGraph #" << graphCount << ": \n" << endl;
                 currentGraph = Graph(to_string(graphCount)); // start a new graph
             }
         } else {
@@ -141,7 +171,6 @@ void createGraphs(const string& filename) {
         };
     };
     file.close();
-    currentGraph.bellmanFord(); // don't forget the last one!!
     currentGraph.displayGraph();
 };
 
