@@ -147,6 +147,11 @@ void spiceSort(vector<Spice>& arr) {
 
 void maximizeTake(float knapsack, vector<Spice> spices) {
     float knapValue = 0;
+    if (knapsack == 0) {
+        cout << "Knapsack of Capacity " << fixed << setprecision(2) << knapsack << " is worth " << 
+            fixed << setprecision(2) << knapValue << " quatloos and contains no scoops." << endl; 
+        return;
+    }
     ostringstream scoops;
     float capacityLeft = knapsack;
     for (Spice spice : spices) {
