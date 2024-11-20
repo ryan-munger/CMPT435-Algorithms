@@ -51,6 +51,13 @@ class Graph {
             s.distance = 0;
         };
 
+        void relax(linkedVertex* source, linkedVertex* destination, int weight) {
+            if (destination->distance > (source->distance + weight)) {
+                destination->distance = source->distance + weight;
+                destination->predecessor = source;
+            }
+        };
+
     public:
         Graph(string id) {
             this->graphID = id;
@@ -77,6 +84,17 @@ class Graph {
         void bellmanFord() {
             linkedVertex startVertex = this->linkedObjs.begin()->second;
             this->initSingleSource(startVertex);
+
+            for (auto& pair : this->linkedObjs) {
+                linkedVertex* current = &pair.second;
+                for (auto& edge : current->neighbors) {
+                    linkedVertex* destination = get<vertexTupleIdx>(edge);
+                    int weight = get<weightTupleIdx>(edge);
+                    relax(current, destination, weight);
+                }
+            }
+
+            
         };
 };
 
