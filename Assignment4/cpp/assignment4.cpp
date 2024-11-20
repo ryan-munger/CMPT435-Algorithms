@@ -13,10 +13,13 @@ const string GRAPH_PATH = "graphs2.txt";
 const string SPICE_PATH = "spice.txt";
 const int vertexTupleIdx = 0;
 const int weightTupleIdx = 1;
+const int functionalInfinity = 1e9;
 
 struct linkedVertex {
     string id;
     bool processed;
+    int distance;
+    linkedVertex* predecessor;
     vector<tuple<linkedVertex*, int>> neighbors; // no limit to neighbors!
 };
 
@@ -36,6 +39,17 @@ class Graph {
     private:
         string graphID;
         map<string, linkedVertex> linkedObjs;
+
+        void initSingleSource(linkedVertex s) {
+            // set all vertices to distance infinite (large but not max)
+            // no predecessors yet
+            for (auto& pair : this->linkedObjs) {
+                pair.second.distance = functionalInfinity;
+                pair.second.predecessor = nullptr;
+            }
+            // set single source
+            s.distance = 0;
+        };
 
     public:
         Graph(string id) {
@@ -60,8 +74,9 @@ class Graph {
             }
         };
 
-        void SSSP() {
-            cout << "I don't know SSSP yet!" << endl;
+        void bellmanFord() {
+            linkedVertex startVertex = this->linkedObjs.begin()->second;
+            this->initSingleSource(startVertex);
         };
 };
 
@@ -87,7 +102,7 @@ void createGraphs(const string& filename) {
             // check to see if the current graph has anything in it
             // if not, no need to start a new one
             if (!currentGraph.isEmpty()) {
-                currentGraph.SSSP();
+                currentGraph.bellmanFord();
                 currentGraph.displayGraph();
                 graphCount++;
                 cout << "\n\nGRAPH" << graphCount << "\n" << endl;
@@ -108,7 +123,7 @@ void createGraphs(const string& filename) {
         };
     };
     file.close();
-    currentGraph.SSSP(); // don't forget the last one!!
+    currentGraph.bellmanFord(); // don't forget the last one!!
     currentGraph.displayGraph();
 };
 
