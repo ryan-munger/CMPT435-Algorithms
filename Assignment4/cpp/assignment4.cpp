@@ -18,13 +18,11 @@ const int functionalInfinity = 1e9;
 
 struct linkedVertex {
     string id;
-    bool processed;
-    int distance;
-    linkedVertex* predecessor;
+    int distance; // for SSSP
+    linkedVertex* predecessor; // for SSSP
     vector<tuple<linkedVertex*, int>> neighbors; // no limit to neighbors!
 };
 
-// debug helper function
 void printLinkedVertex(linkedVertex v) {
     cout << "LinkedVertex " << v.id << "; Neighbors: " << endl;
     if (v.neighbors.empty()) {
@@ -283,6 +281,7 @@ void spiceHeist(const string& filename) {
             float total_price = stof(match[2].str());
             float quantity = stof(match[3].str());
             float unit_price = total_price / quantity;
+            
             Spice newSpice = Spice{color, total_price, quantity, unit_price};
             printSpice(newSpice);
             spiceInventory.push_back(newSpice);
