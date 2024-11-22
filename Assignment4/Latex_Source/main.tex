@@ -101,7 +101,7 @@
 % - -- -  - -- -  - -- -  -
 \section{Introduction}
 \subsection{Goals}
-Assignment 4 focuses on dynamic programming and greedy algorithms. First, I have to load in several weighted, directed graphs by parsing a file of instructions. Then, I must implement the Bellman-Ford dynamic programming algorithm	for Single Source Shortest Path (SSSP) in order to find the most efficient paths between nodes. Graphs aside, the greedy algorithm I need to implement is a version of the fractional knapsack problem. I need to read in a file that contains information about spices (price, quantity, etc.) and I must conduct a spice heist on Arrakis for each knapsack provided, maximizing my take.
+Assignment 4 focuses on dynamic programming and greedy algorithms. First, I have to load in several weighted, directed graphs by parsing a file of instructions. Then, I must implement the Bellman-Ford dynamic programming algorithm for Single Source Shortest Path (SSSP) in order to find the optimal path from a source vertex to each other vertex in the graph. Graphs aside, the greedy algorithm I need to implement is a version of the fractional knapsack problem. I need to read in a file that contains information about spices (price, quantity, etc.) and I must conduct a spice heist on Arrakis for each knapsack provided, maximizing my take.
 \subsection{Write-up Format}
     In this report I will describe the logic being presented and the asymptotic running time of the algorithms implemented. Below the text explanation, relevant code will follow in C++. 
 \subsection{Limerick of Luck}
@@ -112,48 +112,85 @@ And remain unburdened with a fallback, \\
     \hspace*{1.5em}Your capacity will not exceed, \\
 A heist for the ages, engraved on a plaque. \\
 \newpage
-\hrule
-\vspace{.25cm}
-Why wouldn't the greedy algorithm move?- \textit{Local maximums are everything to him...}\\
-\hrule
-\vspace{.25cm}
+
 
 \section{Weighted Directed Graphs}
 \subsection{Reading the Instructions}
-I was provided a file of instructions to create weighted directed graphs such as \textit{add vertex} and \textit{add edge}. I was able to utilize most of the code from my previous assingment (with different regex) to create my graph. This time, I only had to create a linked object representation.  
-\lstinputlisting[linerange={75-123}, firstnumber=75]{assignment4.cpp}
+I was provided a file of instructions to create weighted directed graphs such as \textit{add vertex} and \textit{add edge}. I was able to utilize most of the code from my previous assignment (with different regex) to create my graph. This time, I only had to create a linked object representation.  
+\lstinputlisting[linerange={154-197}, firstnumber=154]{assignment4.cpp}
 
 \subsection{Graph Object}
-The graph object is even simpler than last time. Each graph has an ID and a map of linked vertex objects. This time, since my graph is weighted, I stored each edge in the neighbor list as a tuple. Adding vertices and edges is much simpler when we only have one representation to update! Since this is a directed graph, we only need to update a single object. I made a new graph display function to ensure the graphs were created correctly. 
-\lstinputlisting[linerange={17-68}, firstnumber=17]{assignment4.cpp}
+The graph object is even simpler than last time. Each graph has an ID and a map of linked vertex objects. This time, since my graph is weighted, I stored each edge in the neighbor list as a tuple. Adding vertices and edges is much simpler when we only have one representation to update! Since this is a directed graph, we only need to update one neighbor list. I made a new graph display function to ensure the graphs were created correctly.
+\lstinputlisting[linerange={19-35}, firstnumber=19]{assignment4.cpp} 
+\lstinputlisting[linerange={61-85}, firstnumber=61]{assignment4.cpp}
 
 \subsection{SSSP}
-I don't know yet! $O(Something bad, probably)$.
+The Single Source Shortest Path (SSSP) algorithm aims to find the shortest paths from a single source vertex to all other vertices in a graph. This is a powerful algorithm in scenarios like routing and navigation systems. Two important algorithms for SSSP are Dijkstra's algorithm and the Bellman-Ford algorithm, which I have implemented in this lab.
 \begin{enumerate}
-    \item Do something!
+    \item Initialize single source: $O(|V|)$.
+    \item Relax all edges $|V| - 1$ times: $O(|V| * |E|)$.
+    \item Check for negative weight cycles: $O(|E|)$.
+    \item Report the optimized paths (Not part of the algorithm directly).
 \end{enumerate}
-\lstinputlisting[linerange={70-72}, firstnumber=70]{assignment4.cpp}
+I will explain the time complexities for each portion later. Combining the complexities of the algorithm's subroutines, the time complexity of Bellman-Ford is $O(|V| * |E|)$ where $V$ is the set of vertices and $E$ is the set of edges. \\
+\noindent \newline
+\textbf{Initialize Single Source}
+\begin{enumerate}
+    \item Assign an initial distance of infinity to all vertices.
+    \item Set the source vertex distance to 0.
+
+\end{enumerate}
+Why? This ensures that the shortest distance to the source vertex itself is 0, and all other vertices start with an "infinite" distance so that any path we compute is "cheaper." Since we traverse all the vertices once, this operation is $O(|V|)$.
+\lstinputlisting[linerange={42-51}, firstnumber=42]{assignment4.cpp}
+\newpage
+\noindent
+\textbf{Relaxing Edges} \\
+\indent For each edge (\textit{source}, \textit{destination}) in the graph, check if the path from \textit{source} to \textit{destination} through that edge is better than the current distance to \textit{destination}. If so, update \textit{destination.distance} to the shorter value and set \textit{source} as the predecessor of \textit{destination}. \newline
+This process is called "relaxing" an edge. This is the main driver of Bellman-Ford because it allows us to find shorter paths and record them. We relax every edge $|V| - 1$ times because in the worst case, the optimal path can have $|V| - 1$ edges in it. Since we relax each edge essentially $|V|$ times, this is a costly operation at $O(|V| * |E|)$.
+\lstinputlisting[linerange={53-59}, firstnumber=53]{assignment4.cpp}
+\hrule
+\vspace{.25cm}
+Why did the dynamic algorithm need scrap paper for its exam? \textit{To write down all of its intermediate answers...}
+\vspace{.25cm}
+\hrule 
+\noindent\newline\newline
+\textbf{Detecting Negative Weight Cycles} \\
+\indent After we relax all of the edges $|V| - 1$ times, we must iterate over them once more. If we can still relax an edge, this indicates the presence of a negative weight cycle. We return false if this is the case, as it makes it impossible to reliably report shortest paths with this algorithm. A negative weight cycle occurs when there is a closed path (a loop or cycle) between two edges that has a negative cost. In this case, traveling around this loop over and over would reduce your cost indefinitely. The shortest path would be to follow this cycle infinite times before continuing on to your destination. Since this is a single traversal of the edges, this costs $O(|E|)$.
+\lstinputlisting[linerange={102-113}, firstnumber=102]{assignment4.cpp}
+\lstinputlisting[linerange={90-100}, firstnumber=90]{assignment4.cpp}
+
+
+\noindent\newline
+\textbf{Report the Paths} \\
+\indent Now that we have computed the shortest paths, we have to extract this data from our linked objects. The way to do this is simple: we can just check the predecessor of the destination, its predecessor, and so on until we are back at the source. Since this will be revealed in reverse order, pushing them onto a stack and then popping it will make them human readable. I did not count this as part of the algorithm's time complexity, as the necessary operations do no include this. However, this operation will take $O(|V|)$ since in the worst case we will have to pass through every vertex as a predecessor. 
+\lstinputlisting[linerange={118-151}, firstnumber=118]{assignment4.cpp}
+
 \hrule
 \vspace{.25cm}
 Why did they add a timer to chess? \textit{Mr. Dy Namic Algorithm...}\\
 \hrule
 \vspace{.5cm}
 
-\subsection{Graph in Action}
-Poop
-\lstinputlisting[ linerange={3-20}, firstnumber=3]{cppout_for_writeup.txt}
+\subsection{Graphs in Action}
+I have included one such graph below. This graph contains no negative weight cycles. As we can see, the graph was loaded in correctly and the shortest paths from the source to each other vertex was computed effectively. 
+\lstinputlisting[ linerange={1-24}, firstnumber=3]{cppout_for_writeup.txt}
 
-
+\newpage
 \section{Greedy Knapsack}
+\hrule
+\vspace{.25cm}
+Why wouldn't the greedy algorithm move?- \textit{Staying local is important to him...}\\
+\hrule
+\vspace{.25cm}
 \subsection{Gathering Information}
-I gathered information about spices and knapsacks with regex in a similar fashion to my graphs. I stored my spices in a vector of Spice objects and my knapsack in a vector. I used float values for everything, as this is the \textit{fractional} knapsack problem, and there is no reason quantities and capacities cannot be decimal. 
-\lstinputlisting[linerange={125-130}, firstnumber=125]{assignment4.cpp}
-\lstinputlisting[linerange={183-223}, firstnumber=183]{assignment4.cpp}
+I gathered information about spices and knapsacks with regex in a similar fashion to my graphs. I stored my spices in a vector of Spice objects and my knapsacks in a vector as well. I used float values for everything, as this is the \textit{fractional} knapsack problem, and there is no reason quantities and capacities cannot be decimal. 
+\lstinputlisting[linerange={199-204}, firstnumber=199]{assignment4.cpp}
+\lstinputlisting[linerange={264-305}, firstnumber=264]{assignment4.cpp}
 
 \subsection{Organizing Spice}
-To maximize take, we will examine the unit price of each spice (how much it is worth per quantity). To do this, we first sort the Spice list. I made a custom version of insertion sort to accomplish this. I put it in descending order. Since I used insertion sort, this action will take $O(n^2)$ time due to the nested loop. We can use a better sorting algorithm, such as merge or quick sort, to optimize this up to $O(log(n))$.
-\lstinputlisting[linerange={140-155}, firstnumber=140]{assignment4.cpp}
-
+To maximize take, we will examine the unit price of each spice (how much it is worth per quantity). To do this, we first sort the Spice list. I made a custom version of insertion sort (for simplicity) to accomplish this. I put it in descending order. Since I used insertion sort, this action will take $O(n^2)$ time due to the nested loop. We can use a better sorting algorithm, such as merge or quick sort, to optimize this down to $O(log(n))$.
+\lstinputlisting[linerange={214-230}, firstnumber=214]{assignment4.cpp}
+\newpage
 \subsection{Maximizing Take}
 I implemented a greedy algorithm. This class of algorithm takes locally optimal choices and hopes for a globally optimal solution. In this case, we will achieve a globally optimal solution by pillaging as much of the highest value spice we can fit, then the next, and so on. This algorithm will only take $O(n)$ time as it is simply a single traversal of the spice list. It is even less than a single traversal, as we can expect most knapsacks to fill up before we reach the end of our spice inventory list! Thus, fractional knapsack is a $O(nlog(n)$ algorithm if you count sorting the spice list, or $O(n)$ on its own.
 \begin{enumerate}
@@ -164,22 +201,19 @@ I implemented a greedy algorithm. This class of algorithm takes locally optimal 
     \item Move to the next most valuable spice and repeat.
     \item Finally, report on our knapsack value and scoops taken.
 \end{enumerate}
-\lstinputlisting[linerange={157-181}, firstnumber=157]{assignment4.cpp}
+\lstinputlisting[linerange={232-262}, firstnumber=232]{assignment4.cpp}
 
 \subsection{Greed in Action}
-I have provided a few examples of Spices loaded, knapsacks created, and heists completed!
-\lstinputlisting[linerange={98-130}, firstnumber=98]{cppout_for_writeup.txt}
+Spices were loaded, knapsacks were created, and heists were completed! For each knapsack, the most optimal scoops were scooped. I think "scamped" would be cooler to say though. Optimal scoops were scamped.
+\lstinputlisting[linerange={123-155}, firstnumber=123]{cppout_for_writeup.txt}
 
 \section{Conclusion}
-Dynamic programming.... Greedy algorithms are much simpler than they seem. All that needs to be done is to take the greediest, most locally \& immediately optimal action. It is important to note though that while this did produce a globally optimal solution in this knapsack case, it does not always turn out this way, such as the cases of the 0-1 knapsack problem and traversing directed graphs!
-
+Dynamic programming is extremely powerful, yet not very efficient. Dynamic algorithms such as Bellman-Ford for SSSP tackle variable \& complex problems with ease! It is interesting to think about algorithms such as these that run our navigation systems, networking, and more!
+\newline Greedy algorithms are much simpler than they seem. All that needs to be done is to take the greediest, most locally \& immediately optimal action. It is important to note though that while this did produce a globally optimal solution in this knapsack case, it does not always turn out this way, such as the cases of the 0-1 knapsack problem and traversing directed graphs!
+\\
 \hrule
 \vspace{.25cm}
 Why did the greedy algorithm get full so quickly? \textit{It ate all the appetizers and spared no room!}
-\vspace{.25cm}
-\hrule
-\vspace{.25cm}
-Why did the dynamic algorithm score perfectly on its make-up test? \textit{It had all the answers saved from last time...}
 \vspace{.25cm}
 \hrule
 

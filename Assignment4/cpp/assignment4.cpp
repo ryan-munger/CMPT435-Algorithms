@@ -50,6 +50,7 @@ class Graph {
             s->distance = 0;
         };
 
+        // find shortest path by recording the optimal choice
         void relax(linkedVertex* source, linkedVertex* destination, int weight) {
             if (destination->distance > (source->distance + weight)) {
                 destination->distance = (source->distance + weight);
@@ -86,7 +87,7 @@ class Graph {
         bool bellmanFord(linkedVertex* startVertex) {
             this->initSingleSource(startVertex);
 
-            // Relax all edges |V| - 1 times
+            // relax all edges |V| - 1 times
             for (size_t i = 1; i < this->linkedObjs.size(); ++i) {
                 for (auto& pair : this->linkedObjs) {
                     linkedVertex* current = &pair.second;
@@ -98,7 +99,7 @@ class Graph {
                 }
             }
 
-            // Detect negative weight cycles
+            // detect negative weight cycles
             for (auto& pair : this->linkedObjs) {
                 linkedVertex* current = &pair.second;
                 for (auto& edge : current->neighbors) {
@@ -106,15 +107,16 @@ class Graph {
                     int weight = get<weightTupleIdx>(edge);
 
                     if (destination->distance > (current->distance + weight)) {
-                        return false; // Negative weight cycle found
+                        return false; // negative weight cycle found
                     }
                 }
             }
 
-            return true; // No negative weight cycles
+            return true; // no negative weight cycles
         };
 
         string getShortestPath(linkedVertex* destination) {
+            // follow predecessors (reverse order)
             stack<string> pathStack;
             linkedVertex* predecessor = destination;
             while (predecessor != nullptr) {
@@ -122,6 +124,7 @@ class Graph {
                 predecessor = predecessor->predecessor;
             }
 
+            // put them in forward order for display
             ostringstream pathstr;
             while (!pathStack.empty()) {
                 // Check if something is already in the stream for ->
@@ -252,7 +255,7 @@ void maximizeTake(float knapsack, vector<Spice> spices) {
     // replace last comma with period
     scoopString.pop_back(); 
     scoopString.back() = '.';
-
+    
     // report the value of our knapsack and scoops taken
     cout << "Knapsack of Capacity " << fixed << setprecision(2) << knapsack << " is worth " << 
         fixed << setprecision(2) << knapValue << " quatloos and contains " << scoopString << endl; 
