@@ -140,7 +140,10 @@ class Graph {
         void SSSP() {
             linkedVertex* startVertex = &this->linkedObjs.begin()->second;
             // set distances, predecessors, etc
-            bellmanFord(startVertex);
+            bool success = bellmanFord(startVertex);
+            if (!success) {
+                cout << "Negative weight cycle detected. Results may be unreliable!" << endl;
+            }
 
             cout << "SSSP: " << endl;
             for (auto& pair : this->linkedObjs) {
