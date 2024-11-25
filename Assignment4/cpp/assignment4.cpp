@@ -51,11 +51,13 @@ class Graph {
         };
 
         // find shortest path by recording the optimal choice
-        void relax(linkedVertex* source, linkedVertex* destination, int weight) {
+        bool relax(linkedVertex* source, linkedVertex* destination, int weight) {
             if (destination->distance > (source->distance + weight)) {
                 destination->distance = (source->distance + weight);
                 destination->predecessor = source;
+                return true;
             }
+            return false;
         };
 
     public:
@@ -87,16 +89,19 @@ class Graph {
         bool bellmanFord(linkedVertex* startVertex) {
             this->initSingleSource(startVertex);
 
-            // relax all edges |V| - 1 times
+            // relax all edges |V| - 1 times (or until shortest paths found!)
+            bool changesMade;
             for (size_t i = 1; i < this->linkedObjs.size(); ++i) {
+                changesMade = false;
                 for (auto& pair : this->linkedObjs) {
                     linkedVertex* current = &pair.second;
                     for (auto& edge : current->neighbors) {
                         linkedVertex* destination = get<vertexTupleIdx>(edge);
                         int weight = get<weightTupleIdx>(edge);
-                        relax(current, destination, weight);
+                        changesMade = changesMade || relax(current, destination, weight);
                     }
                 }
+                if (!changesMade) { break; } // no need to continue
             }
 
             // detect negative weight cycles
