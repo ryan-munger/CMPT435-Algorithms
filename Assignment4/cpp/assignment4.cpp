@@ -89,7 +89,7 @@ class Graph {
         bool bellmanFord(linkedVertex* startVertex) {
             this->initSingleSource(startVertex);
 
-            // relax all edges |V| - 1 times (or until shortest paths found!)
+            // relax all edges |V| - 1 times
             bool changesMade;
             for (size_t i = 1; i < this->linkedObjs.size(); ++i) {
                 changesMade = false;
@@ -98,10 +98,12 @@ class Graph {
                     for (auto& edge : current->neighbors) {
                         linkedVertex* destination = get<vertexTupleIdx>(edge);
                         int weight = get<weightTupleIdx>(edge);
-                        changesMade = changesMade || relax(current, destination, weight);
-                    }
+                        if (relax(current, destination, weight)) {
+                            changesMade = true;
+                        }  
+                    }                  
                 }
-                if (!changesMade) { break; } // no need to continue
+                if (!changesMade) { break; } // no need to continue if no changes made
             }
 
             // detect negative weight cycles
@@ -111,14 +113,15 @@ class Graph {
                     linkedVertex* destination = get<vertexTupleIdx>(edge);
                     int weight = get<weightTupleIdx>(edge);
 
-                    if (destination->distance > (current->distance + weight)) {
+                    // Check if we can further reduce the distance
+                    if (destination->distance > current->distance + weight) {
                         return false; // negative weight cycle found
                     }
                 }
             }
 
             return true; // no negative weight cycles
-        };
+        }
 
         string getShortestPath(linkedVertex* destination) {
             // follow predecessors (reverse order)
