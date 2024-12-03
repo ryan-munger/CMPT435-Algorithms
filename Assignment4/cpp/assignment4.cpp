@@ -150,7 +150,8 @@ class Graph {
             // set distances, predecessors, etc
             bool success = bellmanFord(startVertex);
             if (!success) {
-                cout << "Negative weight cycle detected. Results may be unreliable!" << endl;
+                cout << "Negative weight cycle detected. Unable to compute shortest paths." << endl; 
+                return;
             }
 
             cout << "SSSP: " << endl;
